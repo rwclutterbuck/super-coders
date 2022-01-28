@@ -16,3 +16,16 @@
 ### technical
 - [ ] 60% test coverage
 - [ ] deploys on netlify
+
+### technologies
+- [ ] express
+- [ ] cors
+- [ ] watchify
+- [ ] jest -DEV
+- [ ] supertest -DEV
+- [ ] nodemon -DEV
+- [ ] jest-fetch-mock -DEV
+- [ ] foundation
+
+#### Fun extras
+- [ ] fuse.js -fuzzy searching
