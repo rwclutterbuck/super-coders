@@ -2,6 +2,7 @@
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
+const { postBlog } = require('./handlers');
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -9,9 +10,12 @@ const cardContainer = document.querySelector("#card-container");
 
 hamburger.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("click");
-  menu.classList.toggle("hide-menu");
-});
+  console.log('click');
+  menu.classList.toggle('hide-menu');
+})
+
+const form = document.querySelector('form');
+form.addEventListener('submit', postBlog)
 
 cardContainer.innerHTML += blogCard(
   "I Built A Successful Blog In One Year",
