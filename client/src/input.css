@@ -29,11 +29,5 @@ main {
 }
 
 .hide-menu {
-  height: 0;
-  font-size: 0;
   display: none;
-}
-
-#dropdown-menu {
-  z-index: 1;
 }
