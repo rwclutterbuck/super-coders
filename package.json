@@ -7,7 +7,7 @@
     "test": "jest --watchAll",
     "start": "node ./server/index.js",
     "dev-server": "nodemon ./server/index.js",
-    "dev-client": "concurrently \"watchify ./client/src/js/index.js -o ./client/dist/bundle.js\" \"npx tailwindcss -i ./client/src/input.css ./client/dist/output.css --watch\"",
+    "dev-client": "concurrently \"watchify ./client/src/js/index.js -o ./client/dist/bundle.js\" \"npx tailwindcss -i ./client/src/input.css -o ./client/dist/output.css --watch\"",
     "coverage": "jest --coverage --silent"
   },
   "keywords": [],
