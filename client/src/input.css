@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+header, nav {
+    background-color: rgb(105, 172, 218) !important;
+}
+
+body, section {
+    background-color: rgb(253, 241, 243) !important;
+}
