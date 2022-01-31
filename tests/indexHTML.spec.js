@@ -13,11 +13,12 @@ describe('index.html', () => {
   })
 
   describe('head', () => {
+    let title;
     test('it has a title', () => {
-      const title = document.querySelector('title');
+      title = document.querySelector('title');
       expect(title).toBeTruthy();
-      expect(title.innerText).toContain('Super');
-      expect(title.innerText).toContain('Blog');
+      expect(title.textContent.toLowerCase()).toContain('super');
+      expect(title.textContent.toLowerCase()).toContain('blog');
     })
   })
 
@@ -30,15 +31,20 @@ describe('index.html', () => {
 
     describe('header', () => {
 
+      let header;
+      beforeEach(() => {
+        header = document.querySelector('header');
+      })
+
       test('the h1 is in the header', () => {
-        const header = document.querySelector('header');
-        expect(header.firstChild.nodeName.toLowerCase()).toBe('h1');
+        const h1 = header.querySelector('h1');
+        expect(h1).toBeTruthy();
       })
       
       describe('navbar', () => {
           
         test('it exists', () => {
-          const nav = document.querySelector('nav');
+          const nav = header.querySelector('nav');
           expect(nav).toBeTruthy();
         })
 
