@@ -1,12 +1,12 @@
-const { changeSection } = require('./helpers');
+const { changeSection } = require("./helpers");
 
 function postBlog(e) {
   e.preventDefault();
 
   const data = {
-      title: e.target.title.value,
-      blog: e.target.blog.value
-  }
+    title: e.target.title.value,
+    blog: e.target.blog.value,
+  };
 
   // const options = {
   //     method: 'POST',
@@ -22,7 +22,6 @@ function postBlog(e) {
   //   .then(r => r.json())
   //   .then(changeButton)
   //   .catch(console.warn)
-
 }
 
 module.exports = { postBlog };
