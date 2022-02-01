@@ -2,7 +2,7 @@ function blogCard(id, obj) {
   return `
     <div
       id="card-${parseInt(id)}"
-      class="card m-5 max-w-2xl overflow-hidden bg-white shadow-md dark:bg-gray-700 sm:flex sm:h-auto"
+      class="card my-1 w-screen max-w-xl overflow-hidden bg-white shadow-md dark:bg-gray-700 sm:flex sm:h-auto sm:m-5"
     >
       <img
         class="object-cover w-full h-64 sm:w-1/2"
