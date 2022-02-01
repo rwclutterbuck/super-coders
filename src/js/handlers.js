@@ -15,8 +15,8 @@ function postBlog(e) {
   console.log(e.target);
 
   const data = {
-    blogtitle: e.target.blogtitle.value,
-    blogcontent: e.target.blogcontent.value,
+    blogtitle: e.target.title.value,
+    blogcontent: e.target.content.value,
   };
 
   const options = {
