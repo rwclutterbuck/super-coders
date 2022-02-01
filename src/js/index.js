@@ -24,58 +24,90 @@ blogContainer && (blogContainer.innerHTML = blog());
 blogPreview && (blogPreview.innerHTML = blogCard());
 
 // Delete all of below once api is connected
+const data = {
+  "1": {
+    "blogtitle": "Ostriches dont exist",
+    "blogcontent": "Scientists recently discovered that ostriches are just a large form of pigeon....",
+    "date": "Sat, 29 Jan 2022 11:45:33 GMT",
+    "gif": "",
+    "comment": {
+      "1": {
+        "blogcomment": "Hiiii"
+      },
+      "2": {
+        "blogcomment": "Yoooooo"
+      }
+    },
+    "emoji": {
+      "1": {
+        "emojiCount": 100
+      },
+      "2": {
+        "emojiCount": 33
+      },
+      "3": {
+        "emojiCount": 11
+      }
+    }
+  },
+  "2": {
+    "blogtitle": "Are Aliens real?",
+    "blogcontent": "I never thought Aliens could be real...",
+    "date": "Sun, 30 Jan 2022 10:34:46 GMT",
+    "gif": "",
+    "comment": {
+      "1": {
+        "blogcomment": "HAHAHAHAA"
+      },
+      "2": {
+        "blogcomment": "GOOD ONE!!!"
+      }
+    },
+    "emoji": {
+      "1": {
+        "emojiCount": 67
+      },
+      "2": {
+        "emojiCount": 70
+      },
+      "3": {
+        "emojiCount": 0
+      }
+    }
+  },
+  "3": {
+    "blogtitle": "My brother believes in Aliens",
+    "blogcontent": "...",
+    "date": "Mon, 31 Jan 2022 12:04:22 GMT",
+    "gif": "",
+    "comment": {
+      "1": {
+        "blogcomment": "Testing"
+      },
+      "2": {
+        "blogcomment": "I am troll"
+      }
+    },
+    "emoji": {
+      "1": {
+        "emojiCount": 160
+      },
+      "2": {
+        "emojiCount": 3
+      },
+      "3": {
+        "emojiCount": 566
+      }
+    }
+  }
+}
 if (cardContainer) {
-  cardContainer.innerHTML += blogCard(
-    "I Built A Successful Blog In One Year",
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-    egestas quam volutpat viverra. In pretium nec senectus erat. Et
-    malesuada lobortis.`,
-    "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  cardContainer.innerHTML += blogCard(1,data[1]
   );
 
-  cardContainer.innerHTML += blogCard(
-    "Testing",
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-    egestas quam volutpat viverra. In pretium nec senectus erat. Et
-    malesuada lobortis.`,
-    "/src/images/splash-screen.jpg"
+  cardContainer.innerHTML += blogCard(2,data[2]
   );
 
-  cardContainer.innerHTML += blogCard(
-    "I Built A Successful Blog In One Year",
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-    egestas quam volutpat viverra. In pretium nec senectus erat. Et
-    malesuada lobortis.`,
-    "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-  );
-
-  cardContainer.innerHTML += blogCard(
-    "Testing",
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-    egestas quam volutpat viverra. In pretium nec senectus erat. Et
-    malesuada lobortis.`,
-    "/src/images/splash-screen.jpg"
-  );
-
-  cardContainer.innerHTML += blogCard(
-    "I Built A Successful Blog In One Year",
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-    egestas quam volutpat viverra. In pretium nec senectus erat. Et
-    malesuada lobortis.`,
-    "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-  );
-
-  cardContainer.innerHTML += blogCard(
-    "Testing",
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-    egestas quam volutpat viverra. In pretium nec senectus erat. Et
-    malesuada lobortis.`,
-    "/src/images/splash-screen.jpg"
+  cardContainer.innerHTML += blogCard(3,data[3]
   );
 }
