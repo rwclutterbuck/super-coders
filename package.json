@@ -17,6 +17,7 @@
     "jest": "^27.4.7",
     "jest-fetch-mock": "^3.0.3",
     "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
     "supertest": "^6.2.2",
     "watchify": "^4.0.0"
   },

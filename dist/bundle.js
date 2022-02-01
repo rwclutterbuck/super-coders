@@ -1,36 +1,143 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const { changeSection } = require('./helpers');
+const {
+  changeSection,
+  updateBtn,
+  appendBlogs,
+  appendComment,
+  appendComments,
+  appendBlogContent,
+  getBlogId,
+  getEmojiId,
+} = require("./helpers");
 
+// Fetch all blogs for the homepage
+function getAllBlogs() {
+  fetch("https://supercodersapi.herokuapp.com/blog")
+    .then((r) => r.json())
+    // .then(appendBlogs)  <---  Blogs to automatically import onto the homepage
+    .catch(console.warn);
+}
+
+// Post to the server upon creation of new blog
 function postBlog(e) {
   e.preventDefault();
 
   const data = {
-      title: e.target.title.value,
-      blog: e.target.blog.value
-  }
+    blogtitle: e.target.title.value,
+    blogcontent: e.target.blog.value,
+  };
 
-  // const options = {
-  //     method: 'POST',
-  //     body: JSON.stringify(data),
-  //     headers: {
-  //         "Content-Type": "application/json"
-  //     }
-  // }
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
   changeSection();
 
-  // fetch('#', options)
-  //   .then(r => r.json())
-  //   .then(changeButton)
-  //   .catch(console.warn)
-
+  fetch("https://supercodersapi.herokuapp.com/blog", options)
+    .then((r) => r.json())
+    // .then(updateBtn) <--- Update the form action to take to the page of the newly created blog
+    .catch(console.warn);
 }
 
-module.exports = { postBlog };
+// Post to the server upon creation of new comment
+function newComment(e) {
+  e.preventDefault();
+
+  const data = {
+    blogcomment: e.target.comment.value,
+  };
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  // let blogId = getBlogId();  <---  Need to identify which blog we are posting on to
+
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
+    .then((r) => r.json())
+    // .then(appendComment)  <---  add the comment to the list on blog.html
+    .catch(console.warn);
+}
+
+// Retrieve specific blog for blog.html
+function getBlog() {
+  // let blogId = getBlogId();
+  fetch("https://supercodersapi.herokuapp.com/blog/${blodId}")
+    .then((r) => r.json())
+    // .then(appendBlogContent)  <---  Add blog content to blog.html when loaded
+    .catch(console.warn);
+}
+
+// Retrieve all comments for blog.html
+function getAllComments() {
+  // let blogId = getBlogId();
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blodId}/comment`)
+    .then((r) => r.json())
+    // .then(appendComments)  <---  Add all comments to blog.html when loaded
+    .catch(console.warn);
+}
+
+// Update server after reaction with an emoji
+function updateEmojis(e) {
+  e.preventDefault();
+
+  // let blogId = getBlogId();
+  // let emojiId = getEmojiId();
+
+  // const data = {};  ----Dont need to send any data. Retrieve all info from emojiId-----
+
+  const options = {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  fetch(
+    `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}`,
+    options
+  )
+    .then((r) => r.json())
+    .then(updateEmoji)
+    .catch(console.warn);
+}
+
+// Delete a blog
+// --------------- Not sure what to do with this as I don't know where we're deleting blogs from ----------------------
+function deleteBlog() {
+  // let blogId = getBlogId();
+
+  const options = {
+    method: "DELETE",
+  };
+
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options).catch(
+    console.warn
+  );
+}
+
+module.exports = {
+  getAllBlogs,
+  postBlog,
+  newComment,
+  getBlog,
+  getAllComments,
+  updateEmojis,
+  deleteBlog,
+};
 
 },{"./helpers":2}],2:[function(require,module,exports){
 function changeSection() {
-  const section = document.querySelector('#form-section');
+  const section = document.querySelector("#form-section");
   section.innerHTML = `
     <h1 class="text-3xl font-semibold text-center text-gray-800 dark:text-white">Thanks for your Submission!</h1>
 
@@ -43,7 +150,32 @@ function changeSection() {
     </form>`;
 }
 
-module.exports = { changeSection };
+function updateBtn(data) {}
+
+function appendBlog(blog) {}
+
+function appendBlogs(blogs) {}
+
+function appendComment(comment) {}
+
+function appendComments(comments) {}
+
+function appendBlogContent(blog) {}
+
+function getBlogId(blog) {}
+
+function getEmojiId(emoji) {}
+
+module.exports = {
+  changeSection,
+  updateBtn,
+  appendBlogs,
+  appendComment,
+  appendComments,
+  appendBlogContent,
+  getBlogId,
+  getEmojiId,
+};
 
 },{}],3:[function(require,module,exports){
 // Templates
@@ -52,6 +184,8 @@ require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
 const blog = require("./templates/blogTemplate");
 const { postBlog } = require("./handlers");
+const { getAllBlogs, postBlog } = require("./handlers");
+
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -212,6 +346,7 @@ function blog() {
 module.exports = blog;
 
 },{}],5:[function(require,module,exports){
+
 function blogCard(title, text, imageUrl) {
   return `
     <div

@@ -4,6 +4,7 @@ require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
 const blog = require("./templates/blogTemplate");
 const { postBlog } = require("./handlers");
+const { getAllBlogs, postBlog } = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -70,12 +71,13 @@ if (cardContainer) {
     "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
   );
 
-  cardContainer.innerHTML += blogCard(
-    "Testing",
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-    egestas quam volutpat viverra. In pretium nec senectus erat. Et
-    malesuada lobortis.`,
-    "/src/images/splash-screen.jpg"
-  );
-}
+cardContainer.innerHTML += blogCard(
+  "Testing",
+  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+  egestas quam volutpat viverra. In pretium nec senectus erat. Et
+  malesuada lobortis.`,
+  "/src/images/splash-screen.jpg"
+);
+
+getAllBlogs();
