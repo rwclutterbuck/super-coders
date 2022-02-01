@@ -24,17 +24,12 @@ function appendComments(comments) {}
 
 function appendBlogContent(blog) {}
 
-function getBlogId(blog) {}
-
-function getEmojiId(emoji) {}
-
 module.exports = {
   changeSection,
   updateBtn,
+  appendBlog,
   appendBlogs,
   appendComment,
   appendComments,
   appendBlogContent,
-  getBlogId,
-  getEmojiId,
 };

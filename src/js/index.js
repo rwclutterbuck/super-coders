@@ -2,7 +2,7 @@
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
-const { getAllBlogs, postBlog } = require("./handlers");
+const handlers = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -10,12 +10,24 @@ const cardContainer = document.querySelector("#card-container");
 
 hamburger.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("click");
   menu.classList.toggle("hide-menu");
 });
 
 const form = document.querySelector("form");
-form && form.addEventListener("submit", postBlog);
+form && form.addEventListener("submit", handlers.postBlog);
+
+const location = window.location.pathname;
+switch (location) {
+  case "/index.html":
+    handlers.getAllBlogs();
+    break;
+  case "/createBlog.html":
+    break;
+  case "/blog.html":
+    handlers.getBlog();
+    handlers.getAllComments();
+    break;
+}
 
 cardContainer.innerHTML += blogCard(
   "I Built A Successful Blog In One Year",
@@ -70,5 +82,3 @@ cardContainer.innerHTML += blogCard(
   malesuada lobortis.`,
   "/src/images/splash-screen.jpg"
 );
-
-getAllBlogs();

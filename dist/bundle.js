@@ -1,20 +1,11 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const {
-  changeSection,
-  updateBtn,
-  appendBlogs,
-  appendComment,
-  appendComments,
-  appendBlogContent,
-  getBlogId,
-  getEmojiId,
-} = require("./helpers");
+const helpers = require("./helpers");
 
 // Fetch all blogs for the homepage
 function getAllBlogs() {
   fetch("https://supercodersapi.herokuapp.com/blog")
     .then((r) => r.json())
-    // .then(appendBlogs)  <---  Blogs to automatically import onto the homepage
+    // .then(helpers.appendBlogs)  <---  Blogs to automatically import onto the homepage
     .catch(console.warn);
 }
 
@@ -35,11 +26,11 @@ function postBlog(e) {
     },
   };
 
-  changeSection();
+  helpers.changeSection();
 
   fetch("https://supercodersapi.herokuapp.com/blog", options)
     .then((r) => r.json())
-    // .then(updateBtn) <--- Update the form action to take to the page of the newly created blog
+    // .then(helpers.updateBtn) <--- Update the form action to take to the page of the newly created blog
     .catch(console.warn);
 }
 
@@ -59,29 +50,27 @@ function newComment(e) {
     },
   };
 
-  // let blogId = getBlogId();  <---  Need to identify which blog we are posting on to
-
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
-    // .then(appendComment)  <---  add the comment to the list on blog.html
+    // .then(helpers.appendComment)  <---  add the comment to the list on blog.html
     .catch(console.warn);
 }
 
 // Retrieve specific blog for blog.html
 function getBlog() {
-  // let blogId = getBlogId();
-  fetch("https://supercodersapi.herokuapp.com/blog/${blodId}")
+  // let blogId;
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
-    // .then(appendBlogContent)  <---  Add blog content to blog.html when loaded
+    // .then(helpers.appendBlogContent)  <---  Add blog content to blog.html when loaded
     .catch(console.warn);
 }
 
 // Retrieve all comments for blog.html
 function getAllComments() {
-  // let blogId = getBlogId();
-  fetch(`https://supercodersapi.herokuapp.com/blog/${blodId}/comment`)
+  // let blogId;
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}/comment`)
     .then((r) => r.json())
-    // .then(appendComments)  <---  Add all comments to blog.html when loaded
+    // .then(helpers.appendComments)  <---  Add all comments to blog.html when loaded
     .catch(console.warn);
 }
 
@@ -89,8 +78,8 @@ function getAllComments() {
 function updateEmojis(e) {
   e.preventDefault();
 
-  // let blogId = getBlogId();
-  // let emojiId = getEmojiId();
+  // let blogId;
+  // let emojiId;
 
   // const data = {};  ----Dont need to send any data. Retrieve all info from emojiId-----
 
@@ -107,7 +96,7 @@ function updateEmojis(e) {
     options
   )
     .then((r) => r.json())
-    .then(updateEmoji)
+    // .then(helpers.updateEmoji)
     .catch(console.warn);
 }
 
@@ -162,19 +151,14 @@ function appendComments(comments) {}
 
 function appendBlogContent(blog) {}
 
-function getBlogId(blog) {}
-
-function getEmojiId(emoji) {}
-
 module.exports = {
   changeSection,
   updateBtn,
+  appendBlog,
   appendBlogs,
   appendComment,
   appendComments,
   appendBlogContent,
-  getBlogId,
-  getEmojiId,
 };
 
 },{}],3:[function(require,module,exports){
@@ -182,7 +166,7 @@ module.exports = {
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
-const { getAllBlogs, postBlog } = require("./handlers");
+const handlers = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -190,12 +174,24 @@ const cardContainer = document.querySelector("#card-container");
 
 hamburger.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("click");
   menu.classList.toggle("hide-menu");
 });
 
 const form = document.querySelector("form");
-form && form.addEventListener("submit", postBlog);
+form && form.addEventListener("submit", handlers.postBlog);
+
+const location = window.location.pathname;
+switch (location) {
+  case "/index.html":
+    handlers.getAllBlogs();
+    break;
+  case "/createBlog.html":
+    break;
+  case "/blog.html":
+    handlers.getBlog();
+    handlers.getAllComments();
+    break;
+}
 
 cardContainer.innerHTML += blogCard(
   "I Built A Successful Blog In One Year",
@@ -250,8 +246,6 @@ cardContainer.innerHTML += blogCard(
   malesuada lobortis.`,
   "/src/images/splash-screen.jpg"
 );
-
-getAllBlogs();
 
 },{"./handlers":1,"./templates/cardTemplate":4,"./templates/footerTemplate":5,"./templates/navBarTemplate":6}],4:[function(require,module,exports){
 function blogCard(title, text, imageUrl) {
