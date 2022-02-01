@@ -182,11 +182,16 @@ module.exports = {
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
+const blog = require("./templates/blogTemplate");
+const { postBlog } = require("./handlers");
 const { getAllBlogs, postBlog } = require("./handlers");
+
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
 const cardContainer = document.querySelector("#card-container");
+const blogContainer = document.querySelector("#blog-container");
+const blogPreview = document.querySelector("#blog-preview");
 
 hamburger.addEventListener("click", (e) => {
   e.preventDefault();
@@ -197,63 +202,151 @@ hamburger.addEventListener("click", (e) => {
 const form = document.querySelector("form");
 form && form.addEventListener("submit", postBlog);
 
-cardContainer.innerHTML += blogCard(
-  "I Built A Successful Blog In One Year",
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-  egestas quam volutpat viverra. In pretium nec senectus erat. Et
-  malesuada lobortis.`,
-  "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-);
+blogContainer && (blogContainer.innerHTML = blog());
+blogPreview && (blogPreview.innerHTML = blogCard());
 
-cardContainer.innerHTML += blogCard(
-  "Testing",
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-  egestas quam volutpat viverra. In pretium nec senectus erat. Et
-  malesuada lobortis.`,
-  "/src/images/splash-screen.jpg"
-);
+// Delete all of below once api is connected
+if (cardContainer) {
+  cardContainer.innerHTML += blogCard(
+    "I Built A Successful Blog In One Year",
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+    egestas quam volutpat viverra. In pretium nec senectus erat. Et
+    malesuada lobortis.`,
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  );
 
-cardContainer.innerHTML += blogCard(
-  "I Built A Successful Blog In One Year",
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-  egestas quam volutpat viverra. In pretium nec senectus erat. Et
-  malesuada lobortis.`,
-  "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-);
+  cardContainer.innerHTML += blogCard(
+    "Testing",
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+    egestas quam volutpat viverra. In pretium nec senectus erat. Et
+    malesuada lobortis.`,
+    "/src/images/splash-screen.jpg"
+  );
 
-cardContainer.innerHTML += blogCard(
-  "Testing",
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-  egestas quam volutpat viverra. In pretium nec senectus erat. Et
-  malesuada lobortis.`,
-  "/src/images/splash-screen.jpg"
-);
+  cardContainer.innerHTML += blogCard(
+    "I Built A Successful Blog In One Year",
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+    egestas quam volutpat viverra. In pretium nec senectus erat. Et
+    malesuada lobortis.`,
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  );
 
-cardContainer.innerHTML += blogCard(
-  "I Built A Successful Blog In One Year",
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-  egestas quam volutpat viverra. In pretium nec senectus erat. Et
-  malesuada lobortis.`,
-  "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-);
+  cardContainer.innerHTML += blogCard(
+    "Testing",
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+    egestas quam volutpat viverra. In pretium nec senectus erat. Et
+    malesuada lobortis.`,
+    "/src/images/splash-screen.jpg"
+  );
 
-cardContainer.innerHTML += blogCard(
-  "Testing",
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-  egestas quam volutpat viverra. In pretium nec senectus erat. Et
-  malesuada lobortis.`,
-  "/src/images/splash-screen.jpg"
-);
+  cardContainer.innerHTML += blogCard(
+    "I Built A Successful Blog In One Year",
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+    egestas quam volutpat viverra. In pretium nec senectus erat. Et
+    malesuada lobortis.`,
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+  );
 
-getAllBlogs();
+  cardContainer.innerHTML += blogCard(
+    "Testing",
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+    parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+    egestas quam volutpat viverra. In pretium nec senectus erat. Et
+    malesuada lobortis.`,
+    "/src/images/splash-screen.jpg"
+  );
+}
 
-},{"./handlers":1,"./templates/cardTemplate":4,"./templates/footerTemplate":5,"./templates/navBarTemplate":6}],4:[function(require,module,exports){
+},{"./handlers":1,"./templates/blogTemplate":4,"./templates/cardTemplate":5,"./templates/footerTemplate":6,"./templates/navBarTemplate":7}],4:[function(require,module,exports){
+function blog() {
+  return `
+    <div
+      class="card max-w-2xl mx-auto overflow-hidden bg-white shadow-md dark:bg-gray-800"
+    >
+      <img
+        class="object-cover w-full h-64"
+        src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        alt="Article"
+      />
+
+      <div class="p-6">
+        <div>
+          <span
+            class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400"
+            >Product</span
+          >
+          <a
+            href="#"
+            class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-200 transform dark:text-white hover:text-gray-600 hover:underline"
+            >I Built A Successful Blog In One Year</a
+          >
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+            parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+            egestas quam volutpat viverra. In pretium nec senectus erat. Et
+            malesuada lobortis.
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <div class="flex items-center">
+            <div class="flex items-center">
+              <img
+                class="object-cover h-10 rounded-full"
+                src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
+                alt="Avatar"
+              />
+              <a
+                href="#"
+                class="mx-2 font-semibold text-gray-700 dark:text-gray-200"
+                >Jone Doe</a
+              >
+            </div>
+            <span class="mx-1 text-xs text-gray-600 dark:text-gray-300"
+              >21 SEP 2015</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 dark:bg-gray-700 dark:text-gray-100">
+      <h3 class="pt-2 font-semibold text-xl">Comments</h3>
+      <div class="p-2">
+        <h4 class="dark:text-gray-400">10 seconds ago</h4>
+        <p>What a cool article</p>
+      </div>
+      <div class="p-2">
+        <h4 class="dark:text-gray-400">3 hours ago</h4>
+        <p>What a cool article</p>
+      </div>
+      <div class="p-2">
+        <h4 class="dark:text-gray-400">1 week ago</h4>
+        <p>What a cool article</p>
+      </div>
+      <div class="p-2">
+        <form action="" method="post">
+          <input
+            class="py-2 w-full px-4 mb-4 text-gray-700 placeholder-gray-600 bg-white border-b border-gray-600 dark:placeholder-gray-300 dark:focus:border-gray-300 lg:w-56 lg:border-transparent dark:bg-gray-800 dark:text-gray-300 focus:outline-none focus:border-gray-600"
+            type="text"
+            name=""
+            id=""
+            placeholder="write your own comment"
+          />
+        </form>
+      </div>
+    </div>
+  `;
+}
+
+module.exports = blog;
+
+},{}],5:[function(require,module,exports){
+
 function blogCard(title, text, imageUrl) {
   return `
     <div
@@ -307,7 +400,7 @@ function blogCard(title, text, imageUrl) {
 
 module.exports = blogCard;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 class footerTemplate extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
@@ -386,7 +479,7 @@ class footerTemplate extends HTMLElement {
 
 customElements.define("footer-template", footerTemplate);
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 class navBar extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
