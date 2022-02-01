@@ -110,6 +110,20 @@ function updateEmojis(e) {
     .catch(console.warn);
 }
 
+// Delete a blog
+// --------------- Not sure what to do with this as I don't know where we're deleting blogs from ----------------------
+function deleteBlog() {
+  // let blogId = getBlogId();
+
+  const options = {
+    method: "DELETE",
+  };
+
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options).catch(
+    console.warn
+  );
+}
+
 module.exports = {
   getAllBlogs,
   postBlog,
@@ -117,4 +131,5 @@ module.exports = {
   getBlog,
   getAllComments,
   updateEmojis,
+  deleteBlog,
 };
