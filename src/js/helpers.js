@@ -18,4 +18,6 @@ function appendBlog(blog) {}
 
 function appendBlogs(blogs) {}
 
-module.exports = { changeSection, updateBtn, appendBlogs };
+function appendComment(comment) {}
+
+module.exports = { changeSection, updateBtn, appendBlogs, appendComment };

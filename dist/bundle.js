@@ -1,6 +1,12 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const { changeSection, updateBtn, appendBlogs } = require("./helpers");
+const {
+  changeSection,
+  updateBtn,
+  appendBlogs,
+  appendComment,
+} = require("./helpers");
 
+// Fetch all blogs for the homepage
 function getAllBlogs() {
   fetch("https://supercodersapi.herokuapp.com/blog")
     .then((r) => r.json())
@@ -8,12 +14,13 @@ function getAllBlogs() {
     .catch(console.warn);
 }
 
+// Post to the server upon creation of new blog
 function postBlog(e) {
   e.preventDefault();
 
   const data = {
-    title: e.target.blogtitle.value,
-    blog: e.target.blogcontent.value,
+    blogtitle: e.target.title.value,
+    blogcontent: e.target.blog.value,
   };
 
   const options = {
@@ -29,6 +36,30 @@ function postBlog(e) {
   fetch("https://supercodersapi.herokuapp.com/blog", options)
     .then((r) => r.json())
     // .then(updateBtn) <--- Update the form action to take to the page of the newly created blog
+    .catch(console.warn);
+}
+
+// Post to the server upon creation of new comment
+function newComment(e) {
+  e.preventDefault();
+
+  const data = {
+    blogcomment: e.target.comment.value,
+  };
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  // let blogId = getBlogId();  <---  Need to identify which blog we are posting on to
+
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
+    .then((r) => r.json())
+    // .then(appendComment)  <---  add the comment to the list on blog.html
     .catch(console.warn);
 }
 
@@ -55,7 +86,9 @@ function appendBlog(blog) {}
 
 function appendBlogs(blogs) {}
 
-module.exports = { changeSection, updateBtn, appendBlogs };
+function appendComment(comment) {}
+
+module.exports = { changeSection, updateBtn, appendBlogs, appendComment };
 
 },{}],3:[function(require,module,exports){
 // Templates
