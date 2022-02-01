@@ -4,6 +4,8 @@ const {
   updateBtn,
   appendBlogs,
   appendComment,
+  appendComments,
+  appendBlogContent,
 } = require("./helpers");
 
 // Fetch all blogs for the homepage
@@ -63,7 +65,25 @@ function newComment(e) {
     .catch(console.warn);
 }
 
-module.exports = { getAllBlogs, postBlog };
+// Retrieve specific blog for blog.html
+function getBlog() {
+  // let blogId = getBlogId();
+  fetch("https://supercodersapi.herokuapp.com/blog/${blodId}")
+    .then((r) => r.json())
+    // .then(appendBlogContent)
+    .catch(console.warn);
+}
+
+// Retrieve all comments for blog.html
+function getAllComments() {
+  // let blogId = getBlogId();
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blodId}/comment`)
+    .then((r) => r.json())
+    // .then(appendComments)  <---  Add all comments to blog.html when loaded
+    .catch(console.warn);
+}
+
+module.exports = { getAllBlogs, postBlog, newComment, getBlog, getAllComments };
 
 },{"./helpers":2}],2:[function(require,module,exports){
 function changeSection() {
@@ -88,7 +108,18 @@ function appendBlogs(blogs) {}
 
 function appendComment(comment) {}
 
-module.exports = { changeSection, updateBtn, appendBlogs, appendComment };
+function appendComments(comments) {}
+
+function appendBlogContent(blog) {}
+
+module.exports = {
+  changeSection,
+  updateBtn,
+  appendBlogs,
+  appendComment,
+  appendComments,
+  appendBlogContent,
+};
 
 },{}],3:[function(require,module,exports){
 // Templates
