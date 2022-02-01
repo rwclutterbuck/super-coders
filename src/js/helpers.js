@@ -1,5 +1,5 @@
 function changeSection() {
-  const section = document.querySelector('#form-section');
+  const section = document.querySelector("#form-section");
   section.innerHTML = `
     <h1 class="text-3xl font-semibold text-center text-gray-800 dark:text-white">Thanks for your Submission!</h1>
 
@@ -12,4 +12,10 @@ function changeSection() {
     </form>`;
 }
 
-module.exports = { changeSection };
+function updateBtn(data) {}
+
+function appendBlog(blog) {}
+
+function appendBlogs(blogs) {}
+
+module.exports = { changeSection, updateBtn, appendBlogs };

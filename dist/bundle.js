@@ -1,36 +1,42 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const { changeSection } = require('./helpers');
+const { changeSection, updateBtn, appendBlogs } = require("./helpers");
+
+function getAllBlogs() {
+  fetch("https://supercodersapi.herokuapp.com/blog")
+    .then((r) => r.json())
+    // .then(appendBlogs)  <---  Blogs to automatically import onto the homepage
+    .catch(console.warn);
+}
 
 function postBlog(e) {
   e.preventDefault();
 
   const data = {
-      title: e.target.title.value,
-      blog: e.target.blog.value
-  }
+    title: e.target.blogtitle.value,
+    blog: e.target.blogcontent.value,
+  };
 
-  // const options = {
-  //     method: 'POST',
-  //     body: JSON.stringify(data),
-  //     headers: {
-  //         "Content-Type": "application/json"
-  //     }
-  // }
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
   changeSection();
 
-  // fetch('#', options)
-  //   .then(r => r.json())
-  //   .then(changeButton)
-  //   .catch(console.warn)
-
+  fetch("https://supercodersapi.herokuapp.com/blog", options)
+    .then((r) => r.json())
+    // .then(updateBtn) <--- Update the form action to take to the page of the newly created blog
+    .catch(console.warn);
 }
 
-module.exports = { postBlog };
+module.exports = { getAllBlogs, postBlog };
 
 },{"./helpers":2}],2:[function(require,module,exports){
 function changeSection() {
-  const section = document.querySelector('#form-section');
+  const section = document.querySelector("#form-section");
   section.innerHTML = `
     <h1 class="text-3xl font-semibold text-center text-gray-800 dark:text-white">Thanks for your Submission!</h1>
 
@@ -43,14 +49,20 @@ function changeSection() {
     </form>`;
 }
 
-module.exports = { changeSection };
+function updateBtn(data) {}
+
+function appendBlog(blog) {}
+
+function appendBlogs(blogs) {}
+
+module.exports = { changeSection, updateBtn, appendBlogs };
 
 },{}],3:[function(require,module,exports){
 // Templates
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
-const { postBlog } = require("./handlers");
+const { getAllBlogs, postBlog } = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -118,6 +130,8 @@ cardContainer.innerHTML += blogCard(
   malesuada lobortis.`,
   "/src/images/splash-screen.jpg"
 );
+
+getAllBlogs();
 
 },{"./handlers":1,"./templates/cardTemplate":4,"./templates/footerTemplate":5,"./templates/navBarTemplate":6}],4:[function(require,module,exports){
 function blogCard(title, text, imageUrl) {
