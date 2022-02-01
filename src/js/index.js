@@ -2,7 +2,7 @@
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
-const { postBlog } = require("./handlers");
+const { getAllBlogs, postBlog } = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -70,3 +70,5 @@ cardContainer.innerHTML += blogCard(
   malesuada lobortis.`,
   "/src/images/splash-screen.jpg"
 );
+
+getAllBlogs();
