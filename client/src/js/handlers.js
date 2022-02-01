@@ -4,8 +4,8 @@ function postBlog(e) {
   e.preventDefault();
 
   const data = {
-    title: e.target.title.value,
-    blog: e.target.blog.value,
+    title: e.target.blogTitle.value,
+    blog: e.target.blogContent.value,
   };
 
   // const options = {
