@@ -2,11 +2,14 @@
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
+const blog = require("./templates/blogTemplate");
 const { postBlog } = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
 const cardContainer = document.querySelector("#card-container");
+const blogContainer = document.querySelector("#blog-container");
+const blogPreview = document.querySelector("#blog-preview");
 
 hamburger.addEventListener("click", (e) => {
   e.preventDefault();
@@ -17,6 +20,10 @@ hamburger.addEventListener("click", (e) => {
 const form = document.querySelector("form");
 form && form.addEventListener("submit", postBlog);
 
+blogContainer && (blogContainer.innerHTML = blog());
+blogPreview && (blogPreview.innerHTML = blogCard());
+
+// Delete all of below once api is connected
 if (cardContainer) {
   cardContainer.innerHTML += blogCard(
     "I Built A Successful Blog In One Year",
