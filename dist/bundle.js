@@ -13,9 +13,11 @@ function getAllBlogs() {
 function postBlog(e) {
   e.preventDefault();
 
+  console.log(e.target);
+
   const data = {
-    blogtitle: e.target.title.value,
-    blogcontent: e.target.blog.value,
+    blogtitle: e.target.blogtitle.value,
+    blogcontent: e.target.blogcontent.value,
   };
 
   const options = {
