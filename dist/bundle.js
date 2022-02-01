@@ -1,8 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-// Templates
-require("./templates/navBarTemplate");
-require("./templates/footerTemplate");
-const blogCard = require("./templates/cardTemplate");
 const { changeSection } = require('./helpers');
 
 function postBlog(e) {
@@ -50,7 +46,11 @@ function changeSection() {
 module.exports = { changeSection };
 
 },{}],3:[function(require,module,exports){
-const { postBlog } = require('./handlers');
+// Templates
+require("./templates/navBarTemplate");
+require("./templates/footerTemplate");
+const blogCard = require("./templates/cardTemplate");
+const { postBlog } = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -62,23 +62,8 @@ hamburger.addEventListener("click", (e) => {
   menu.classList.toggle("hide-menu");
 });
 
-cardContainer.innerHTML += blogCard(
-  "I Built A Successful Blog In One Year",
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-  egestas quam volutpat viverra. In pretium nec senectus erat. Et
-  malesuada lobortis.`,
-  "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-);
-
-cardContainer.innerHTML += blogCard(
-  "Testing",
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
-  egestas quam volutpat viverra. In pretium nec senectus erat. Et
-  malesuada lobortis.`,
-  "../images/splash-screen.jpg"
-);
+const form = document.querySelector("form");
+form && form.addEventListener("submit", postBlog);
 
 cardContainer.innerHTML += blogCard(
   "I Built A Successful Blog In One Year",
@@ -95,7 +80,7 @@ cardContainer.innerHTML += blogCard(
   parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
   egestas quam volutpat viverra. In pretium nec senectus erat. Et
   malesuada lobortis.`,
-  "../images/splash-screen.jpg"
+  "/src/images/splash-screen.jpg"
 );
 
 cardContainer.innerHTML += blogCard(
@@ -113,10 +98,28 @@ cardContainer.innerHTML += blogCard(
   parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
   egestas quam volutpat viverra. In pretium nec senectus erat. Et
   malesuada lobortis.`,
-  "../images/splash-screen.jpg"
+  "/src/images/splash-screen.jpg"
 );
 
-},{"./templates/cardTemplate":2,"./templates/footerTemplate":3,"./templates/navBarTemplate":4}],2:[function(require,module,exports){
+cardContainer.innerHTML += blogCard(
+  "I Built A Successful Blog In One Year",
+  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+  egestas quam volutpat viverra. In pretium nec senectus erat. Et
+  malesuada lobortis.`,
+  "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+);
+
+cardContainer.innerHTML += blogCard(
+  "Testing",
+  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
+  parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris
+  egestas quam volutpat viverra. In pretium nec senectus erat. Et
+  malesuada lobortis.`,
+  "/src/images/splash-screen.jpg"
+);
+
+},{"./handlers":1,"./templates/cardTemplate":4,"./templates/footerTemplate":5,"./templates/navBarTemplate":6}],4:[function(require,module,exports){
 function blogCard(title, text, imageUrl) {
   return `
     <div
@@ -170,7 +173,7 @@ function blogCard(title, text, imageUrl) {
 
 module.exports = blogCard;
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 class footerTemplate extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
@@ -249,7 +252,7 @@ class footerTemplate extends HTMLElement {
 
 customElements.define("footer-template", footerTemplate);
 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 class navBar extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
@@ -399,7 +402,4 @@ class navBar extends HTMLElement {
 
 customElements.define("nav-bar", navBar);
 
-const form = document.querySelector('form');
-form.addEventListener('submit', postBlog)
-
-},{"./handlers":1}]},{},[3]);
+},{}]},{},[3]);
