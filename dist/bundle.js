@@ -6,6 +6,8 @@ const {
   appendComment,
   appendComments,
   appendBlogContent,
+  getBlogId,
+  getEmojiId,
 } = require("./helpers");
 
 // Fetch all blogs for the homepage
@@ -70,7 +72,7 @@ function getBlog() {
   // let blogId = getBlogId();
   fetch("https://supercodersapi.herokuapp.com/blog/${blodId}")
     .then((r) => r.json())
-    // .then(appendBlogContent)
+    // .then(appendBlogContent)  <---  Add blog content to blog.html when loaded
     .catch(console.warn);
 }
 
@@ -83,7 +85,40 @@ function getAllComments() {
     .catch(console.warn);
 }
 
-module.exports = { getAllBlogs, postBlog, newComment, getBlog, getAllComments };
+// Update server after reaction with an emoji
+function updateEmojis(e) {
+  e.preventDefault();
+
+  // let blogId = getBlogId();
+  // let emojiId = getEmojiId();
+
+  // const data = {};  ----Dont need to send any data. Retrieve all info from emojiId-----
+
+  const options = {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  fetch(
+    `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}`,
+    options
+  )
+    .then((r) => r.json())
+    .then(updateEmoji)
+    .catch(console.warn);
+}
+
+module.exports = {
+  getAllBlogs,
+  postBlog,
+  newComment,
+  getBlog,
+  getAllComments,
+  updateEmojis,
+};
 
 },{"./helpers":2}],2:[function(require,module,exports){
 function changeSection() {
@@ -112,6 +147,10 @@ function appendComments(comments) {}
 
 function appendBlogContent(blog) {}
 
+function getBlogId(blog) {}
+
+function getEmojiId(emoji) {}
+
 module.exports = {
   changeSection,
   updateBtn,
@@ -119,6 +158,8 @@ module.exports = {
   appendComment,
   appendComments,
   appendBlogContent,
+  getBlogId,
+  getEmojiId,
 };
 
 },{}],3:[function(require,module,exports){
