@@ -1,19 +1,10 @@
-const {
-  changeSection,
-  updateBtn,
-  appendBlogs,
-  appendComment,
-  appendComments,
-  appendBlogContent,
-  getBlogId,
-  getEmojiId,
-} = require("./helpers");
+const helpers = require("./helpers");
 
 // Fetch all blogs for the homepage
 function getAllBlogs() {
   fetch("https://supercodersapi.herokuapp.com/blog")
     .then((r) => r.json())
-    // .then(appendBlogs)  <---  Blogs to automatically import onto the homepage
+    .then(helpers.appendBlogs)
     .catch(console.warn);
 }
 
@@ -21,9 +12,11 @@ function getAllBlogs() {
 function postBlog(e) {
   e.preventDefault();
 
+  console.log(e.target);
+
   const data = {
     blogtitle: e.target.title.value,
-    blogcontent: e.target.blog.value,
+    blogcontent: e.target.content.value,
   };
 
   const options = {
@@ -34,11 +27,11 @@ function postBlog(e) {
     },
   };
 
-  changeSection();
+  helpers.changeSection();
 
   fetch("https://supercodersapi.herokuapp.com/blog", options)
     .then((r) => r.json())
-    // .then(updateBtn) <--- Update the form action to take to the page of the newly created blog
+    // .then(helpers.updateBtn) <--- Update the form action to take to the page of the newly created blog
     .catch(console.warn);
 }
 
@@ -58,38 +51,36 @@ function newComment(e) {
     },
   };
 
-  // let blogId = getBlogId();  <---  Need to identify which blog we are posting on to
-
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
-    // .then(appendComment)  <---  add the comment to the list on blog.html
+    // .then(helpers.appendComment)  <---  add the comment to the list on blog.html
     .catch(console.warn);
 }
 
 // Retrieve specific blog for blog.html
 function getBlog() {
-  // let blogId = getBlogId();
-  fetch("https://supercodersapi.herokuapp.com/blog/${blodId}")
+  let blogId = 1;
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
-    // .then(appendBlogContent)  <---  Add blog content to blog.html when loaded
+    .then(helpers.appendBlogContent)
     .catch(console.warn);
 }
 
 // Retrieve all comments for blog.html
-function getAllComments() {
-  // let blogId = getBlogId();
-  fetch(`https://supercodersapi.herokuapp.com/blog/${blodId}/comment`)
-    .then((r) => r.json())
-    // .then(appendComments)  <---  Add all comments to blog.html when loaded
-    .catch(console.warn);
-}
+// function getAllComments() {
+//   // let blogId;
+//   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}/comment`)
+//     .then((r) => r.json())
+//     // .then(helpers.appendComments)  <---  Add all comments to blog.html when loaded
+//     .catch(console.warn);
+// }
 
 // Update server after reaction with an emoji
 function updateEmojis(e) {
   e.preventDefault();
 
-  // let blogId = getBlogId();
-  // let emojiId = getEmojiId();
+  // let blogId;
+  // let emojiId;
 
   // const data = {};  ----Dont need to send any data. Retrieve all info from emojiId-----
 
@@ -106,7 +97,7 @@ function updateEmojis(e) {
     options
   )
     .then((r) => r.json())
-    .then(updateEmoji)
+    // .then(helpers.updateEmoji)
     .catch(console.warn);
 }
 
@@ -129,7 +120,7 @@ module.exports = {
   postBlog,
   newComment,
   getBlog,
-  getAllComments,
+  // getAllComments,
   updateEmojis,
   deleteBlog,
 };
