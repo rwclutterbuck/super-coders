@@ -18,4 +18,23 @@ function appendBlog(blog) {}
 
 function appendBlogs(blogs) {}
 
-module.exports = { changeSection, updateBtn, appendBlogs };
+function appendComment(comment) {}
+
+function appendComments(comments) {}
+
+function appendBlogContent(blog) {}
+
+function getBlogId(blog) {}
+
+function getEmojiId(emoji) {}
+
+module.exports = {
+  changeSection,
+  updateBtn,
+  appendBlogs,
+  appendComment,
+  appendComments,
+  appendBlogContent,
+  getBlogId,
+  getEmojiId,
+};
