@@ -2,8 +2,8 @@
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const blogCard = require("./templates/cardTemplate");
+const handlers = require("./handlers");
 const blog = require("./templates/blogTemplate");
-const { getAllBlogs, postBlog } = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -13,12 +13,24 @@ const blogPreview = document.querySelector("#blog-preview");
 
 hamburger.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("click");
   menu.classList.toggle("hide-menu");
 });
 
 const form = document.querySelector("form");
-form && form.addEventListener("submit", postBlog);
+form && form.addEventListener("submit", handlers.postBlog);
+
+const location = window.location.pathname;
+switch (location) {
+  case "/index.html":
+    handlers.getAllBlogs();
+    break;
+  case "/createBlog.html":
+    break;
+  case "/blog.html":
+    handlers.getBlog();
+    handlers.getAllComments();
+    break;
+}
 
 blogContainer && (blogContainer.innerHTML = blog());
 blogPreview && (blogPreview.innerHTML = blogCard());
