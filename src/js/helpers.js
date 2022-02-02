@@ -34,28 +34,34 @@ function appendBlogs(blogs) {
     const date = document.getElementById(`card-date-${key}`);
     const cardDate = blogs[key].timestamp.split(" ")[0];
     date.textContent = cardDate;
+
+    const comment = document.getElementById(`comments-${key}`);
+    comment.textContent = Object.keys(blogs[key].comment).length;
+
+    for (let i of [1, 2, 3]) {
+      const emoji = document.getElementById(`card-emoji-${key}-${i}`);
+      emoji.textContent = blogs[key].emoji[i].emojiCount;
+    }
   }
 }
 
-function appendComment(comment) {}
+function appendComment(comment, key, container) {
+  container.innerHTML += commentTemplate(key);
+
+  const commentTimestamp = document.getElementById(`comment-timestamp-${key}`);
+  commentDate = comment.timestamp.split(" ")[0];
+  commentTimestamp.textContent = commentDate;
+
+  const blogComment = document.getElementById(`comment-content-${key}`);
+  blogComment.textContent = comment.blogcomment;
+}
 
 // Deal with comment separately - append to bottom of specific blog post in blog.html
 function appendComments(comments) {
-  let allComments = "";
+  const commentContainer = document.getElementById("comment-container");
   for (key in comments) {
-    const commentContainer = document.getElementById("comment-container");
-    commentContainer.innerHTML += commentTemplate(key);
-
-    const commentTimestamp = document.getElementById(
-      `comment-timestamp-${key}`
-    );
-    commentDate = comments[key].timestamp.split(" ")[0];
-    commentTimestamp.textContent = commentDate;
-
-    const blogComment = document.getElementById(`comment-content-${key}`);
-    blogComment.textContent = comments[key].blogcomment;
+    appendComment(comments[key], key, commentContainer);
   }
-  return allComments;
 }
 
 // Render specific blog post in blog.html
