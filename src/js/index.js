@@ -19,6 +19,8 @@ form && form.addEventListener("submit", handlers.postBlog);
 const location = window.location.pathname;
 
 switch (location) {
+  // not a great fix for page not initially loading
+  case "/":
   case "/index.html":
     handlers.getAllBlogs();
     break;
@@ -27,7 +29,6 @@ switch (location) {
   case "/blog.html":
     handlers.getAllBlogs();
     handlers.getBlog();
-    // handlers.getAllComments();
     break;
 }
 
