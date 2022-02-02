@@ -9,14 +9,20 @@ function getAllBlogs() {
 }
 
 // Post to the server upon creation of new blog
-function postBlog(e) {
+const postBlog = async (e) => {
   e.preventDefault();
+  let gifID = e.target.gif.value;
 
-  console.log(e.target);
+  let result = await (
+    await fetch(
+      `https://api.giphy.com/v1/gifs/search?api_key=rZze5Ana60111aVYD7ZlwgzZnD5Zzu0b&limit=1&q=${gifID}`
+    )
+  ).json();
 
   const data = {
     blogtitle: e.target.title.value,
-    blogcontent: e.target.content.value,
+    blogcontent: e.target.blog.value,
+    gif: result.data["0"].images.original.webp,
   };
 
   const options = {
@@ -33,7 +39,7 @@ function postBlog(e) {
     .then((r) => r.json())
     // .then(helpers.updateBtn) <--- Update the form action to take to the page of the newly created blog
     .catch(console.warn);
-}
+};
 
 // Post to the server upon creation of new comment
 function newComment(e) {
@@ -58,8 +64,8 @@ function newComment(e) {
 }
 
 // Retrieve specific blog for blog.html
-function getBlog() {
-  let blogId = 1;
+function getBlog(blogId) {
+  // let blogId = 1;
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
     .then(helpers.appendBlogContent)
