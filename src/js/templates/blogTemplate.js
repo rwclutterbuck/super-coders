@@ -4,8 +4,9 @@ function blog() {
       class="max-w-2xl w-screen mx-auto overflow-hidden bg-white shadow-md dark:bg-gray-800"
     >
       <img
-        class="object-cover w-full h-64"
-        src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        id="gif"
+        class="object-cover w-full h-64 hover:h-full "
+        src="https://media0.giphy.com/media/3orieKKmYyvUdR3RkY/giphy.webp?cid=112e516bv9aio11kbntfjo563ma9o18v0kdt9yigc281ksl8&rid=giphy.webp&ct=g"
         alt="Article"
       />
 

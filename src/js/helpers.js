@@ -25,6 +25,8 @@ function appendBlogs(blogs) {
   console.log(blogs);
   for (key in blogs) {
     cardContainer.innerHTML += cardTemplate(key);
+    const gif = document.getElementById(`card-gif-${key}`);
+    gif.src = blogs[key].gif;
 
     const title = document.getElementById(`card-title-${key}`);
     title.textContent = blogs[key].blogtitle;
@@ -59,8 +61,12 @@ function appendComments(comments) {
 }
 
 function appendBlogContent(blog) {
+  console.log(blog);
   const blogContainer = document.querySelector("#blog-container");
   blogContainer.innerHTML = blogTemplate(blog);
+
+  const gif = document.getElementById("gif");
+  gif.src = blog.gif;
 
   const blogDate = document.getElementById("blog-date");
   blogDate.textContent = blog.timestamp.split(" ")[0];
