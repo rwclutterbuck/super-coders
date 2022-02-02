@@ -22,7 +22,7 @@ function appendBlog(blog) {}
 
 function appendBlogs(blogs) {
   const cardContainer = document.querySelector("#card-container");
-  console.log(blogs);
+  // console.log(blogs);
   for (key in blogs) {
     cardContainer.innerHTML += cardTemplate(key);
 

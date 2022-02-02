@@ -2,8 +2,8 @@ function blogCard(id) {
   return `
   <a
     id="card-link-${id}"
-    href="blog.html"
-    class="hover:text-gray-600"
+    href="./blog.html"
+    class="blog-card hover:text-gray-600"
     >
     <div
       id="card-${id}"
