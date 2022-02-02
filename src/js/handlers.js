@@ -16,7 +16,7 @@ function postBlog(e) {
 
   const data = {
     blogtitle: e.target.title.value,
-    blogcontent: e.target.content.value,
+    blogcontent: e.target.blog.value,
   };
 
   const options = {
@@ -59,7 +59,6 @@ function newComment(e) {
 
 // Retrieve specific blog for blog.html
 function getBlog() {
-  // let blogId;
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
     // .then(helpers.appendBlogContent)  <---  Add blog content to blog.html when loaded
