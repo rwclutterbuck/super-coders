@@ -1,3 +1,7 @@
+const cardTemplate = require("./templates/cardTemplate")
+const blogTemplate = require("./templates/blogTemplate")
+const commentTemplate = require("./templates/commentTemplate")
+
 function changeSection() {
   const section = document.querySelector("#form-section");
   section.innerHTML = `
@@ -14,15 +18,35 @@ function changeSection() {
 
 function updateBtn(data) {}
 
-function appendBlog(blog) {}
+function appendBlog(blog) {
+}
 
-function appendBlogs(blogs) {}
+function appendBlogs(blogs) {
+  const cardContainer = document.querySelector("#card-container");
+  for (key in blogs) {
+    cardContainer.innerHTML += cardTemplate(key, blogs[key])
+  };
+
+}
 
 function appendComment(comment) {}
 
-function appendComments(comments) {}
+function appendComments(comments) {
+  let allComments = ""
+  for (key in comments) {
+    allComments += commentTemplate(comments[key])
+  }
+  return allComments
+}
 
-function appendBlogContent(blog) {}
+function appendBlogContent(blog) {
+  console.log(blog)
+  const blogContainer = document.querySelector("#blog-container");
+  blogContainer.innerHTML = blogTemplate(blog)
+  const commentContainer = document.querySelector('#comment-container')
+  console.log(appendComments(blog.comment))
+  commentContainer.innerHTML = appendComments(blog.comment)
+}
 
 module.exports = {
   changeSection,

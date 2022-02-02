@@ -4,7 +4,7 @@ const helpers = require("./helpers");
 function getAllBlogs() {
   fetch("https://supercodersapi.herokuapp.com/blog")
     .then((r) => r.json())
-    // .then(helpers.appendBlogs)  <---  Blogs to automatically import onto the homepage
+    .then(helpers.appendBlogs)
     .catch(console.warn);
 }
 
@@ -59,20 +59,21 @@ function newComment(e) {
 
 // Retrieve specific blog for blog.html
 function getBlog() {
+  let blogId = 1;
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
-    // .then(helpers.appendBlogContent)  <---  Add blog content to blog.html when loaded
+    .then(helpers.appendBlogContent)
     .catch(console.warn);
 }
 
 // Retrieve all comments for blog.html
-function getAllComments() {
-  // let blogId;
-  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}/comment`)
-    .then((r) => r.json())
-    // .then(helpers.appendComments)  <---  Add all comments to blog.html when loaded
-    .catch(console.warn);
-}
+// function getAllComments() {
+//   // let blogId;
+//   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}/comment`)
+//     .then((r) => r.json())
+//     // .then(helpers.appendComments)  <---  Add all comments to blog.html when loaded
+//     .catch(console.warn);
+// }
 
 // Update server after reaction with an emoji
 function updateEmojis(e) {
@@ -119,7 +120,7 @@ module.exports = {
   postBlog,
   newComment,
   getBlog,
-  getAllComments,
+  // getAllComments,
   updateEmojis,
   deleteBlog,
 };
