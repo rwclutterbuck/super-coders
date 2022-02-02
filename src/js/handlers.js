@@ -58,8 +58,8 @@ function newComment(e) {
 }
 
 // Retrieve specific blog for blog.html
-function getBlog() {
-  let blogId = 1;
+function getBlog(blogId) {
+  // let blogId = 1;
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
     .then(helpers.appendBlogContent)
