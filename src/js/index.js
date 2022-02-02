@@ -21,11 +21,11 @@ form && form.addEventListener("submit", handlers.postBlog);
 // Identify the page in the browser
 const location = window.location.pathname;
 
-let blogId;
-if (location === "/blog.html") {
-  let blog = window.localStorage.getItem("blogId");
-  blogId = window.localStorage.getItem(`blogId-${blog}`);
-}
+// let blogId;
+// if (location === "/blog.html") {
+//   let blog = window.localStorage.getItem("blogId");
+//   blogId = window.localStorage.getItem(`blogId-${blog}`);
+// }
 
 // Call fcts depending on the browser page
 switch (location) {
@@ -57,6 +57,7 @@ function linkCards() {
     window.sessionStorage.setItem("blogID", `${id}`);
   });
 }
+
 
 // for (let i = 1; i <= numCards; i++) {
 //   let cardId = `#card-link-${i}`;
