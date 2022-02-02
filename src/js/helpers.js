@@ -16,10 +16,6 @@ function changeSection() {
     </form>`;
 }
 
-function updateBtn(data) {}
-
-function appendBlog(blog) {}
-
 function appendBlogs(blogs) {
   const cardContainer = document.querySelector("#card-container");
   // console.log(blogs);
@@ -82,8 +78,6 @@ function appendBlogContent(blog) {
 
 module.exports = {
   changeSection,
-  updateBtn,
-  appendBlog,
   appendBlogs,
   appendComment,
   appendComments,

@@ -37,7 +37,6 @@ const postBlog = async (e) => {
 
   fetch("https://supercodersapi.herokuapp.com/blog", options)
     .then((r) => r.json())
-    // .then(helpers.updateBtn) <--- Update the form action to take to the page of the newly created blog
     .catch(console.warn);
 };
 
@@ -108,9 +107,8 @@ function updateEmojis(e) {
 }
 
 // Delete a blog
-// --------------- Not sure what to do with this as I don't know where we're deleting blogs from ----------------------
 function deleteBlog() {
-  // let blogId = getBlogId();
+  // let blogId;
 
   const options = {
     method: "DELETE",
