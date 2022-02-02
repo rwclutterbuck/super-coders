@@ -16,6 +16,7 @@ function changeSection() {
     </form>`;
 }
 
+// Add all blogs to index.html/blog.html on page load
 function appendBlogs(blogs) {
   const cardContainer = document.querySelector("#card-container");
   // console.log(blogs);
@@ -38,6 +39,7 @@ function appendBlogs(blogs) {
 
 function appendComment(comment) {}
 
+// Deal with comment separately - append to bottom of specific blog post in blog.html
 function appendComments(comments) {
   let allComments = "";
   for (key in comments) {
@@ -56,6 +58,7 @@ function appendComments(comments) {
   return allComments;
 }
 
+// Render specific blog post in blog.html
 function appendBlogContent(blog) {
   console.log(blog);
   const blogContainer = document.querySelector("#blog-container");
