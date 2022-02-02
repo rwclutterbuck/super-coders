@@ -5,7 +5,7 @@ function blog() {
     >
       <img
         id="gif"
-        class="object-cover w-full h-64 hover:h-full "
+        class="object-cover w-full h-full"
         src="https://media0.giphy.com/media/3orieKKmYyvUdR3RkY/giphy.webp?cid=112e516bv9aio11kbntfjo563ma9o18v0kdt9yigc281ksl8&rid=giphy.webp&ct=g"
         alt="Article"
       />

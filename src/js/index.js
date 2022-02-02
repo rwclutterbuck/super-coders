@@ -11,7 +11,7 @@ const blogPreview = document.querySelector("#blog-preview");
 // Add functionality to navbar
 hamburger.addEventListener("click", (e) => {
   e.preventDefault();
-  menu.classList.toggle("hide-menu");
+  menu.classList.toggle("hidden");
 });
 
 // Submit form and update page without refresh
@@ -33,26 +33,31 @@ switch (location) {
   case "/":
   case "/index.html":
     handlers.getAllBlogs();
+    linkCards();
     break;
   case "/createBlog.html":
     break;
   case "/blog.html":
+    let id = 1;
+    if (window.sessionStorage.getItem("blogID")) {
+      id = window.sessionStorage.getItem("blogID");
+    }
     handlers.getAllBlogs();
-    handlers.getBlog(blogId);
+    handlers.getBlog(id);
+    linkCards();
     break;
 }
 
 blogPreview && (blogPreview.innerHTML = blogCard());
 
-// const numCards = document.querySelector("#card-container").childNodes.length;
+function linkCards() {
+  const numCards = document.querySelector("#card-container");
+  numCards.addEventListener("click", (numCards) => {
+    const id = numCards.target.closest("a").id.split("-")[2];
+    window.sessionStorage.setItem("blogID", `${id}`);
+  });
+}
 
-// const cards = document.getElementsByClassName("blog-card");
-// // console.log(cards);
-
-// cards.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   console.log(e);
-// });
 
 // for (let i = 1; i <= numCards; i++) {
 //   let cardId = `#card-link-${i}`;
