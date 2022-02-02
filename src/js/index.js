@@ -6,17 +6,12 @@ const handlers = require("./handlers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
-const blogPreview = document.querySelector("#blog-preview");
 
 // Add functionality to navbar
 hamburger.addEventListener("click", (e) => {
   e.preventDefault();
   menu.classList.toggle("hidden");
 });
-
-// Submit form and update page without refresh
-const form = document.querySelector("form");
-form && form.addEventListener("submit", handlers.postBlog);
 
 // Identify the page in the browser
 const location = window.location.pathname;
@@ -36,6 +31,12 @@ switch (location) {
     linkCards();
     break;
   case "/createBlog.html":
+    // Submit form and update page without refresh
+    const form = document.querySelector("#create-blog");
+    form && form.addEventListener("submit", handlers.postBlog);
+    // Create blog preview
+    // const blogPreview = document.querySelector("#blog-preview");
+    // blogPreview && (blogPreview.innerHTML = blogCard());
     break;
   case "/blog.html":
     let id = 1;
@@ -45,10 +46,11 @@ switch (location) {
     handlers.getAllBlogs();
     handlers.getBlog(id);
     linkCards();
+    // Submit comment
+    const comment = document.querySelector("#");
+
     break;
 }
-
-blogPreview && (blogPreview.innerHTML = blogCard());
 
 function linkCards() {
   const numCards = document.querySelector("#card-container");
@@ -57,7 +59,6 @@ function linkCards() {
     window.sessionStorage.setItem("blogID", `${id}`);
   });
 }
-
 
 // for (let i = 1; i <= numCards; i++) {
 //   let cardId = `#card-link-${i}`;
