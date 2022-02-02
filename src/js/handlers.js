@@ -13,7 +13,6 @@ function postBlog(e) {
   e.preventDefault();
   window.sessionStorage.setItem("gif", "");
   getGif(e.target.gif.value);
-  break;
   do {
     setTimeout(() => {}, 100);
   } while (!window.sessionStorage.getItem("gif"));
@@ -74,20 +73,20 @@ function getBlog(blogId) {
 
 function getGif(gifID) {
   const saveGif = (gif) => {
-    console.log(gif)
-  }
+    console.log(gif);
+  };
   fetch(
     `https://api.giphy.com/v1/gifs/search?api_key=rZze5Ana60111aVYD7ZlwgzZnD5Zzu0b&limit=1&q=${gifID}`
   )
     .then((res) => res.json())
     .then((json) => {
       console.log(json.data["0"].images.original.webp);
-    })
-    // .then(console.log)
-    // (gif) => {
-      // console.log(gif)
-      // window.sessionStorage.setItem("gif", gif);
-    // });
+    });
+  // .then(console.log)
+  // (gif) => {
+  // console.log(gif)
+  // window.sessionStorage.setItem("gif", gif);
+  // });
 }
 
 // Retrieve all comments for blog.html

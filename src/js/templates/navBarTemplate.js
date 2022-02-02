@@ -32,9 +32,11 @@ class navBar extends HTMLElement {
                   </button>
                 </div>
               </div>
-
               <div
                 id="dropdown-menu"
+                class="hidden lg:block"
+              >
+              <div
                 class="flex flex-col text-gray-600 capitalize dark:text-gray-300 lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center"
               >
                 <a
@@ -136,6 +138,7 @@ class navBar extends HTMLElement {
                     </svg>
                   </a>
                 </div>
+              </div>
               </div>
             </div>
           </div>
