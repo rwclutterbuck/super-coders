@@ -47,8 +47,8 @@ switch (location) {
     handlers.getBlog(id);
     linkCards();
     // Submit comment
-    const comment = document.querySelector("#");
-
+    const comment = document.querySelector("#make-comment");
+    comment.addEventListener("submit", handlers.newComment);
     break;
 }
 

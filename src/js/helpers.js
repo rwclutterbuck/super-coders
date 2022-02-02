@@ -39,7 +39,7 @@ function appendBlogs(blogs) {
     date.textContent = cardDate;
 
     const comment = document.getElementById(`comments-${key}`);
-    comment.textContent = blogs[key].blogcomment.length;
+    comment.textContent = Object.keys(blogs[key].comment).length;
 
     for (let i of [1, 2, 3]) {
       const emoji = document.getElementById(`card-emoji-${key}-${i}`);

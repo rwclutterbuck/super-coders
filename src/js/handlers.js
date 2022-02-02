@@ -44,18 +44,18 @@ const postBlog = async (e) => {
 // Post to the server upon creation of new comment
 function newComment(e) {
   e.preventDefault();
-  const comment = e.target.comment.value;
-  const obj = {
-    timestamp: "now",
-    blogcomment: comment,
-  };
-  const container = document.getElementById("comment-container");
+  // const comment = e.target.comment.value;
+  // const obj = {
+  //   timestamp: "now",
+  //   blogcomment: comment,
+  // };
+  // const container = document.getElementById("comment-container");
 
-  helpers.appendComment(obj, "local", container);
+  // helpers.appendComment(obj, "local", container);
 
-  const data = {
-    blogcomment: comment,
-  };
+  // const data = {
+  //   blogcomment: comment,
+  // };
 
   // const options = {
   //   method: "POST",
