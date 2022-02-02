@@ -1,11 +1,13 @@
-function commentTemplate(obj) {
-    return `
-        <div id="comment-"
+function commentTemplate(key) {
+  return `
+        <div id="comment-${key}"
         class="p-2">
-            <h4 class="dark:text-gray-400">10 seconds ago</h4>
-            <p>${obj.blogcomment}</p>
+            <h4 
+                id="comment-timestamp-${key}"
+                class="dark:text-gray-400"></h4>
+            <p id="comment-content-${key}"></p>
         </div>
-    `
+    `;
 }
 
-module.exports = commentTemplate
+module.exports = commentTemplate;

@@ -1,6 +1,6 @@
-const cardTemplate = require("./templates/cardTemplate")
-const blogTemplate = require("./templates/blogTemplate")
-const commentTemplate = require("./templates/commentTemplate")
+const cardTemplate = require("./templates/cardTemplate");
+const blogTemplate = require("./templates/blogTemplate");
+const commentTemplate = require("./templates/commentTemplate");
 
 function changeSection() {
   const section = document.querySelector("#form-section");
@@ -18,34 +18,60 @@ function changeSection() {
 
 function updateBtn(data) {}
 
-function appendBlog(blog) {
-}
+function appendBlog(blog) {}
 
 function appendBlogs(blogs) {
   const cardContainer = document.querySelector("#card-container");
+  console.log(blogs);
   for (key in blogs) {
-    cardContainer.innerHTML += cardTemplate(key, blogs[key])
-  };
+    cardContainer.innerHTML += cardTemplate(key);
 
+    const title = document.getElementById(`card-title-${key}`);
+    title.textContent = blogs[key].blogtitle;
+
+    const content = document.getElementById(`card-content-${key}`);
+    content.textContent = blogs[key].blogcontent;
+
+    const date = document.getElementById(`card-date-${key}`);
+    const cardDate = blogs[key].timestamp.split(" ")[0];
+    date.textContent = cardDate;
+  }
 }
 
 function appendComment(comment) {}
 
 function appendComments(comments) {
-  let allComments = ""
+  let allComments = "";
   for (key in comments) {
-    allComments += commentTemplate(comments[key])
+    const commentContainer = document.getElementById("comment-container");
+    commentContainer.innerHTML += commentTemplate(key);
+
+    const commentTimestamp = document.getElementById(
+      `comment-timestamp-${key}`
+    );
+    commentDate = comments[key].timestamp.split(" ")[0];
+    commentTimestamp.textContent = commentDate;
+
+    const blogComment = document.getElementById(`comment-content-${key}`);
+    blogComment.textContent = comments[key].blogcomment;
   }
-  return allComments
+  return allComments;
 }
 
 function appendBlogContent(blog) {
-  console.log(blog)
   const blogContainer = document.querySelector("#blog-container");
-  blogContainer.innerHTML = blogTemplate(blog)
-  const commentContainer = document.querySelector('#comment-container')
-  console.log(appendComments(blog.comment))
-  commentContainer.innerHTML = appendComments(blog.comment)
+  blogContainer.innerHTML = blogTemplate(blog);
+
+  const blogDate = document.getElementById("blog-date");
+  blogDate.textContent = blog.timestamp.split(" ")[0];
+
+  const blogTitle = document.getElementById("blog-title");
+  blogTitle.textContent = blog.blogtitle;
+
+  const blogContent = document.getElementById("blog-content");
+  blogContent.textContent = blog.blogcontent;
+
+  appendComments(blog.comment);
 }
 
 module.exports = {
