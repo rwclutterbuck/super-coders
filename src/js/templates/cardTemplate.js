@@ -10,8 +10,9 @@ function blogCard(id) {
       class="card my-1 w-screen max-w-xl overflow-hidden bg-white shadow-md dark:bg-gray-700 dark:shadow-gray-700 sm:flex sm:h-auto sm:m-5 sm:hover:scale-105 hover:shadow-2xl hover:dark:shadow-gray-700 transition duration-150 ease-in-out"
     >
       <img
+        id="card-gif-${id}"
         class="object-cover w-full h-64 sm:w-1/2"
-        src="/src/images/splash-screen.jpg"
+        src=""
         alt="Article"
       />
 

@@ -11,12 +11,18 @@ function getAllBlogs() {
 // Post to the server upon creation of new blog
 function postBlog(e) {
   e.preventDefault();
-
+  window.sessionStorage.setItem("gif", "");
+  getGif(e.target.gif.value);
+  break;
+  do {
+    setTimeout(() => {}, 100);
+  } while (!window.sessionStorage.getItem("gif"));
   console.log(e.target);
 
   const data = {
     blogtitle: e.target.title.value,
     blogcontent: e.target.blog.value,
+    gif: window.sessionStorage.getItem("gif"),
   };
 
   const options = {
@@ -64,6 +70,24 @@ function getBlog(blogId) {
     .then((r) => r.json())
     .then(helpers.appendBlogContent)
     .catch(console.warn);
+}
+
+function getGif(gifID) {
+  const saveGif = (gif) => {
+    console.log(gif)
+  }
+  fetch(
+    `https://api.giphy.com/v1/gifs/search?api_key=rZze5Ana60111aVYD7ZlwgzZnD5Zzu0b&limit=1&q=${gifID}`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json.data["0"].images.original.webp);
+    })
+    // .then(console.log)
+    // (gif) => {
+      // console.log(gif)
+      // window.sessionStorage.setItem("gif", gif);
+    // });
 }
 
 // Retrieve all comments for blog.html
@@ -120,6 +144,7 @@ module.exports = {
   postBlog,
   newComment,
   getBlog,
+  getGif,
   // getAllComments,
   updateEmojis,
   deleteBlog,
