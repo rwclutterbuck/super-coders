@@ -9,20 +9,20 @@ function getAllBlogs() {
 }
 
 // Post to the server upon creation of new blog
-function postBlog(e) {
+const postBlog = async (e) => {
   e.preventDefault();
-  window.sessionStorage.setItem("gif", "");
-  getGif(e.target.gif.value);
-  break;
-  do {
-    setTimeout(() => {}, 100);
-  } while (!window.sessionStorage.getItem("gif"));
-  console.log(e.target);
+  let gifID = e.target.gif.value;
+
+  let result = await (
+    await fetch(
+      `https://api.giphy.com/v1/gifs/search?api_key=rZze5Ana60111aVYD7ZlwgzZnD5Zzu0b&limit=1&q=${gifID}`
+    )
+  ).json();
 
   const data = {
     blogtitle: e.target.title.value,
     blogcontent: e.target.blog.value,
-    gif: window.sessionStorage.getItem("gif"),
+    gif: result.data["0"].images.original.webp,
   };
 
   const options = {
@@ -39,7 +39,7 @@ function postBlog(e) {
     .then((r) => r.json())
     // .then(helpers.updateBtn) <--- Update the form action to take to the page of the newly created blog
     .catch(console.warn);
-}
+};
 
 // Post to the server upon creation of new comment
 function newComment(e) {
@@ -70,24 +70,6 @@ function getBlog(blogId) {
     .then((r) => r.json())
     .then(helpers.appendBlogContent)
     .catch(console.warn);
-}
-
-function getGif(gifID) {
-  const saveGif = (gif) => {
-    console.log(gif)
-  }
-  fetch(
-    `https://api.giphy.com/v1/gifs/search?api_key=rZze5Ana60111aVYD7ZlwgzZnD5Zzu0b&limit=1&q=${gifID}`
-  )
-    .then((res) => res.json())
-    .then((json) => {
-      console.log(json.data["0"].images.original.webp);
-    })
-    // .then(console.log)
-    // (gif) => {
-      // console.log(gif)
-      // window.sessionStorage.setItem("gif", gif);
-    // });
 }
 
 // Retrieve all comments for blog.html
@@ -144,7 +126,6 @@ module.exports = {
   postBlog,
   newComment,
   getBlog,
-  getGif,
   // getAllComments,
   updateEmojis,
   deleteBlog,
