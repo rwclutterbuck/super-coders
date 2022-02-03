@@ -1,6 +1,6 @@
 # Welcome to Super-Blogs!
 
-![Screenshot](src/images/screenshot.png)
+![Screenshot](src/images/indexHTML.png)
 
 The anonymous blogging site for your craziest stories!
 Want to tell people about your craziest conspiracy theories? Go for it!
@@ -40,10 +40,10 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 ## See the Site
 
 Create your own blog...
-![Screenshot](src/images/screenshot.png)
+![Screenshot](src/images/createBlogHTML.png)
 
 ...or just read everybody elses!
-![Screenshot](src/images/screenshot.png)
+![Screenshot](src/images/blogHTML.png)
 
 ## Technologies used
 
