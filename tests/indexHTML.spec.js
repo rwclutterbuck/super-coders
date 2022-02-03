@@ -30,7 +30,7 @@ describe("index.html", () => {
     describe("header", () => {
       let header;
       beforeEach(() => {
-        header = document.querySelector("header");
+        header = document.getElementById("header");
       });
 
       test("the h1 is in the header", () => {
@@ -40,7 +40,7 @@ describe("index.html", () => {
 
       describe("navbar", () => {
         test("it exists", () => {
-          const nav = header.querySelector("nav");
+          const nav = document.querySelector("nav-bar");
           expect(nav).toBeTruthy();
         });
 

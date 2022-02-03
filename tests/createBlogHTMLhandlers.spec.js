@@ -10,6 +10,8 @@ const html = fs.readFileSync(
 );
 
 global.fetch = require("jest-fetch-mock");
+jest.mock('../src/js/handlers.js');
+jest.mock('../src/js/helpers.js');
 
 describe("handlers.js in createBlog.html", () => {
   let api;
