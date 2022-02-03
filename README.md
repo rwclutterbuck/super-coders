@@ -42,7 +42,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 Create your own blog...
 ![Screenshot](src/images/screenshot.png)
 
-...or just everybody elses!
+...or just read everybody elses!
 ![Screenshot](src/images/screenshot.png)
 
 ## Technologies used
