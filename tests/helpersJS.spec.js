@@ -60,7 +60,9 @@ describe("handlers.js in index.html", () => {
     });
 
     describe("appendBlogContent", () => {
-      test("it renders a blog template in blog.html", () => {});
+      test("it renders a blog template in blog.html", () => {
+        const blogContainer = document.querySelector("#blog-container");
+      });
     });
   });
 
