@@ -16,10 +16,7 @@ function changeSection() {
     </form>`;
 }
 
-function updateBtn(data) {}
-
-function appendBlog(blog) {}
-
+// Add all blogs to index.html/blog.html on page load
 function appendBlogs(blogs) {
   const cardContainer = document.querySelector("#card-container");
   // console.log(blogs);
@@ -59,6 +56,7 @@ function appendComment(comment, key, container) {
   blogComment.textContent = comment.blogcomment;
 }
 
+// Deal with comment separately - append to bottom of specific blog post in blog.html
 function appendComments(comments) {
   const commentContainer = document.getElementById("comment-container");
   for (key in comments) {
@@ -66,6 +64,7 @@ function appendComments(comments) {
   }
 }
 
+// Render specific blog post in blog.html
 function appendBlogContent(blog) {
   const blogContainer = document.querySelector("#blog-container");
   blogContainer.innerHTML = blogTemplate(blog);
@@ -92,8 +91,6 @@ function appendBlogContent(blog) {
 
 module.exports = {
   changeSection,
-  updateBtn,
-  appendBlog,
   appendBlogs,
   appendComment,
   appendComments,
