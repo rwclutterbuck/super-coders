@@ -170,7 +170,6 @@ module.exports = {
   newComment,
   getBlog,
   searchBlog,
-  // getAllComments,
   updateEmojis,
   deleteBlog,
 };

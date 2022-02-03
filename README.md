@@ -71,7 +71,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ## Goals for the Future!
 
-- On the blog page don't include the displayed blog as in 'Other Blogs'
+-
 -
 
 ## minimum viable product
