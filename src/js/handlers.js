@@ -73,6 +73,8 @@ function newComment(e) {
     },
   };
 
+  const blogId = window.sessionStorage.getItem("blogID");
+
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
     .then((r) => r.json())
     .catch(console.warn);
