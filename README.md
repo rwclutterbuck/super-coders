@@ -3,8 +3,8 @@
 ![Screenshot](src/images/indexHTML.png)
 
 The anonymous blogging site for your craziest stories! <br>
-Want to tell people about your wildest conspiracy theories? Go for it! <br>
-Want to see what people think of your new short story? Get it submitted! <br>
+Want to tell people about your wildest conspiracy theories? **_Go for it!_** <br>
+Want to see what people think of your new short story? **_Get it submitted!_** <br>
 Even if you just want to tell the world about the fact you eat cold baked beans without them tracing it back to you, then this is still the perfect place to do it!
 
 ## Table of Contents
@@ -16,10 +16,10 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - [See the Sites](#see-the-sites)
 - [Technologies](#technologies)
 - [Changelog](#changelog)
-- [Bugs](#bugs)
 - [Wins & Challenges](#wins--challenges)
   - [Wins](#wins)
   - [Challenges](#challenges)
+- [Bugs](#bugs)
 - [Goals for the Future!](#goals-for-the-future)
 
 ## Installation & Usage
@@ -72,10 +72,6 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 -
 
-## Bugs
-
--
-
 ## Wins & Challenges
 
 ### Wins
@@ -86,9 +82,12 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 -
 
-## Goals for the Future!
+## Bugs
 
 -
+
+## Goals for the Future!
+
 -
 
 ## minimum viable product
