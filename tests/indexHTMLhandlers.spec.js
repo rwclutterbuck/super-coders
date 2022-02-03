@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { append } = require("express/lib/response");
+//const { append } = require("express/lib/response");
 const fs = require("fs");
 const path = require("path");
 const html = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf8");
@@ -26,25 +26,4 @@ describe("handlers.js in index.html", () => {
       expect(fetch.mock.calls[0][0]).toMatch(/blog$/);
     });
   });
-
-  // describe("postBlog", () => {
-  //   test("it sends POST to /blog with data", () => {
-  //     const fakeEvent = {
-  //       preventDefault: jest.fn(),
-  //       target: {
-  //         blogtitle: { value: "Example Blog" },
-  //         blogcontent: { value: "Example Blog" },
-  //       },
-  //     };
-  //     api.postBlog(fakeEvent);
-  //     expect(fetch.mock.calls[0][1]).toHaveProperty("method", "POST");
-  //     expect(fetch.mock.calls[0][1]).toHaveProperty(
-  //       "body",
-  //       JSON.stringify({
-  //         blogtitle: { value: "Example Blog" },
-  //         blogcontent: { value: "Example Blog" },
-  //       })
-  //     );
-  //   });
-  // });
 });

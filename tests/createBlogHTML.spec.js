@@ -18,8 +18,8 @@ describe("index.html", () => {
     test("it has a title", () => {
       const title = document.querySelector("title");
       expect(title).toBeTruthy();
-      // expect(title.innerText).toContain('Super');
-      // expect(title.innerText).toContain('Blog');
+      expect(title.textContent.toLowerCase()).toContain("create");
+      expect(title.textContent.toLowerCase()).toContain("blog");
     });
   });
 
@@ -32,25 +32,9 @@ describe("index.html", () => {
     describe("header", () => {
       describe("navbar", () => {
         test("it exists", () => {
-          const nav = document.querySelector("nav");
+          const nav = document.querySelector("nav-bar");
           expect(nav).toBeTruthy();
         });
-
-        // test('its children contain anchor tags linked to the right places', () => {
-        //   const navChildren = document.querySelectorAll('nav a');
-        //   expect(navChildren.length).toBe(3);
-        //   for (let i=0; i<3; i++) {
-        //     let child = navChildren[i];
-        //     let text = child.innerText;
-        //     switch (i) {
-        //       case 0:
-        //         expect(text).toBe('./index.html');
-        //         break
-        //       case 1:
-        //         expect()
-        //     }
-        //   }
-        // })
       });
     });
 
@@ -122,6 +106,13 @@ describe("index.html", () => {
             );
           });
         });
+      });
+    });
+
+    describe("footer", () => {
+      test("it exists", () => {
+        const footer = document.querySelector("footer-template");
+        expect(footer).toBeTruthy();
       });
     });
   });

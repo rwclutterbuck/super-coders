@@ -1,12 +1,11 @@
 // Templates
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
-const blogCard = require("./templates/cardTemplate");
 const handlers = require("./handlers");
+const { linkCards } = require("./helpers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
-const blogPreview = document.querySelector("#blog-preview");
 
 // Add functionality to navbar
 hamburger.addEventListener("click", (e) => {
@@ -14,9 +13,14 @@ hamburger.addEventListener("click", (e) => {
   menu.classList.toggle("hidden");
 });
 
-// Submit form and update page without refresh
-const form = document.querySelector("form");
-form && form.addEventListener("submit", handlers.postBlog);
+let searchbar = document.getElementById("searchbar");
+
+// unashamedly stolen from Waylon's Google-API
+searchbar.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && e.target.value) {
+    handlers.searchBlog(e);
+  }
+});
 
 // Identify the page in the browser
 const location = window.location.pathname;
@@ -32,40 +36,48 @@ switch (location) {
   // not a great fix for page not initially loading
   case "/":
   case "/index.html":
+    blogID = window.sessionStorage.getItem("blogID");
+    // Don't overwrite oldID on page refresh
+    if (blogID) {
+      window.sessionStorage.setItem("oldBlogID", blogID);
+      window.sessionStorage.setItem("blogID", "");
+    }
     handlers.getAllBlogs();
     linkCards();
     break;
   case "/createBlog.html":
+    // Submit form and update page without refresh
+    const form = document.querySelector("#create-blog");
+    form && form.addEventListener("submit", handlers.postBlog);
+    // Create blog preview
+    // const blogPreview = document.querySelector("#blog-preview");
+    // blogPreview && (blogPreview.innerHTML = blogCard());
     break;
   case "/blog.html":
     let id = 1;
+    // preserve blog id across pages
     if (window.sessionStorage.getItem("blogID")) {
       id = window.sessionStorage.getItem("blogID");
+    } else {
+      id = window.sessionStorage.getItem("oldBlogID");
+      window.sessionStorage.setItem("blogID", id);
     }
-    handlers.getAllBlogs();
+    handlers.getAllBlogs(id);
     handlers.getBlog(id);
     linkCards();
+
+    // Make sure the page is built
+    // Submit comment
+
+    // ------------------ SWAP TIMEOUT -------------------------
+    setTimeout(() => {
+      const commentForm = document.querySelector("#create-comment");
+      commentForm &&
+        commentForm.addEventListener("submit", handlers.newComment);
+
+      const emojiClicked = document.querySelector("#emoji-container");
+      emojiClicked &&
+        emojiClicked.addEventListener("click", handlers.updateEmojis);
+    }, 100);
     break;
 }
-
-blogPreview && (blogPreview.innerHTML = blogCard());
-
-function linkCards() {
-  const numCards = document.querySelector("#card-container");
-  numCards.addEventListener("click", (numCards) => {
-    const id = numCards.target.closest("a").id.split("-")[2];
-    window.sessionStorage.setItem("blogID", `${id}`);
-  });
-}
-
-
-// for (let i = 1; i <= numCards; i++) {
-//   let cardId = `#card-link-${i}`;
-//   const card = document.querySelector(cardId);
-//   // console.log(cardId);
-//   // console.log(card);
-//   window.localStorage.setItem(`blogId-${i}`, i);
-//   card.addEventListener("click", () => {
-//     window.localStorage.setItem(`blogId`, i);
-//   });
-// }

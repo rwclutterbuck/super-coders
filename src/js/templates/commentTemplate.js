@@ -1,7 +1,7 @@
 function commentTemplate(key) {
   return `
         <div id="comment-${key}"
-        class="p-2">
+        class="blogComment p-2">
             <h4 
                 id="comment-timestamp-${key}"
                 class="dark:text-gray-400"></h4>

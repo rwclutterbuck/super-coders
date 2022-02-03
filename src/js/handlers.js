@@ -13,6 +13,7 @@ const postBlog = async (e) => {
   e.preventDefault();
   let gifID = e.target.gif.value;
 
+  // Fetch gif according to requested id
   let result = await (
     await fetch(
       `https://api.giphy.com/v1/gifs/search?api_key=rZze5Ana60111aVYD7ZlwgzZnD5Zzu0b&limit=1&q=${gifID}`
@@ -33,20 +34,35 @@ const postBlog = async (e) => {
     },
   };
 
+  // Update page after form submission
   helpers.changeSection();
 
   fetch("https://supercodersapi.herokuapp.com/blog", options)
     .then((r) => r.json())
-    // .then(helpers.updateBtn) <--- Update the form action to take to the page of the newly created blog
     .catch(console.warn);
 };
 
 // Post to the server upon creation of new comment
 function newComment(e) {
+  console.log("test");
   e.preventDefault();
+  const comment = e.target.comment.value;
+  const obj = {
+    timestamp: "now",
+    blogcomment: comment,
+  };
+
+  // Dynamically set ID for new comments
+  const numComments = document.querySelectorAll(".blogComment").length;
+  const ID = numComments + 1;
+  helpers.appendComment(obj, ID);
+
+  // Reset text area after form submission
+  const textArea = document.querySelector("#comment");
+  textArea.value = "";
 
   const data = {
-    blogcomment: e.target.comment.value,
+    blogcomment: comment,
   };
 
   const options = {
@@ -57,15 +73,15 @@ function newComment(e) {
     },
   };
 
-  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
+  const blogId = window.sessionStorage.getItem("blogID");
+
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
     .then((r) => r.json())
-    // .then(helpers.appendComment)  <---  add the comment to the list on blog.html
     .catch(console.warn);
 }
 
-// Retrieve specific blog for blog.html
+// Retrieve specific blog for blog.html -     SEARCH!!!
 function getBlog(blogId) {
-  // let blogId = 1;
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
     .then(helpers.appendBlogContent)
@@ -84,33 +100,55 @@ function getBlog(blogId) {
 // Update server after reaction with an emoji
 function updateEmojis(e) {
   e.preventDefault();
+  const emoji = e.target.closest("btn");
+  let emojiId = emoji.id.split("-")[1];
+  let blogId = window.sessionStorage.getItem("blogID");
 
-  // let blogId;
-  // let emojiId;
-
-  // const data = {};  ----Dont need to send any data. Retrieve all info from emojiId-----
+  // check if user has already clicked on an emoji replace vote
+  const storedEmojiId = window.sessionStorage.getItem(`${blogId}-emoji`);
 
   const options = {
     method: "PATCH",
-    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
   };
 
+  if (!storedEmojiId) {
+    incrementEmoji(blogId, emojiId, options);
+  } else if (storedEmojiId == emojiId) {
+    decrementEmoji(blogId, emojiId, options);
+    emojiId = "";
+  } else {
+    decrementEmoji(blogId, storedEmojiId, options);
+    incrementEmoji(blogId, emojiId, options);
+  }
+  window.sessionStorage.setItem(`${blogId}-emoji`, emojiId);
+}
+
+function incrementEmoji(blogId, emojiId, options) {
+  const thisEmoji = document.querySelector(`#card-emoji-${emojiId}`);
+  thisEmoji.textContent = parseInt(thisEmoji.textContent) + 1;
   fetch(
-    `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}`,
+    `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}/plus`,
     options
-  )
-    .then((r) => r.json())
-    // .then(helpers.updateEmoji)
-    .catch(console.warn);
+  );
+  helpers.highlightEmoji(emojiId);
+}
+
+function decrementEmoji(blogId, emojiId, options) {
+  const thisEmoji = document.querySelector(`#card-emoji-${emojiId}`);
+  thisEmoji.textContent = parseInt(thisEmoji.textContent) - 1;
+  fetch(
+    `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}/minus`,
+    options
+  );
+  helpers.highlightEmoji(emojiId);
 }
 
 // Delete a blog
-// --------------- Not sure what to do with this as I don't know where we're deleting blogs from ----------------------
 function deleteBlog() {
-  // let blogId = getBlogId();
+  // let blogId;
 
   const options = {
     method: "DELETE",
@@ -120,12 +158,28 @@ function deleteBlog() {
     console.warn
   );
 }
+// search blog title and retrieve it
+function searchBlog(e) {
+  console.log(e.target.value);
+  fetch(`https://supercodersapi.herokuapp.com/search?q=${e.target.value}`)
+    .then((r) => r.json())
+    .then((data) => {
+      console.log(data);
+      const id = data.refIndex;
+      window.sessionStorage.setItem("blogID", `${id + 1}`);
+      window.location.href = "/blog.html";
+    })
+    .catch((err) => {
+      alert(`${e.target.value} returned no results`);
+    });
+}
 
 module.exports = {
   getAllBlogs,
   postBlog,
   newComment,
   getBlog,
+  searchBlog,
   // getAllComments,
   updateEmojis,
   deleteBlog,
