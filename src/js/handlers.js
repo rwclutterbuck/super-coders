@@ -138,10 +138,19 @@ function deleteBlog() {
 // search blog title and retrieve it
 function searchBlog(){
   const searchbar = document.getElementById('searchbar')
-  searchbar = searchbar.textContent
-  fetch(`https://supercodersapi.herokuapp.com/search/search?q${searchbar}`)
+  searchbar = searchbar.textContent;
+  searchbar.addEventListener('search', ()=>{
+    fetch(`https://supercodersapi.herokuapp.com/search/search?q${searchbar}`)
   .then((r) => r.json())
-  .then(helpers.appendBlogContent)
+  .then((data)=>{
+    data = Object.keys(data)[0]
+    const searchStore = window.sessionStorage.setItem("blogID", `${data}`);
+    window.location.href = "/blog.html";
+  })
+
+  //.then(helpers.appendBlogContent)
+
+  });
 
 
 
@@ -156,6 +165,7 @@ module.exports = {
   postBlog,
   newComment,
   getBlog,
+  searchBlog,
   // getAllComments,
   updateEmojis,
   deleteBlog,
