@@ -28,15 +28,6 @@ main {
   justify-content: center;
 }
 
-@media (min-width: 640px) {
-  .corner-round {
-    border-radius: 0 0 0 2rem;
-  }
-  .right-corner-round {
-    border-radius: 0 2rem 0 0;
-  }
-}
-
 /* .hide-menu {
   display: none;
 } */

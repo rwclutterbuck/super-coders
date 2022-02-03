@@ -13,7 +13,14 @@ hamburger.addEventListener("click", (e) => {
   menu.classList.toggle("hidden");
 });
 
-handlers.searchBlog();
+let searchbar = document.getElementById("searchbar");
+
+// unashamedly stolen from Waylon's Google-API
+searchbar.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && e.target.value) {
+    handlers.searchBlog(e);
+  }
+});
 
 // Identify the page in the browser
 const location = window.location.pathname;
