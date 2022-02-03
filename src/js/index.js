@@ -37,8 +37,11 @@ switch (location) {
   case "/":
   case "/index.html":
     blogID = window.sessionStorage.getItem("blogID");
-    window.sessionStorage.setItem("oldBlogID", blogID);
-    window.sessionStorage.setItem("blogID", "0");
+    // Don't overwrite oldID on page refresh
+    if (blogID > 0) {
+      window.sessionStorage.setItem("oldBlogID", blogID);
+      window.sessionStorage.setItem("blogID", "0");
+    }
     handlers.getAllBlogs();
     linkCards();
     break;
@@ -52,6 +55,7 @@ switch (location) {
     break;
   case "/blog.html":
     let id = 1;
+    // preserve blog id across pages
     if (
       window.sessionStorage.getItem("blogID") == 0 &&
       window.sessionStorage.getItem("oldBlogID")
