@@ -13,6 +13,7 @@ const postBlog = async (e) => {
   e.preventDefault();
   let gifID = e.target.gif.value;
 
+  // Fetch gif according to requested id
   let result = await (
     await fetch(
       `https://api.giphy.com/v1/gifs/search?api_key=rZze5Ana60111aVYD7ZlwgzZnD5Zzu0b&limit=1&q=${gifID}`
@@ -33,11 +34,11 @@ const postBlog = async (e) => {
     },
   };
 
+  // Update page after form submission
   helpers.changeSection();
 
   fetch("https://supercodersapi.herokuapp.com/blog", options)
     .then((r) => r.json())
-    // .then(helpers.updateBtn) <--- Update the form action to take to the page of the newly created blog
     .catch(console.warn);
 };
 
@@ -73,7 +74,6 @@ function newComment(e) {
 
 // Retrieve specific blog for blog.html
 function getBlog(blogId) {
-  // let blogId = 1;
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
     .then((r) => r.json())
     .then(helpers.appendBlogContent)
@@ -116,9 +116,8 @@ function updateEmojis(e) {
 }
 
 // Delete a blog
-// --------------- Not sure what to do with this as I don't know where we're deleting blogs from ----------------------
 function deleteBlog() {
-  // let blogId = getBlogId();
+  // let blogId;
 
   const options = {
     method: "DELETE",
