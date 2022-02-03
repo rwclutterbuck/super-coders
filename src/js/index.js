@@ -1,8 +1,8 @@
 // Templates
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
-const blogCard = require("./templates/cardTemplate");
 const handlers = require("./handlers");
+const { linkCards } = require("./helpers");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -38,9 +38,9 @@ switch (location) {
   case "/index.html":
     blogID = window.sessionStorage.getItem("blogID");
     // Don't overwrite oldID on page refresh
-    if (blogID > 0) {
+    if (blogID) {
       window.sessionStorage.setItem("oldBlogID", blogID);
-      window.sessionStorage.setItem("blogID", "0");
+      window.sessionStorage.setItem("blogID", "");
     }
     handlers.getAllBlogs();
     linkCards();
@@ -56,14 +56,11 @@ switch (location) {
   case "/blog.html":
     let id = 1;
     // preserve blog id across pages
-    if (
-      window.sessionStorage.getItem("blogID") == 0 &&
-      window.sessionStorage.getItem("oldBlogID")
-    ) {
+    if (window.sessionStorage.getItem("blogID")) {
+      id = window.sessionStorage.getItem("blogID");
+    } else {
       id = window.sessionStorage.getItem("oldBlogID");
       window.sessionStorage.setItem("blogID", id);
-    } else if (window.sessionStorage.getItem("blogID")) {
-      id = window.sessionStorage.getItem("blogID");
     }
     handlers.getAllBlogs(id);
     handlers.getBlog(id);
@@ -77,35 +74,10 @@ switch (location) {
       const commentForm = document.querySelector("#create-comment");
       commentForm &&
         commentForm.addEventListener("submit", handlers.newComment);
+
+      const emojiClicked = document.querySelector("#emoji-container");
+      emojiClicked &&
+        emojiClicked.addEventListener("click", handlers.updateEmojis);
     }, 100);
     break;
 }
-
-function linkCards() {
-  const numCards = document.querySelector("#card-container");
-  numCards.addEventListener("click", (numCards) => {
-    const id = numCards.target.closest("a").id.split("-")[2];
-    window.sessionStorage.setItem("blogID", `${id}`);
-  });
-}
-
-// for (let i = 1; i <= numCards; i++) {
-//   let cardId = `#card-link-${i}`;
-//   const card = document.querySelector(cardId);
-//   // console.log(cardId);
-//   // console.log(card);
-//   window.localStorage.setItem(`blogId-${i}`, i);
-//   card.addEventListener("click", () => {
-//     window.localStorage.setItem(`blogId`, i);
-//   });
-// }
-
-const emojiCards = document.querySelectorAll(".emoji-cards");
-emojiCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const emojiId = card.id.split("-")[1];
-    helpers.toggleEmoji(emojiId);
-    window.sessionStorage.setItem("emojiID", emojiId);
-    handlers.updateEmojis();
-  });
-});
