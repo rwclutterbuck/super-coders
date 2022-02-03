@@ -7,10 +7,10 @@ function changeSection() {
   section.innerHTML = `
     <h1 class="text-3xl font-semibold text-center text-gray-800 dark:text-white">Thanks for your Submission!</h1>
 
-    <form action='./blog.html' class="mt-6 ">
+    <form action='./index.html' class="mt-6 ">
 
       <div class="flex justify-center mt-6">
-        <input type="submit" class="px-4 py-2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" value="View Blog"/>
+        <input type="submit" class="px-4 py-2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" value="Return Home"/>
       </div>
 
     </form>`;
@@ -45,7 +45,8 @@ function appendBlogs(blogs) {
   }
 }
 
-function appendComment(comment, key, container) {
+function appendComment(comment, key) {
+  const container = document.getElementById("comment-container");
   container.innerHTML += commentTemplate(key);
 
   const commentTimestamp = document.getElementById(`comment-timestamp-${key}`);

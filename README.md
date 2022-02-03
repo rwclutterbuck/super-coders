@@ -69,6 +69,7 @@ Create your own blog...
 
 ## Goals for the Future!
 
+- On the blog page don't include the displayed blog as in 'Other Blogs'
 -
 
 ## minimum viable product

@@ -32,14 +32,15 @@ function blog() {
     <div id="comments" class="px-4 dark:bg-gray-700 dark:text-gray-100">
     <h3 class="pt-2 font-semibold text-xl">Comments</h3>
     <div id="comment-container"></div>
-    <form action="#" id="make-comment" class="flex">
+    <form id="create-comment" class="flex">
       <input
         class="py-2 w-full px-4 mb-4 text-gray-700 placeholder-gray-600 bg-white border-b border-gray-600 dark:placeholder-gray-400 dark:focus:border-gray-300 lg:border-transparent dark:bg-gray-800 dark:text-gray-300 focus:outline-none focus:border-gray-600"
         type="text"
         name=""
-        id=""
+        id="comment"
         placeholder="write your own comment"
         maxlength="60"
+        required
       />
       <div class="ml-2">
         <input
