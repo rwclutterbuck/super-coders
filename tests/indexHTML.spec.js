@@ -43,22 +43,6 @@ describe("index.html", () => {
           const nav = document.querySelector("nav-bar");
           expect(nav).toBeTruthy();
         });
-
-        // test('its children contain anchor tags linked to the right places', () => {
-        //   const navChildren = document.querySelectorAll('nav a');
-        //   expect(navChildren.length).toBe(3);
-        //   for (let i=0; i<3; i++) {
-        //     let child = navChildren[i];
-        //     let text = child.innerText;
-        //     switch (i) {
-        //       case 0:
-        //         expect(text).toBe('./index.html');
-        //         break
-        //       case 1:
-        //         expect()
-        //     }
-        //   }
-        // })
       });
     });
 
