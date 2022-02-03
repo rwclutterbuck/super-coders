@@ -2,9 +2,9 @@
 
 ![Screenshot](src/images/indexHTML.png)
 
-The anonymous blogging site for your craziest stories!
-Want to tell people about your craziest conspiracy theories? Go for it!
-Want to see what people think of your new short story? Get it submitted!
+The anonymous blogging site for your craziest stories! <br>
+Want to tell people about your wildest conspiracy theories? Go for it! <br>
+Want to see what people think of your new short story? Get it submitted! <br>
 Even if you just want to tell the world about the fact you eat cold baked beans without them tracing it back to you, then this is still the perfect place to do it!
 
 ## Table of Contents
