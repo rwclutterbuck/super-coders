@@ -39,7 +39,7 @@ class footerTemplate extends HTMLElement {
           >
             <div>
               <a
-                href="#"
+                href="/"
                 class="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
                 >Super-Blogs</a
               >
@@ -48,25 +48,16 @@ class footerTemplate extends HTMLElement {
             <div class="flex mt-4 md:m-0">
               <div class="-mx-4">
                 <a
-                  href="#"
+                  href="/index.html"
                   class="px-4 text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 hover:underline"
-                  >About</a
+                  >Home</a
                 >
                 <a
-                  href="#"
+                  href="/createBlog.html"
                   class="px-4 text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 hover:underline"
-                  >Blog</a
+                  >Create Blog</a
                 >
-                <a
-                  href="#"
-                  class="px-4 text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 hover:underline"
-                  >News</a
-                >
-                <a
-                  href="#"
-                  class="px-4 text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 hover:underline"
-                  >Contact</a
-                >
+              
               </div>
             </div>
           </div>

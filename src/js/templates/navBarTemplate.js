@@ -11,7 +11,7 @@ class navBar extends HTMLElement {
                 <div>
                   <a
                     class="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-                    href="./index.html"
+                    href="/"
                     >Super-Blogs</a
                   >
                 </div>
