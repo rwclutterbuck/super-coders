@@ -72,6 +72,7 @@ function appendComment(comment, key) {
 // Deal with comment separately - append to bottom of specific blog post in blog.html
 function appendComments(comments) {
   const commentContainer = document.getElementById("comment-container");
+  console.log(comments);
   for (key in comments) {
     appendComment(comments[key], key, commentContainer);
   }
@@ -107,7 +108,12 @@ function appendBlogContent(blog) {
 }
 function highlightEmoji(emojiId) {
   const selectEmoji = document.querySelector(`#emoji-${emojiId}`);
-  const highlight = ["bg-cyan-400", "border-2", "border-white"];
+  const highlight = [
+    "bg-cyan-600",
+    "border-2",
+    "dark:border-white",
+    "border-gray-800",
+  ];
   for (let thisClass of highlight) {
     selectEmoji.classList.toggle(thisClass);
   }

@@ -2,7 +2,7 @@ class navBar extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <header>
-        <nav class="bg-white shadow dark:bg-gray-800">
+        <nav class="bg-indigo-400 shadow dark:bg-gray-800">
           <div
             class="container px-6 py-4 mx-auto lg:flex lg:justify-between lg:items-center"
           >
@@ -69,7 +69,7 @@ class navBar extends HTMLElement {
                     <input
                       id="searchbar"
                       type="search"
-                      class="w-full py-1 pl-10 pr-4 text-gray-700 placeholder-gray-600 bg-white border-b border-gray-600 dark:placeholder-gray-300 dark:focus:border-gray-300 lg:w-56 lg:border-transparent dark:bg-gray-800 dark:text-gray-300 focus:outline-none focus:border-gray-600"
+                      class="w-full py-1 pl-10 pr-4 text-gray-700 placeholder-gray-600 bg-indigo-400 border-b border-gray-600 dark:placeholder-gray-300 dark:focus:border-gray-300 lg:w-56 lg:border-transparent dark:bg-gray-800 dark:text-gray-300 focus:outline-none focus:border-gray-600"
                       placeholder="Search"
                     />
                   </div>
@@ -112,19 +112,19 @@ class navBar extends HTMLElement {
                     <a
                       href="https://www.figma.com/file/irC9SOqgXFVlGknEMVmSn9/super-coders?node-id=2%3A3"
                       class="mx-2 text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300"
-                      aria-label="Github server"
+                      aria-label="Figma"
                     >
                       <svg
-                        class="w-5 h-5 fill-current"
+                        class="w-5 h-5"
                         viewBox="0 0 28 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                      <path d="M10.1428 14C10.1428 12.9391 10.5718 11.9217 11.3353 11.1716C12.0989 10.4214 13.1344 10 14.2143 10C15.2941 10 16.3296 10.4214 17.0932 11.1716C17.8567 11.9217 18.2857 12.9391 18.2857 14C18.2857 15.0609 17.8567 16.0783 17.0932 16.8284C16.3296 17.5786 15.2941 18 14.2143 18C13.1344 18 12.0989 17.5786 11.3353 16.8284C10.5718 16.0783 10.1428 15.0609 10.1428 14V14Z" stroke="#1E1E1E" stroke-width="1"/>
-                      <path d="M2 22C2 20.9391 2.42895 19.9217 3.19249 19.1716C3.95603 18.4214 4.99162 18 6.07143 18H10.1429V22C10.1429 23.0609 9.7139 24.0783 8.95036 24.8284C8.18682 25.5786 7.15124 26 6.07143 26C4.99162 26 3.95603 25.5786 3.19249 24.8284C2.42895 24.0783 2 23.0609 2 22Z" stroke="#1E1E1E" stroke-width="1"/>
-                      <path d="M10.1428 2V10H14.2143C15.2941 10 16.3296 9.57857 17.0932 8.82843C17.8567 8.07828 18.2857 7.06087 18.2857 6C18.2857 4.93913 17.8567 3.92172 17.0932 3.17157C16.3296 2.42143 15.2941 2 14.2143 2L10.1428 2Z" stroke="#1E1E1E" stroke-width="1"/>
-                      <path d="M2 6C2 7.06087 2.42895 8.07828 3.19249 8.82843C3.95603 9.57857 4.99162 10 6.07143 10H10.1429V2H6.07143C4.99162 2 3.95603 2.42143 3.19249 3.17157C2.42895 3.92172 2 4.93913 2 6Z" stroke="#1E1E1E" stroke-width="1"/>
-                      <path d="M2 14C2 15.0609 2.42895 16.0783 3.19249 16.8284C3.95603 17.5786 4.99162 18 6.07143 18H10.1429V10H6.07143C4.99162 10 3.95603 10.4214 3.19249 11.1716C2.42895 11.9217 2 12.9391 2 14Z" stroke="#1E1E1E" stroke-width="1"/>
+                      <path d="M10.1428 14C10.1428 12.9391 10.5718 11.9217 11.3353 11.1716C12.0989 10.4214 13.1344 10 14.2143 10C15.2941 10 16.3296 10.4214 17.0932 11.1716C17.8567 11.9217 18.2857 12.9391 18.2857 14C18.2857 15.0609 17.8567 16.0783 17.0932 16.8284C16.3296 17.5786 15.2941 18 14.2143 18C13.1344 18 12.0989 17.5786 11.3353 16.8284C10.5718 16.0783 10.1428 15.0609 10.1428 14V14Z" stroke="#1E1E1E" stroke-width="2"/>
+                      <path d="M2 22C2 20.9391 2.42895 19.9217 3.19249 19.1716C3.95603 18.4214 4.99162 18 6.07143 18H10.1429V22C10.1429 23.0609 9.7139 24.0783 8.95036 24.8284C8.18682 25.5786 7.15124 26 6.07143 26C4.99162 26 3.95603 25.5786 3.19249 24.8284C2.42895 24.0783 2 23.0609 2 22Z" stroke="#1E1E1E" stroke-width="2"/>
+                      <path d="M10.1428 2V10H14.2143C15.2941 10 16.3296 9.57857 17.0932 8.82843C17.8567 8.07828 18.2857 7.06087 18.2857 6C18.2857 4.93913 17.8567 3.92172 17.0932 3.17157C16.3296 2.42143 15.2941 2 14.2143 2L10.1428 2Z" stroke="#1E1E1E" stroke-width="2"/>
+                      <path d="M2 6C2 7.06087 2.42895 8.07828 3.19249 8.82843C3.95603 9.57857 4.99162 10 6.07143 10H10.1429V2H6.07143C4.99162 2 3.95603 2.42143 3.19249 3.17157C2.42895 3.92172 2 4.93913 2 6Z" stroke="#1E1E1E" stroke-width="2"/>
+                      <path d="M2 14C2 15.0609 2.42895 16.0783 3.19249 16.8284C3.95603 17.5786 4.99162 18 6.07143 18H10.1429V10H6.07143C4.99162 10 3.95603 10.4214 3.19249 11.1716C2.42895 11.9217 2 12.9391 2 14Z" stroke="#1E1E1E" stroke-width="2"/>
 
                       </svg>
                     </a>

@@ -44,7 +44,6 @@ const postBlog = async (e) => {
 
 // Post to the server upon creation of new comment
 function newComment(e) {
-  console.log("test");
   e.preventDefault();
   const comment = e.target.comment.value;
   const obj = {
@@ -73,8 +72,8 @@ function newComment(e) {
     },
   };
 
+  console.log(options.body);
   const blogId = window.sessionStorage.getItem("blogID");
-
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
     .then((r) => r.json())
     .catch(console.warn);
