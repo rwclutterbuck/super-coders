@@ -67,7 +67,6 @@ function appendComments(comments) {
 }
 
 function appendBlogContent(blog) {
-  console.log(blog);
   const blogContainer = document.querySelector("#blog-container");
   blogContainer.innerHTML = blogTemplate(blog);
 
