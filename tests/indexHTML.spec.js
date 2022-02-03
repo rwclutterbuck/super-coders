@@ -59,5 +59,12 @@ describe("index.html", () => {
         expect(cardContainer).toBeTruthy();
       });
     });
+
+    describe("footer", () => {
+      test("it exists", () => {
+        const footer = document.querySelector("footer-template");
+        expect(footer).toBeTruthy();
+      });
+    });
   });
 });
