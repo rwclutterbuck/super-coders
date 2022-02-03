@@ -105,6 +105,7 @@ function appendBlogContent(blog) {
 
   appendComments(blog.comment);
 }
+
 function highlightEmoji(emojiId) {
   const selectEmoji = document.querySelector(`#emoji-${emojiId}`);
   const highlight = ["bg-cyan-400", "border-2", "border-white"];

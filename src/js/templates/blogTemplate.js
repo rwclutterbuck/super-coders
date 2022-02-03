@@ -7,7 +7,7 @@ const emojiLinks = [
 function blog() {
   return `
     <div
-      class="max-w-2xl w-screen mx-auto overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-t"
+      class="main-blog max-w-2xl w-screen mx-auto overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-t"
     >
       <img
         id="gif"
