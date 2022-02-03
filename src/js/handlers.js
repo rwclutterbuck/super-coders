@@ -115,7 +115,7 @@ function updateEmojis(e) {
 
   if (emoji.classList.contains("clicked-emoji")) {
     fetch(
-      `https://supercodersapi.herokuapp.com/blog/${blogId}/emojiplus/${emojiId}`,
+      `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}/plus`,
       options
     )
       .then((r) => r.json())
@@ -123,7 +123,7 @@ function updateEmojis(e) {
       .catch(console.warn);
   } else {
     fetch(
-      `https://supercodersapi.herokuapp.com/blog/${blogId}/emojiminus/${emojiId}`,
+      `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}/minus`,
       options
     )
       .then((r) => r.json())
