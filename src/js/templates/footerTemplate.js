@@ -16,12 +16,14 @@ class footerTemplate extends HTMLElement {
             >
               <div class="flex flex-wrap justify-between md:flex-row">
                 <input
+                  id="email-box"
                   type="email"
                   class="p-2 m-1 text-sm text-gray-700 bg-transparent appearance-none focus:outline-none focus:placeholder-transparent"
                   placeholder="Enter your email"
                   aria-label="Enter your email"
                 />
                 <button
+                  id="mailing-btn"
                   class="w-full px-3 py-2 m-1 text-sm font-medium tracking-wider text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded-md dark:hover:bg-gray-600 dark:bg-gray-700 lg:w-auto hover:bg-gray-700"
                 >
                   subscribe
