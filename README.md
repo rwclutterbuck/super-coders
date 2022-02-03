@@ -32,7 +32,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ### Local Usage
 
-- Whilst in the super-coders folder run `npm run server` to launch a local host for the client
+- Go in to `index.html` and start a live server
 
 ### Deployment
 
@@ -70,7 +70,41 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ## Changelog
 
--
+#### HTML/CSS
+
+- init commit
+- configure Tailwind and Prettier
+- add tailwind template to index.html
+- create createBlog.html with basic form
+- add navbar to createBlog.html
+- add homepage images
+- add blog page w/ comments
+- create navbar, footer, and card templates
+- reactive blog page
+- create blog template
+- emojis added to cards
+- add comment form to blog.html
+- style blogTemplate
+- fix cards to be more responsive
+- fix chrome and light mode layouts
+
+#### JavaScript
+
+- add functionality to hamburger menu
+- set up fetch requests in handlers.js
+- add createBlog.html page update on form submit
+- finish request to fetch all blogs
+- request specific blog by id
+- set up PATCH request to update emoji count
+- DELETE request to delete a blog
+- update blog card content using api
+- form submission working
+- link between index.html and blog.html
+- add gif fetch request to POST request
+- new comments print to blog.html
+- set up emoji updating
+- functional search w/ error handling
+- emoji updates with server
 
 ## Wins & Challenges
 
@@ -84,11 +118,12 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ## Bugs
 
--
+- fix bug on initial page load (89528b9)
+- security
 
 ## Goals for the Future!
 
--
+- Add preview to desktop creat blog page
 
 ## minimum viable product
 
