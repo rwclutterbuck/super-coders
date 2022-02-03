@@ -46,27 +46,36 @@ const postBlog = async (e) => {
 function newComment(e) {
   console.log("test");
   e.preventDefault();
-  // const comment = e.target.comment.value;
-  // const obj = {
-  //   timestamp: "now",
-  //   blogcomment: comment,
-  // };
-  // const container = document.getElementById("comment-container");
-  // helpers.appendComment(obj, "local", container);
-  // const data = {
-  //   blogcomment: comment,
-  // };
-  // const options = {
-  //   method: "POST",
-  //   body: JSON.stringify(data),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // };
-  // fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
-  //   .then((r) => r.json())
-  //   // .then(helpers.appendComment)  <---  add the comment to the list on blog.html
-  //   .catch(console.warn);
+  const comment = e.target.comment.value;
+  const obj = {
+    timestamp: "now",
+    blogcomment: comment,
+  };
+
+  // Dynamically set ID for new comments
+  const numComments = document.querySelectorAll(".blogComment").length;
+  const ID = numComments + 1;
+  helpers.appendComment(obj, ID);
+
+  // Reset text area after form submission
+  const textArea = document.querySelector("#comment");
+  textArea.value = "";
+
+  const data = {
+    blogcomment: comment,
+  };
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
+    .then((r) => r.json())
+    .catch(console.warn);
 }
 
 // Retrieve specific blog for blog.html
