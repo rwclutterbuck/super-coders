@@ -51,7 +51,8 @@ switch (location) {
     // ------------------ SWAP TIMEOUT -------------------------
     setTimeout(() => {
       const commentForm = document.querySelector("#create-comment");
-      commentForm.addEventListener("submit", handlers.newComment);
+      commentForm &&
+        commentForm.addEventListener("submit", handlers.newComment);
     }, 100);
     break;
 }
