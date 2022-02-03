@@ -12,7 +12,7 @@ hamburger.addEventListener("click", (e) => {
   e.preventDefault();
   menu.classList.toggle("hidden");
 });
-
+handlers.searchBlog();
 // Identify the page in the browser
 const location = window.location.pathname;
 
