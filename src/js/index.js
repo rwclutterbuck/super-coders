@@ -36,6 +36,7 @@ switch (location) {
   // not a great fix for page not initially loading
   case "/":
   case "/index.html":
+    window.sessionStorage.setItem("blogID", "0");
     handlers.getAllBlogs();
     linkCards();
     break;
@@ -52,9 +53,10 @@ switch (location) {
     if (window.sessionStorage.getItem("blogID")) {
       id = window.sessionStorage.getItem("blogID");
     }
-    handlers.getAllBlogs();
+    handlers.getAllBlogs(id);
     handlers.getBlog(id);
     linkCards();
+
     // Make sure the page is built
     // Submit comment
 
