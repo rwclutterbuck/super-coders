@@ -43,6 +43,7 @@ const postBlog = async (e) => {
 
 // Post to the server upon creation of new comment
 function newComment(e) {
+  console.log("test");
   e.preventDefault();
   // const comment = e.target.comment.value;
   // const obj = {
@@ -50,13 +51,10 @@ function newComment(e) {
   //   blogcomment: comment,
   // };
   // const container = document.getElementById("comment-container");
-
   // helpers.appendComment(obj, "local", container);
-
   // const data = {
   //   blogcomment: comment,
   // };
-
   // const options = {
   //   method: "POST",
   //   body: JSON.stringify(data),
@@ -64,7 +62,6 @@ function newComment(e) {
   //     "Content-Type": "application/json",
   //   },
   // };
-
   // fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
   //   .then((r) => r.json())
   //   // .then(helpers.appendComment)  <---  add the comment to the list on blog.html

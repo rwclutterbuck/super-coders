@@ -30,7 +30,10 @@ main {
 
 @media (min-width: 640px) {
   .corner-round {
-    border-radius: 2rem 0 0 0;
+    border-radius: 0 0 0 2rem;
+  }
+  .right-corner-round {
+    border-radius: 0 2rem 0 0;
   }
 }
 
