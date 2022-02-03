@@ -90,10 +90,18 @@ function appendBlogContent(blog) {
   appendComments(blog.comment);
 }
 
+function toggleEmoji(emojiId) {
+  const emojiCard = document.querySelector(`#emoji-${emojiId}`);
+  emojiCard.addEventListener("click", () => {
+    emojiCard.classList.toggle("clicked-emoji");
+  });
+}
+
 module.exports = {
   changeSection,
   appendBlogs,
   appendComment,
   appendComments,
   appendBlogContent,
+  toggleEmoji,
 };
