@@ -45,31 +45,31 @@ const postBlog = async (e) => {
 // Post to the server upon creation of new comment
 function newComment(e) {
   e.preventDefault();
-  // const comment = e.target.comment.value;
-  // const obj = {
-  //   timestamp: "now",
-  //   blogcomment: comment,
-  // };
-  // const container = document.getElementById("comment-container");
+  console.log("Hello");
+  const comment = e.target.comment.value;
+  const obj = {
+    timestamp: "now",
+    blogcomment: comment,
+  };
 
-  // helpers.appendComment(obj, "local", container);
+  helpers.appendComment(obj, "local");
 
-  // const data = {
-  //   blogcomment: comment,
-  // };
+  const data = {
+    blogcomment: comment,
+  };
 
-  // const options = {
-  //   method: "POST",
-  //   body: JSON.stringify(data),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // };
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
-  // fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
-  //   .then((r) => r.json())
-  //   // .then(helpers.appendComment)  <---  add the comment to the list on blog.html
-  //   .catch(console.warn);
+  fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
+    .then((r) => r.json())
+    // .then(helpers.appendComment)  <---  add the comment to the list on blog.html
+    .catch(console.warn);
 }
 
 // Retrieve specific blog for blog.html

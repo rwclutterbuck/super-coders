@@ -45,7 +45,8 @@ function appendBlogs(blogs) {
   }
 }
 
-function appendComment(comment, key, container) {
+function appendComment(comment, key) {
+  const container = document.getElementById("comment-container");
   container.innerHTML += commentTemplate(key);
 
   const commentTimestamp = document.getElementById(`comment-timestamp-${key}`);

@@ -46,9 +46,13 @@ switch (location) {
     handlers.getAllBlogs();
     handlers.getBlog(id);
     linkCards();
+    // Make sure the page is built
     // Submit comment
-    const comment = document.querySelector("#make-comment");
-    comment.addEventListener("submit", handlers.newComment);
+    // ------------------ SWAP TIMEOUT -------------------------
+    setTimeout(() => {
+      const commentForm = document.querySelector("#create-comment");
+      commentForm.addEventListener("submit", handlers.newComment);
+    }, 100);
     break;
 }
 
