@@ -88,15 +88,6 @@ function getBlog(blogId) {
     .catch(console.warn);
 }
 
-// Retrieve all comments for blog.html
-// function getAllComments() {
-//   // let blogId;
-//   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}/comment`)
-//     .then((r) => r.json())
-//     // .then(helpers.appendComments)  <---  Add all comments to blog.html when loaded
-//     .catch(console.warn);
-// }
-
 // Update server after reaction with an emoji
 function updateEmojis(e) {
   e.preventDefault();
