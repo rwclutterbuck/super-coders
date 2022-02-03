@@ -37,12 +37,14 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 - While in `super-coders` run `npm test` to launch the test suite
 
-## See the Site
+## See the Sites
 
-Create your own blog...
+#### Create your own blog...
+
 ![Screenshot](src/images/createBlogHTML.png)
 
-...or just read everybody elses!
+#### ...or just read everybody elses!
+
 ![Screenshot](src/images/blogHTML.png)
 
 ## Technologies used
