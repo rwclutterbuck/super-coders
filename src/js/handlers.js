@@ -71,7 +71,7 @@ function newComment(e) {
   //   .catch(console.warn);
 }
 
-// Retrieve specific blog for blog.html
+// Retrieve specific blog for blog.html -     SEARCH!!!
 function getBlog(blogId) {
   // let blogId = 1;
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`)
@@ -128,6 +128,21 @@ function deleteBlog() {
     console.warn
   );
 }
+// search blog title and retrieve it
+function searchBlog(){
+  const searchbar = document.getElementById('searchbar')
+  searchbar = searchbar.textContent
+  fetch(`https://supercodersapi.herokuapp.com/search/search?q${searchbar}`)
+  .then((r) => r.json())
+  .then(helpers.appendBlogContent)
+
+
+
+
+
+}
+
+
 
 module.exports = {
   getAllBlogs,
