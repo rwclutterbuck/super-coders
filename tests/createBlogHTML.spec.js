@@ -32,7 +32,7 @@ describe("index.html", () => {
     describe("header", () => {
       describe("navbar", () => {
         test("it exists", () => {
-          const nav = document.querySelector("nav");
+          const nav = document.querySelector("nav-bar");
           expect(nav).toBeTruthy();
         });
 
