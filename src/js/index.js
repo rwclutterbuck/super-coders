@@ -81,5 +81,6 @@ switch (location) {
       emojiClicked &&
         emojiClicked.addEventListener("click", handlers.updateEmojis);
     }, 100);
+
     break;
 }
