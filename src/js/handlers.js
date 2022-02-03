@@ -136,29 +136,22 @@ function deleteBlog() {
   );
 }
 // search blog title and retrieve it
-function searchBlog(){
-  const searchbar = document.getElementById('searchbar')
-  searchbar = searchbar.textContent;
-  searchbar.addEventListener('search', ()=>{
-    fetch(`https://supercodersapi.herokuapp.com/search/search?q${searchbar}`)
-  .then((r) => r.json())
-  .then((data)=>{
-    data = Object.keys(data)[0]
-    const searchStore = window.sessionStorage.setItem("blogID", `${data}`);
-    window.location.href = "/blog.html";
-  })
+function searchBlog(e) {
+  console.log(e.target.value);
+  fetch(`https://supercodersapi.herokuapp.com/search?q=${e.target.value}`)
+    .then((r) => r.json())
+    .then((data) => {
+      console.log(data);
+      const id = data.refIndex;
+      window.sessionStorage.setItem("blogID", `${id + 1}`);
+      window.location.href = "/blog.html";
+    })
+    .catch((err) => {
+      alert(`${e.target.value} returned no results`);
+    });
 
   //.then(helpers.appendBlogContent)
-
-  });
-
-
-
-
-
 }
-
-
 
 module.exports = {
   getAllBlogs,
