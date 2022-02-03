@@ -19,8 +19,12 @@ function changeSection() {
 // Add all blogs to index.html/blog.html on page load
 function appendBlogs(blogs) {
   const cardContainer = document.querySelector("#card-container");
+  const id = window.sessionStorage.getItem("blogID");
   // console.log(blogs);
   for (key in blogs) {
+    if (key == id) {
+      continue;
+    }
     cardContainer.innerHTML += cardTemplate(key);
     const gif = document.getElementById(`card-gif-${key}`);
     gif.src = blogs[key].gif;

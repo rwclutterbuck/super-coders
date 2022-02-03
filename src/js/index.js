@@ -36,6 +36,12 @@ switch (location) {
   // not a great fix for page not initially loading
   case "/":
   case "/index.html":
+    blogID = window.sessionStorage.getItem("blogID");
+    // Don't overwrite oldID on page refresh
+    if (blogID > 0) {
+      window.sessionStorage.setItem("oldBlogID", blogID);
+      window.sessionStorage.setItem("blogID", "0");
+    }
     handlers.getAllBlogs();
     linkCards();
     break;
@@ -49,12 +55,20 @@ switch (location) {
     break;
   case "/blog.html":
     let id = 1;
-    if (window.sessionStorage.getItem("blogID")) {
+    // preserve blog id across pages
+    if (
+      window.sessionStorage.getItem("blogID") == 0 &&
+      window.sessionStorage.getItem("oldBlogID")
+    ) {
+      id = window.sessionStorage.getItem("oldBlogID");
+      window.sessionStorage.setItem("blogID", id);
+    } else if (window.sessionStorage.getItem("blogID")) {
       id = window.sessionStorage.getItem("blogID");
     }
-    handlers.getAllBlogs();
+    handlers.getAllBlogs(id);
     handlers.getBlog(id);
     linkCards();
+
     // Make sure the page is built
     // Submit comment
 
