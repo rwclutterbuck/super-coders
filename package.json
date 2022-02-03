@@ -7,8 +7,7 @@
     "test": "jest --watchAll",
     "start": "browserify ./src/js/index.js -o ./dist/bundle.js; tailwindcss -i ./src/input.css -o ./dist/output.css",
     "dev": "concurrently \"watchify ./src/js/index.js -o ./dist/bundle.js\" \"tailwindcss -i ./src/input.css -o ./dist/output.css --watch\"",
-    "coverage": "jest --coverage --silent",
-    "server": "nodemon index.html"
+    "coverage": "jest --coverage --silent"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +16,7 @@
     "concurrently": "^7.0.0",
     "jest": "^27.4.7",
     "jest-fetch-mock": "^3.0.3",
-    "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
-    "supertest": "^6.2.2",
     "watchify": "^4.0.0"
   },
   "dependencies": {
