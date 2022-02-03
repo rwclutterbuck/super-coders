@@ -110,11 +110,19 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ### Wins
 
--
+- Using CSS framework for almost all styling
+- Fully responsive website working on desktop and mobile
+- Functional search bar
+- Working emoji selection on blog posts
+- Linking html pages using `window.sessionStorage`
+- Integrating the Giphy API
 
 ### Challenges
 
--
+- Maintaining TDD
+- Testing presence of html elements due to template usage
+- Setting up forms to communicate with Giphy API and Heroku
+- Linking `index.html` with `blog.html`
 
 ## Bugs
 
@@ -123,7 +131,9 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ## Goals for the Future!
 
-- Add preview to desktop creat blog page
+- Add blog preview to desktop version of `createBlog.html`
+-
+-
 
 ## minimum viable product
 
@@ -139,13 +149,13 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - [x] character limit 500 characters
 - [x] intergrate giphy api
 - [x] view other people's entries
-- [ ] react to post with an emoji
-- [ ] comment on other people's posts
+- [x] react to post with an emoji
+- [x] comment on other people's posts
 
 ### technical
 
 - [ ] 60% test coverage
-- [ ] deploys on netlify
+- [x] deploys on netlify
 
 ### technologies
 
