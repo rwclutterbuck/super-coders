@@ -101,26 +101,35 @@ function getBlog(blogId) {
 function updateEmojis(e) {
   e.preventDefault();
 
-  // let blogId;
-  // let emojiId;
-
-  // const data = {};  ----Dont need to send any data. Retrieve all info from emojiId-----
+  let blogId = window.sessionStorage.getItem("blogID");
+  let emojiId = window.sessionStorage.getItem("emojiID");
 
   const options = {
     method: "PATCH",
-    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
   };
 
-  fetch(
-    `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}`,
-    options
-  )
-    .then((r) => r.json())
-    // .then(helpers.updateEmoji)
-    .catch(console.warn);
+  const emoji = document.querySelector(`emoji-${emojiId}`);
+
+  if (emoji.classList.contains("clicked-emoji")) {
+    fetch(
+      `https://supercodersapi.herokuapp.com/blog/${blogId}/emojiplus/${emojiId}`,
+      options
+    )
+      .then((r) => r.json())
+      // .then(helpers.updateEmoji)
+      .catch(console.warn);
+  } else {
+    fetch(
+      `https://supercodersapi.herokuapp.com/blog/${blogId}/emojiminus/${emojiId}`,
+      options
+    )
+      .then((r) => r.json())
+      // .then(helpers.updateEmoji)
+      .catch(console.warn);
+  }
 }
 
 // Delete a blog
@@ -136,29 +145,21 @@ function deleteBlog() {
   );
 }
 // search blog title and retrieve it
-function searchBlog(){
-  const searchbar = document.getElementById('searchbar')
+function searchBlog() {
+  let searchbar = document.getElementById("searchbar");
   searchbar = searchbar.textContent;
-  searchbar.addEventListener('search', ()=>{
+  searchbar.addEventListener("search", () => {
     fetch(`https://supercodersapi.herokuapp.com/search/search?q${searchbar}`)
-  .then((r) => r.json())
-  .then((data)=>{
-    data = Object.keys(data)[0]
-    const searchStore = window.sessionStorage.setItem("blogID", `${data}`);
-    window.location.href = "/blog.html";
-  })
+      .then((r) => r.json())
+      .then((data) => {
+        data = Object.keys(data)[0];
+        window.sessionStorage.setItem("blogID", `${data}`);
+        window.location.href = "/blog.html";
+      });
 
-  //.then(helpers.appendBlogContent)
-
+    //.then(helpers.appendBlogContent)
   });
-
-
-
-
-
 }
-
-
 
 module.exports = {
   getAllBlogs,
