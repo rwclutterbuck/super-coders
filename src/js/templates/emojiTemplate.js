@@ -15,8 +15,8 @@ function emojiTemplate(link, id) {
 
 function blogEmoji(link, id) {
   return `
-  <div
-    class="emoji-cards flex items-center justify-center w-full m-4 px-2 py-1 text-white  duration-200 transform bg-cyan-900 rounded-full focus:outline-none sm:w-auto sm:mx-1 hover:bg-cyan-600 hover:scale-125 transition-all cursor-pointer"
+  <btn
+    class="emoji-cards flex items-center justify-center w-full m-4 px-2 py-1 h-10 text-white  duration-200 transform bg-cyan-900 rounded-full focus:outline-none sm:w-auto sm:mx-1 box-border  hover:bg-cyan-600 hover:scale-125 transition-all cursor-pointer"
     id="emoji-${id}"
   >
     <img class="" src=${link} height="30px" width="30px" />
@@ -25,7 +25,7 @@ function blogEmoji(link, id) {
       class="mx-1">
       0
     </span>
-  </div>
+  </btn>
 `;
 }
 
