@@ -12,7 +12,9 @@ hamburger.addEventListener("click", (e) => {
   e.preventDefault();
   menu.classList.toggle("hidden");
 });
+
 handlers.searchBlog();
+
 // Identify the page in the browser
 const location = window.location.pathname;
 
@@ -76,3 +78,13 @@ function linkCards() {
 //     window.localStorage.setItem(`blogId`, i);
 //   });
 // }
+
+const emojiCards = document.querySelectorAll(".emoji-cards");
+emojiCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const emojiId = card.id.split("-")[1];
+    helpers.toggleEmoji(emojiId);
+    window.sessionStorage.setItem("emojiID", emojiId);
+    handlers.updateEmojis();
+  });
+});
