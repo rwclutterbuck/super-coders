@@ -44,6 +44,7 @@ const postBlog = async (e) => {
 
 // Post to the server upon creation of new comment
 function newComment(e) {
+  console.log("test");
   e.preventDefault();
   const comment = e.target.comment.value;
   const obj = {

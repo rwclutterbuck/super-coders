@@ -48,6 +48,7 @@ switch (location) {
     linkCards();
     // Make sure the page is built
     // Submit comment
+
     // ------------------ SWAP TIMEOUT -------------------------
     setTimeout(() => {
       const commentForm = document.querySelector("#create-comment");

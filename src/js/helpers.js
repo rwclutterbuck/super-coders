@@ -82,6 +82,11 @@ function appendBlogContent(blog) {
   const blogContent = document.getElementById("blog-content");
   blogContent.textContent = blog.blogcontent;
 
+  for (let i of [1, 2, 3]) {
+    const emoji = document.getElementById(`card-emoji-${i}`);
+    emoji.textContent = blog.emoji[i].emojiCount;
+  }
+
   appendComments(blog.comment);
 }
 
