@@ -11,7 +11,8 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 - [Installation & Usage](#installation--usage)
   - [Installation](#installation)
-  - [Usage](#usage)
+  - [Local Usage](#usage)
+  - [Deployment](#deployment)
 - [See the Sites](#see-the-sites)
 - [Technologies](#technologies)
 - [Changelog](#changelog)
@@ -26,16 +27,20 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 ### Installation
 
 - Clone or download the repo
-- Navigate to the `super-coders` file at the command line
+- Navigate to the super-coders folder at the command line
 - Run `npm install` to install dependencies
 
-### Usage
+### Local Usage
 
--
+- Whilst in the super-coders folder run `npm run server` to launch a local host for the client
+
+### Deployment
+
+- View the client live on [Netlify](https://super-coders.netlify.app/)
 
 #### Testing
 
-- While in `super-coders` run `npm test` to launch the test suite
+- While in the super-coders folder run `npm test` to launch the test suite
 
 ## See the Sites
 
@@ -48,6 +53,18 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 ![Screenshot](src/images/blogHTML.png)
 
 ## Technologies used
+
+#### Planning & Design Tools
+
+- Github Projects - view our Kanban board in this repo
+- Figma ([View our template here](https://www.figma.com/file/irC9SOqgXFVlGknEMVmSn9/super-coders?node-id=2%3A3))
+
+#### HTML/CSS Tools
+
+- Tailwind Framework
+- Browserify
+
+#### JavaScript Tools
 
 -
 

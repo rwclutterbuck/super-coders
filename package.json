@@ -7,7 +7,8 @@
     "test": "jest --watchAll",
     "start": "browserify ./src/js/index.js -o ./dist/bundle.js; tailwindcss -i ./src/input.css -o ./dist/output.css",
     "dev": "concurrently \"watchify ./src/js/index.js -o ./dist/bundle.js\" \"tailwindcss -i ./src/input.css -o ./dist/output.css --watch\"",
-    "coverage": "jest --coverage --silent"
+    "coverage": "jest --coverage --silent",
+    "server": "nodemon index.html"
   },
   "keywords": [],
   "author": "",
