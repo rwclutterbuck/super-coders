@@ -38,6 +38,13 @@ describe("index.html", () => {
         expect(h1).toBeTruthy();
       });
 
+      test("the h1 introduces the page", () => {
+        const h1 = header.querySelector("h1");
+        expect(h1.textContent.toLowerCase()).toContain("welcome");
+        expect(h1.textContent.toLowerCase()).toContain("super");
+        expect(h1.textContent.toLowerCase()).toContain("blogs");
+      });
+
       describe("navbar", () => {
         test("it exists", () => {
           const nav = document.querySelector("nav-bar");
@@ -46,6 +53,11 @@ describe("index.html", () => {
       });
     });
 
-    describe("main", () => {});
+    describe("main", () => {
+      test("there is a container for the blogs", () => {
+        const cardContainer = document.querySelector("#card-container");
+        expect(cardContainer).toBeTruthy();
+      });
+    });
   });
 });
