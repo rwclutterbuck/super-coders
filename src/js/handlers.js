@@ -137,7 +137,9 @@ function decrementEmoji(blogId, emojiId, options) {
 }
 
 // Delete a blog
-function deleteBlog(blogId) {
+
+/*
+function deleteBlog() {
   // let blogId;
 
   const options = {
@@ -147,7 +149,10 @@ function deleteBlog(blogId) {
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options).catch(
     console.warn
   );
+  
 }
+*/
+
 // search blog title and retrieve it
 function searchBlog(e) {
   console.log(e.target.value);
@@ -171,5 +176,4 @@ module.exports = {
   getBlog,
   searchBlog,
   updateEmojis,
-  deleteBlog,
 };
