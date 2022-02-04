@@ -32,6 +32,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ### Local Usage
 
+- Run `npm start` to compile the source code
 - Go in to `index.html` and start a live server
 
 ### Deployment
@@ -141,7 +142,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 - [x] write this README
 - [x] design using figma
-- [ ] fill kanban board
+- [x] fill kanban board
 
 ### functionality
 
@@ -154,7 +155,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ### technical
 
-- [ ] 60% test coverage
+- [x] 60% test coverage
 - [x] deploys on netlify
 
 ### technologies
@@ -171,4 +172,4 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 #### Fun extras
 
-- [ ] fuse.js -fuzzy searching
+- [x] fuse.js -fuzzy searching
