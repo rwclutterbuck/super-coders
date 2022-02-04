@@ -72,7 +72,6 @@ function newComment(e) {
     },
   };
 
-  console.log(options.body);
   const blogId = window.sessionStorage.getItem("blogID");
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
     .then((r) => r.json())
