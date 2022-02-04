@@ -60,14 +60,11 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - Github Projects - view our Kanban board in this repo
 - Figma ([View our template here](https://www.figma.com/file/irC9SOqgXFVlGknEMVmSn9/super-coders?node-id=2%3A3))
 
-#### HTML/CSS Tools
+#### HTML/CSS/JS Tools
 
 - Tailwind Framework
 - Browserify
-
-#### JavaScript Tools
-
--
+- Watchify
 
 ## Changelog
 
@@ -127,16 +124,17 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ## Bugs
 
-- fix bug on initial page load (89528b9)
-- security
+- Have to refresh `blog.html` before clicking emojis
 
 ## Goals for the Future!
 
 - Add blog preview to desktop version of `createBlog.html`
--
--
+- Allow searching through all keys in our data rather than only returning searches based on title
+- Have a search results page
 
-## minimum viable product
+---
+
+## Minimum Viable Product
 
 ### Prework
 
