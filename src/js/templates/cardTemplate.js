@@ -18,11 +18,11 @@ function blogCard(id) {
       >
         <img
           id="card-gif-${id}"
-          class="object-cover w-full h-auto sm:w-1/2"
+          class="object-cover w-full h-auto sm:w-1/3"
           src=""
           alt="Article"
         />
-        <div class="flex flex-col justify-between w-full">
+        <div class="flex flex-col justify-between w-full sm:w-2/3">
           <div class="px-6 py-2 w-full">
             <div>
               <h3

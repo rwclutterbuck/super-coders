@@ -44,7 +44,6 @@ const postBlog = async (e) => {
 
 // Post to the server upon creation of new comment
 function newComment(e) {
-  console.log("test");
   e.preventDefault();
   const comment = e.target.comment.value;
   const obj = {
@@ -73,8 +72,8 @@ function newComment(e) {
     },
   };
 
+  console.log(options.body);
   const blogId = window.sessionStorage.getItem("blogID");
-
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
     .then((r) => r.json())
     .catch(console.warn);
@@ -87,15 +86,6 @@ function getBlog(blogId) {
     .then(helpers.appendBlogContent)
     .catch(console.warn);
 }
-
-// Retrieve all comments for blog.html
-// function getAllComments() {
-//   // let blogId;
-//   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}/comment`)
-//     .then((r) => r.json())
-//     // .then(helpers.appendComments)  <---  Add all comments to blog.html when loaded
-//     .catch(console.warn);
-// }
 
 // Update server after reaction with an emoji
 function updateEmojis(e) {
@@ -147,6 +137,8 @@ function decrementEmoji(blogId, emojiId, options) {
 }
 
 // Delete a blog
+
+/*
 function deleteBlog() {
   // let blogId;
 
@@ -157,7 +149,10 @@ function deleteBlog() {
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options).catch(
     console.warn
   );
+  
 }
+*/
+
 // search blog title and retrieve it
 function searchBlog(e) {
   console.log(e.target.value);
@@ -180,7 +175,5 @@ module.exports = {
   newComment,
   getBlog,
   searchBlog,
-  // getAllComments,
-  updateEmojis,
-  deleteBlog,
+  updateEmojis
 };

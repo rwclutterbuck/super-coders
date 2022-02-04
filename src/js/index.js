@@ -45,9 +45,11 @@ switch (location) {
     handlers.getAllBlogs();
     linkCards();
     break;
+  case "/createblog":
   case "/createBlog.html":
     // Submit form and update page without refresh
     const form = document.querySelector("#create-blog");
+    console.log(form);
     form && form.addEventListener("submit", handlers.postBlog);
     // Create blog preview
     // const blogPreview = document.querySelector("#blog-preview");
@@ -79,5 +81,6 @@ switch (location) {
       emojiClicked &&
         emojiClicked.addEventListener("click", handlers.updateEmojis);
     }, 100);
+
     break;
 }

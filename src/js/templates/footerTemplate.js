@@ -2,7 +2,7 @@ class footerTemplate extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <footer
-        class="flex justify-center px-4 text-gray-800 bg-white dark:text-white dark:bg-gray-800"
+        class="flex justify-center px-4 text-gray-800 bg-indigo-400 dark:text-white dark:bg-gray-800"
       >
         <div class="container py-6">
           <h2 class="text-lg font-bold text-center lg:text-2xl">
@@ -12,7 +12,7 @@ class footerTemplate extends HTMLElement {
 
           <div class="flex justify-center mt-6">
             <div
-              class="bg-white border rounded-md focus-within:ring dark:bg-gray-800 dark:border-gray-600 focus-within:border-blue-400 focus-within:ring-blue-300 focus-within:ring-opacity-40 dark:focus-within:border-blue-300"
+              class="bg-gray-100 border rounded-md focus-within:ring dark:bg-gray-800 dark:border-gray-600 focus-within:border-blue-400 focus-within:ring-blue-300 focus-within:ring-opacity-40 dark:focus-within:border-blue-300"
             >
               <div class="flex flex-wrap justify-between md:flex-row">
                 <input
@@ -39,7 +39,7 @@ class footerTemplate extends HTMLElement {
           >
             <div>
               <a
-                href="#"
+                href="/"
                 class="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
                 >Super-Blogs</a
               >
@@ -48,25 +48,16 @@ class footerTemplate extends HTMLElement {
             <div class="flex mt-4 md:m-0">
               <div class="-mx-4">
                 <a
-                  href="#"
+                  href="/index.html"
                   class="px-4 text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 hover:underline"
-                  >About</a
+                  >Home</a
                 >
                 <a
-                  href="#"
+                  href="/createBlog.html"
                   class="px-4 text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 hover:underline"
-                  >Blog</a
+                  >Create Blog</a
                 >
-                <a
-                  href="#"
-                  class="px-4 text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 hover:underline"
-                  >News</a
-                >
-                <a
-                  href="#"
-                  class="px-4 text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 hover:underline"
-                  >Contact</a
-                >
+              
               </div>
             </div>
           </div>
