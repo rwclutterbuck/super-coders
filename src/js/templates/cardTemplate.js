@@ -13,16 +13,16 @@ function blogCard(id) {
     >
       <div
         id="card-${id}"
-        class="card my-1 w-screen max-w-xl overflow-hidden bg-white shadow-md dark:bg-gray-700 dark:shadow-gray-700 sm:flex sm:h-auto sm:m-5 sm:rounded-lg sm:dark:hover:bg-gray-600 
+        class="card my-1 w-screen max-w-xl overflow-hidden bg-white shadow-md dark:bg-gray-700 dark:shadow-gray-700 sm:flex sm:h-auto sm:w-full sm:m-5 sm:rounded-lg sm:dark:hover:bg-gray-600 
         sm:hover:bg-gray-200 sm:hover:scale-105 hover:shadow-2xl hover:dark:shadow-gray-700 transition duration-150 ease-in-out"
       >
         <img
           id="card-gif-${id}"
-          class="object-cover w-full h-auto sm:w-1/2"
+          class="object-cover w-full h-auto sm:w-1/3"
           src=""
           alt="Article"
         />
-        <div class="flex flex-col justify-between w-full">
+        <div class="flex flex-col justify-between w-full sm:w-2/3">
           <div class="px-6 py-2 w-full">
             <div>
               <h3

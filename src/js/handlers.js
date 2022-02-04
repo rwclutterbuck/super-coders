@@ -44,7 +44,6 @@ const postBlog = async (e) => {
 
 // Post to the server upon creation of new comment
 function newComment(e) {
-  console.log("test");
   e.preventDefault();
   const comment = e.target.comment.value;
   const obj = {
@@ -73,8 +72,8 @@ function newComment(e) {
     },
   };
 
+  console.log(options.body);
   const blogId = window.sessionStorage.getItem("blogID");
-
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
     .then((r) => r.json())
     .catch(console.warn);
@@ -88,21 +87,15 @@ function getBlog(blogId) {
     .catch(console.warn);
 }
 
-// Retrieve all comments for blog.html
-// function getAllComments() {
-//   // let blogId;
-//   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}/comment`)
-//     .then((r) => r.json())
-//     // .then(helpers.appendComments)  <---  Add all comments to blog.html when loaded
-//     .catch(console.warn);
-// }
-
 // Update server after reaction with an emoji
 function updateEmojis(e) {
   e.preventDefault();
-
+  const emoji = e.target.closest("btn");
+  let emojiId = emoji.id.split("-")[1];
   let blogId = window.sessionStorage.getItem("blogID");
-  let emojiId = window.sessionStorage.getItem("emojiID");
+
+  // check if user has already clicked on an emoji replace vote
+  const storedEmojiId = window.sessionStorage.getItem(`${blogId}-emoji`);
 
   const options = {
     method: "PATCH",
@@ -111,25 +104,36 @@ function updateEmojis(e) {
     },
   };
 
-  const emoji = document.querySelector(`emoji-${emojiId}`);
-
-  if (emoji.classList.contains("clicked-emoji")) {
-    fetch(
-      `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}/plus`,
-      options
-    )
-      .then((r) => r.json())
-      // .then(helpers.updateEmoji)
-      .catch(console.warn);
+  if (!storedEmojiId) {
+    incrementEmoji(blogId, emojiId, options);
+  } else if (storedEmojiId == emojiId) {
+    decrementEmoji(blogId, emojiId, options);
+    emojiId = "";
   } else {
-    fetch(
-      `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}/minus`,
-      options
-    )
-      .then((r) => r.json())
-      // .then(helpers.updateEmoji)
-      .catch(console.warn);
+    decrementEmoji(blogId, storedEmojiId, options);
+    incrementEmoji(blogId, emojiId, options);
   }
+  window.sessionStorage.setItem(`${blogId}-emoji`, emojiId);
+}
+
+function incrementEmoji(blogId, emojiId, options) {
+  const thisEmoji = document.querySelector(`#card-emoji-${emojiId}`);
+  thisEmoji.textContent = parseInt(thisEmoji.textContent) + 1;
+  fetch(
+    `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}/plus`,
+    options
+  );
+  helpers.highlightEmoji(emojiId);
+}
+
+function decrementEmoji(blogId, emojiId, options) {
+  const thisEmoji = document.querySelector(`#card-emoji-${emojiId}`);
+  thisEmoji.textContent = parseInt(thisEmoji.textContent) - 1;
+  fetch(
+    `https://supercodersapi.herokuapp.com/blog/${blogId}/emoji/${emojiId}/minus`,
+    options
+  );
+  helpers.highlightEmoji(emojiId);
 }
 
 // Delete a blog
@@ -148,6 +152,7 @@ function deleteBlog() {
   
 }
 */
+
 // search blog title and retrieve it
 function searchBlog(e) {
   console.log(e.target.value);
@@ -162,7 +167,6 @@ function searchBlog(e) {
     .catch((err) => {
       alert(`${e.target.value} returned no results`);
     });
-
 }
 
 module.exports = {
@@ -171,6 +175,6 @@ module.exports = {
   newComment,
   getBlog,
   searchBlog,
-  // getAllComments,
   updateEmojis
+  updateEmojis,
 };

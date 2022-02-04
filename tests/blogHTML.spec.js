@@ -4,9 +4,9 @@
 
 const fs = require("fs");
 const path = require("path");
-const html = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf8");
+const html = fs.readFileSync(path.resolve(__dirname, "../blog.html"), "utf8");
 
-describe("index.html", () => {
+describe("blog.html", () => {
   beforeEach(() => {
     document.documentElement.innerHTML = html.toString();
   });
@@ -16,33 +16,23 @@ describe("index.html", () => {
     test("it has a title", () => {
       title = document.querySelector("title");
       expect(title).toBeTruthy();
-      expect(title.textContent.toLowerCase()).toContain("super");
-      expect(title.textContent.toLowerCase()).toContain("blog");
     });
   });
 
   describe("body", () => {
     test("it has a unique h1 element", () => {
       const h1s = document.querySelectorAll("h1");
-      expect(h1s.length).toBe(1);
+      try {
+        expect(h1s.length).toBe(1);
+      } catch {
+        expect(h1s.length).toBe(0);
+      }
     });
 
     describe("header", () => {
       let header;
       beforeEach(() => {
         header = document.getElementById("header");
-      });
-
-      test("the h1 is in the header", () => {
-        const h1 = header.querySelector("h1");
-        expect(h1).toBeTruthy();
-      });
-
-      test("the h1 introduces the page", () => {
-        const h1 = header.querySelector("h1");
-        expect(h1.textContent.toLowerCase()).toContain("welcome");
-        expect(h1.textContent.toLowerCase()).toContain("super");
-        expect(h1.textContent.toLowerCase()).toContain("blogs");
       });
 
       describe("navbar", () => {
@@ -54,6 +44,11 @@ describe("index.html", () => {
     });
 
     describe("main", () => {
+      test("there is a container for the main blog", () => {
+        const blogContainer = document.querySelector("#blog-container");
+        expect(blogContainer).toBeTruthy();
+      });
+
       test("there is a container for the blogs", () => {
         const cardContainer = document.querySelector("#card-container");
         expect(cardContainer).toBeTruthy();

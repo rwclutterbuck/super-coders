@@ -16,11 +16,23 @@ function changeSection() {
     </form>`;
 }
 
+function linkCards() {
+  const numCards = document.querySelector("#card-container");
+  numCards.addEventListener("click", (numCards) => {
+    const id = numCards.target.closest("a").id.split("-")[2];
+    window.sessionStorage.setItem("blogID", `${id}`);
+  });
+}
+
 // Add all blogs to index.html/blog.html on page load
 function appendBlogs(blogs) {
   const cardContainer = document.querySelector("#card-container");
+  const id = window.sessionStorage.getItem("blogID");
   // console.log(blogs);
   for (key in blogs) {
+    if (key == id) {
+      continue;
+    }
     cardContainer.innerHTML += cardTemplate(key);
     const gif = document.getElementById(`card-gif-${key}`);
     gif.src = blogs[key].gif;
@@ -60,6 +72,7 @@ function appendComment(comment, key) {
 // Deal with comment separately - append to bottom of specific blog post in blog.html
 function appendComments(comments) {
   const commentContainer = document.getElementById("comment-container");
+  console.log(comments);
   for (key in comments) {
     appendComment(comments[key], key, commentContainer);
   }
@@ -87,7 +100,24 @@ function appendBlogContent(blog) {
     emoji.textContent = blog.emoji[i].emojiCount;
   }
 
+  const blogId = window.sessionStorage.getItem("blogID");
+  const emojiId = window.sessionStorage.getItem(`${blogId}-emoji`);
+  emojiId && highlightEmoji(emojiId);
+
   appendComments(blog.comment);
+}
+
+function highlightEmoji(emojiId) {
+  const selectEmoji = document.querySelector(`#emoji-${emojiId}`);
+  const highlight = [
+    "bg-cyan-600",
+    "border-2",
+    "dark:border-white",
+    "border-gray-800",
+  ];
+  for (let thisClass of highlight) {
+    selectEmoji.classList.toggle(thisClass);
+  }
 }
 
 function toggleEmoji(emojiId) {
@@ -104,4 +134,6 @@ module.exports = {
   appendComments,
   appendBlogContent,
   toggleEmoji,
+  linkCards,
+  highlightEmoji,
 };

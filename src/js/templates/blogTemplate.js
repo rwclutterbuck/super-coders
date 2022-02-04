@@ -7,7 +7,7 @@ const emojiLinks = [
 function blog() {
   return `
     <div
-      class="max-w-2xl w-screen mx-auto overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-t"
+      class="main-blog max-w-2xl w-screen mx-auto overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-t"
     >
       <img
         id="gif"
@@ -28,28 +28,28 @@ function blog() {
           ></span>
           <p
             id="blog-content"
-            class="mt-2 text-sm text-gray-600 dark:text-gray-400"
+            class="mt-2 text text-justify text-gray-600 dark:text-gray-400"
           ></p>
         </div>
       </div>
     </div>
     <div class="flex sm:-mb-10">
-      <div class="w-0 sm:w-1/2 bg-gray-700"></div>
+      <div class="w-0 sm:w-1/2 bg-gray-300 dark:bg-gray-700"></div>
       <div
         id="emoji-container"
-        class="flex justify-around sm:-mt-4 sm:px-3 w-full sm:w-1/2 overflow-hidden dark:border-gray-700 corner-round align-middle bg-gray-300 dark:bg-gray-800"
+        class="flex justify-around sm:-mt-4 sm:px-3 w-full sm:w-1/2 overflow-hidden dark:border-gray-700 sm:rounded-bl-3xl align-middle bg-white dark:bg-gray-800"
       >
         ${blogEmoji(emojiLinks[0], `1`)}
         ${blogEmoji(emojiLinks[1], `2`)}
         ${blogEmoji(emojiLinks[2], `3`)}
       </div>
     </div>
-    <div id="comments" class="px-4 dark:bg-gray-700 dark:text-gray-100 sm:rounded-b">
+    <div id="comments" class="px-4 bg-gray-300 dark:bg-gray-700 dark:text-gray-100 sm:rounded-b">
       <h3 class="pt-2 font-semibold text-xl">Comments</h3>
       <div id="comment-container"></div>
-    <form id="create-comment" class="flex">
+    <form id="create-comment" class="flex mt-4">
       <input
-        class="py-2 w-full px-4 mb-4 text-gray-700 placeholder-gray-600 bg-white border-b border-gray-600 dark:placeholder-gray-400 dark:focus:border-gray-300 lg:border-transparent dark:bg-gray-800 dark:text-gray-300 focus:outline-none focus:border-gray-600"
+        class="py-2 w-full px-4 mb-4 text-gray-700 placeholder-gray-600 bg-gray-200 border-b border-gray-600 dark:placeholder-gray-400 dark:focus:border-gray-300 lg:border-transparent dark:bg-gray-800 dark:text-gray-300 focus:outline-none focus:border-gray-600"
         type="text"
         name=""
         id="comment"
