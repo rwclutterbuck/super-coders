@@ -134,13 +134,15 @@ describe("handlers.js in index.html", () => {
         const main = document.querySelector("main");
         main.innerHTML += blogEmoji(testLink, testId);
         const emoji = main.querySelector(`#emoji-${testId}`);
-        expect(emoji.classList).not.toContain("bg-cyan-400");
-        expect(emoji.classList).not.toContain("border-white");
+        expect(emoji.classList).not.toContain("bg-cyan-600");
+        expect(emoji.classList).not.toContain("dark:border-white");
         expect(emoji.classList).not.toContain("border-2");
+        expect(emoji.classList).not.toContain("border-gray-800");
         helpers.highlightEmoji(testId);
-        expect(emoji.classList).toContain("bg-cyan-400");
-        expect(emoji.classList).toContain("border-white");
+        expect(emoji.classList).toContain("bg-cyan-600");
+        expect(emoji.classList).toContain("dark:border-white");
         expect(emoji.classList).toContain("border-2");
+        expect(emoji.classList).toContain("border-gray-800");
       });
     });
 
