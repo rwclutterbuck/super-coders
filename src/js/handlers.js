@@ -137,7 +137,7 @@ function decrementEmoji(blogId, emojiId, options) {
 }
 
 // Delete a blog
-function deleteBlog() {
+function deleteBlog(blogId) {
   // let blogId;
 
   const options = {

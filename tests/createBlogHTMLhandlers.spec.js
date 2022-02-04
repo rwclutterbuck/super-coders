@@ -10,8 +10,8 @@ const html = fs.readFileSync(
 );
 
 global.fetch = require("jest-fetch-mock");
-jest.mock('../src/js/handlers.js');
-jest.mock('../src/js/helpers.js');
+jest.mock("../src/js/handlers.js");
+jest.mock("../src/js/helpers.js");
 
 describe("handlers.js in createBlog.html", () => {
   let api;
@@ -29,9 +29,9 @@ describe("handlers.js in createBlog.html", () => {
       const fakeEvent = {
         preventDefault: jest.fn(),
         target: {
-          blogtitle: { value: "Example Blog" },
-          blogcontent: { value: "Example Blog" },
-          gif: { value: "http://example.com" },
+          title: { value: "Example Blog" },
+          blog: { value: "Example Blog" },
+          // gif: { value: "http://example.com" },
         },
       };
       console.log(fetch.mock.calls);
@@ -42,7 +42,7 @@ describe("handlers.js in createBlog.html", () => {
         JSON.stringify({
           blogtitle: { value: "Example Blog" },
           blogcontent: { value: "Example Blog" },
-          gif: { value: "http://example.com" },
+          // gif: { value: "http://example.com" },
         })
       );
     });
