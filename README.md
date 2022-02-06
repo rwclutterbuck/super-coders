@@ -129,7 +129,6 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ## Goals for the Future!
 
-- Add blog preview to desktop version of `createBlog.html`
 - Add a gif selection page rather than a random choice
 - Allow searching through all keys in our data rather than only returning searches based on title
 - Have a search results page
