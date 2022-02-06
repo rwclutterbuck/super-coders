@@ -45,7 +45,8 @@ const postBlog = async (e) => {
 // Post to the server upon creation of new comment
 function newComment(e) {
   e.preventDefault();
-  const comment = e.target.comment.value;
+  const comment = helpers.profanityFilter(e.target.comment.value);
+  console.log(comment);
   const obj = {
     timestamp: "now",
     blogcomment: comment,

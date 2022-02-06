@@ -72,7 +72,6 @@ function appendComment(comment, key) {
 // Deal with comment separately - append to bottom of specific blog post in blog.html
 function appendComments(comments) {
   const commentContainer = document.getElementById("comment-container");
-  console.log(comments);
   for (key in comments) {
     appendComment(comments[key], key, commentContainer);
   }
@@ -127,6 +126,19 @@ function toggleEmoji(emojiId) {
   });
 }
 
+// Profanity filter
+const bannedWords = ["linux", "yoshi"];
+function profanityFilter(phrase) {
+  return phrase
+    .split(" ")
+    .map((word) =>
+      bannedWords.includes(word.toLowerCase())
+        ? word.replace(/(?<=^.{1})[\w]*(?=.{1}$)/g, "*".repeat(word.length - 2))
+        : word
+    )
+    .join(" ");
+}
+
 module.exports = {
   changeSection,
   appendBlogs,
@@ -136,4 +148,5 @@ module.exports = {
   toggleEmoji,
   linkCards,
   highlightEmoji,
+  profanityFilter,
 };

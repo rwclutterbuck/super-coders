@@ -80,7 +80,7 @@ switch (location) {
       const emojiClicked = document.querySelector("#emoji-container");
       emojiClicked &&
         emojiClicked.addEventListener("click", handlers.updateEmojis);
-    }, 100);
+    }, 1000);
 
     break;
 }
