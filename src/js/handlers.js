@@ -21,8 +21,8 @@ const postBlog = async (e) => {
   ).json();
 
   const data = {
-    blogtitle: e.target.title.value,
-    blogcontent: e.target.blog.value,
+    blogtitle: helpers.profanityFilter(e.target.title.value),
+    blogcontent: helpers.profanityFilter(e.target.blog.value),
     gif: result.data["0"].images.original.webp,
   };
 
