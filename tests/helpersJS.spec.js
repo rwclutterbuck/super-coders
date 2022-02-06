@@ -212,6 +212,13 @@ describe("handlers.js in index.html", () => {
         const phrase = "Yoshi loves Linux";
         expect(helpers.profanityFilter(phrase)).toBe("Y***i loves L***x");
       });
+
+      test("it account for punctuation", () => {
+        const phrase = "Yoshi, Luigi, and Mario love Linux";
+        expect(helpers.profanityFilter(phrase)).toBe(
+          "Y***i, Luigi, and Mario love L***x"
+        );
+      });
     });
   });
 });

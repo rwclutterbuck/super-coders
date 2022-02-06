@@ -126,17 +126,29 @@ function toggleEmoji(emojiId) {
   });
 }
 
-// Profanity filter
+// Profanity filter --- need to modify to filter for phrases e.g "warm milk"
 const bannedWords = ["linux", "yoshi"];
 function profanityFilter(phrase) {
+  let word = "word,";
+  console.log(word.match(/[\W_]$/));
   return phrase
     .split(" ")
     .map((word) =>
-      bannedWords.includes(word.toLowerCase())
+      bannedWords.includes(word.slice(0, -1).toLowerCase()) &&
+      word.match(/[\W_]$/)
+        ? word
+            .slice(0, -1)
+            .replace(/(?<=^.{1})[\w]*(?=.{1}$)/g, "*".repeat(word.length - 3)) +
+          punctuationMatcher(word)
+        : bannedWords.includes(word.toLowerCase())
         ? word.replace(/(?<=^.{1})[\w]*(?=.{1}$)/g, "*".repeat(word.length - 2))
         : word
     )
     .join(" ");
+}
+
+function punctuationMatcher(word) {
+  return word.match(/[\W_]$/)[0];
 }
 
 module.exports = {

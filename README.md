@@ -132,7 +132,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - Add a gif selection page rather than a random choice
 - Allow searching through all keys in our data rather than only returning searches based on title
 - Have a search results page
-- Profanity filter
+- Get the profanity filter to match phrases aswell as banned words (e.g "warm milk")
 
 ---
 
