@@ -125,12 +125,15 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 ## Bugs
 
 - Have to refresh `blog.html` before clicking emojis
+- In create blog preview: deletion using `Delete` in input box key doesn't translate to the preview
 
 ## Goals for the Future!
 
 - Add blog preview to desktop version of `createBlog.html`
+- Add a gif selection page rather than a random choice
 - Allow searching through all keys in our data rather than only returning searches based on title
 - Have a search results page
+- Get the profanity filter to match phrases aswell as banned words (e.g "warm milk")
 
 ---
 

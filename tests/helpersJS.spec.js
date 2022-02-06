@@ -187,6 +187,7 @@ describe("handlers.js in index.html", () => {
     });
   });
 
+  // ----------------------Requires simulating an event --------------------------------
   // describe("DOM helpers", () => {
   //   describe("linkCards", () => {
   //     test("it sets the session storage to the target value", () => {
@@ -194,4 +195,30 @@ describe("handlers.js in index.html", () => {
   //     });
   //   });
   // });
+
+  describe("other helpers", () => {
+    describe("profanityFilter", () => {
+      test("it replaces internal letters in a banned sting with stars", () => {
+        const word = "linux";
+        expect(helpers.profanityFilter(word)).toBe("l***x");
+      });
+
+      test("it replaces internal letters in all banned words in a phrase", () => {
+        const phrase = "yoshi loves linux";
+        expect(helpers.profanityFilter(phrase)).toBe("y***i loves l***x");
+      });
+
+      test("it is case insensitive", () => {
+        const phrase = "Yoshi loves Linux";
+        expect(helpers.profanityFilter(phrase)).toBe("Y***i loves L***x");
+      });
+
+      test("it account for punctuation", () => {
+        const phrase = "Yoshi, Luigi, and Mario love Linux";
+        expect(helpers.profanityFilter(phrase)).toBe(
+          "Y***i, Luigi, and Mario love L***x"
+        );
+      });
+    });
+  });
 });
