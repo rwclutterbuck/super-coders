@@ -125,6 +125,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 ## Bugs
 
 - Have to refresh `blog.html` before clicking emojis
+- In create blog preview: deletion using `Delete` in input box key doesn't translate to the preview
 
 ## Goals for the Future!
 

@@ -1,19 +1,13 @@
-const { blogEmoji } = require("./emojiTemplate");
-const emojiLinks = [
-  "https://media3.giphy.com/media/YNDLZBTq8hGPDJkmYo/giphy.gif?cid=790b7611uzvk78j6bz8k7e747zafmwnem6howjhrau4oskyc&rid=giphy.gif&ct=g",
-  "https://media4.giphy.com/media/S3nZ8V9uemShxiWX8g/giphy.gif?cid=790b761199k9mbqd8jig3lqabvjw6gcjraorrdxzbaydd5sq&rid=giphy.gif&ct=g",
-  "https://media1.giphy.com/media/hp3dmEypS0FaoyzWLR/giphy.gif?cid=790b7611f64b1e50ed6ab0f626bab05a6b50b2dc5be38775&rid=giphy.gif&ct=g",
-];
 function preview() {
   return `
     <div
       id="preview"
-      class="main-blog max-w-2xl w-screen mx-auto overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-t"
+      class="main-blog max-w-2xl px-6 py-8 mx-auto m-8 overflow-hidden bg-white rounded-md shadow-md dark:bg-gray-800 sm:rounded-t"
     >
       <img
-        id="gif"
+        id="preview-gif"
         class="object-cover w-full h-full"
-        src="https://media0.giphy.com/media/3orieKKmYyvUdR3RkY/giphy.webp?cid=112e516bv9aio11kbntfjo563ma9o18v0kdt9yigc281ksl8&rid=giphy.webp&ct=g"
+        src="https://media2.giphy.com/media/YBkTzzyNewWtUANTso/giphy.webp?cid=112e516bl0oqn9ji0z6vz2w6tzy1gds48ls1b19ybv5v0xlz&rid=giphy.webp&ct=g"
         alt="Article"
       />
 
