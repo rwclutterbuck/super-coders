@@ -20,7 +20,7 @@ function preview() {
           <span
             id="preview-date"
             class="mx-1 text-xs text-gray-600 dark:text-gray-300"
-          >In the making!</span>
+          >In progress...</span>
           <p
             id="preview-content"
             class="mt-2 text text-justify text-gray-600 dark:text-gray-400"

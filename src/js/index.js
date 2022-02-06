@@ -90,9 +90,8 @@ const previewContainer = document.querySelector("#preview-container");
 previewContainer.innerHTML += previewTemplate();
 
 const title = document.querySelector("#create-title");
-const blog = document.querySelector("#create-blog");
-const gif = document.querySelector("#create-gif");
-const preview = document.querySelector("#preview");
+const blog = document.querySelector("#create-content");
+// const gif = document.querySelector("#create-gif");
 
 const allowedChars =
   "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!\"£$%^&*()_-+={}[]:;@'~#,.?/|\\ ".split(
