@@ -3,6 +3,7 @@ require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const handlers = require("./handlers");
 const { linkCards } = require("./helpers");
+const previewTemplate = require("./templates/previewTemplate");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -86,3 +87,32 @@ switch (location) {
 }
 
 // Getting the create blog preview to work
+const previewContainer = document.querySelector("#preview-container");
+previewContainer.innerHTML += previewTemplate();
+
+const title = document.querySelector("#title");
+const blog = document.querySelector("#blog");
+const gif = document.querySelector("#gif");
+const preview = document.querySelector("#preview");
+
+const allowedChars =
+  "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!\"£$%^&*()_-+={}[]:;@'~#,.?/|\\ ".split(
+    ""
+  );
+
+title.addEventListener("keydown", (e) => {
+  const previewTitle = document.querySelector("#preview-title");
+  if (e.key === "Backspace" || e.key === "Delete") {
+    previewTitle.textContent = previewTitle.textContent.slice(0, -1);
+  } else if (allowedChars.includes(e.key)) {
+    previewTitle.textContent += e.key;
+  }
+});
+blog.addEventListener("keydown", (e) => {
+  const previewContent = document.querySelector("#preview-content");
+  if (e.key === "Backspace" || e.key === "Delete") {
+    previewContent.textContent = previewContent.textContent.slice(0, -1);
+  } else if (allowedChars.includes(e.key)) {
+    previewContent.textContent += e.key;
+  }
+});

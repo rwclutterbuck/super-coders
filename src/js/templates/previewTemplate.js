@@ -7,6 +7,7 @@ const emojiLinks = [
 function preview() {
   return `
     <div
+      id="preview"
       class="main-blog max-w-2xl w-screen mx-auto overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-t"
     >
       <img
@@ -19,15 +20,15 @@ function preview() {
       <div class="p-6">
         <div>
           <h1
-            id="blog-title"
+            id="preview-title"
             class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-200 transform dark:text-white"
           ></h1>
           <span
-            id="blog-date"
+            id="preview-date"
             class="mx-1 text-xs text-gray-600 dark:text-gray-300"
-          ></span>
+          >In the making!</span>
           <p
-            id="blog-content"
+            id="preview-content"
             class="mt-2 text text-justify text-gray-600 dark:text-gray-400"
           ></p>
         </div>
