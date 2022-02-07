@@ -133,6 +133,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - Allow searching through all keys in our data rather than only returning searches based on title
 - Have a search results page
 - Get the profanity filter to match phrases aswell as banned words (e.g "warm milk")
+- Integrate profanity filter into the blog preview
 
 ---
 
