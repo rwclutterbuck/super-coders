@@ -11,8 +11,8 @@ function updateContent() {
   const path = window.location.hash;
   if (privateRoutes.includes(path) && !auth.currentUser()) {
     window.location.hash = "#";
-  } else if (!privateRoutes.includes(path) && auth.currentUser()) {
-    window.location.hash = "#adminPage";
+  } else if (!!auth.currentUser()) {
+    updateAdminPage("#adminPage");
   } else {
     updateAdminPage(path);
   }
@@ -32,16 +32,18 @@ function updateAdminPage(path) {
         window.location.href = "/index.html";
     }
   } else {
-    window.location.href = "/admin.html";
+    window.location.hash = "#login";
+    renderLoginPage();
   }
 }
 
-// const adminTemplate = require("./templates/adminTemplate");
+const { adminTemplate } = require("./templates/adminTemplate");
 const loginTemplate = require("./templates/loginTemplate");
 
 function renderAdminPage() {
+  // const navBar = document.querySelector("#use-for-logout");
   const adminPage = document.querySelector("#admin-section");
-  // adminPage.innerHTML += adminTemplate;
+  adminPage.innerHTML += adminTemplate;
 }
 
 function renderLoginPage() {

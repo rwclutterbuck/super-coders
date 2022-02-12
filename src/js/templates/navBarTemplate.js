@@ -7,7 +7,7 @@ class navBar extends HTMLElement {
             class="container px-6 py-4 mx-auto lg:flex lg:justify-between lg:items-center"
           >
             <div class="lg:flex lg:items-center">
-              <div class="flex items-center justify-between">
+              <div id="use-for-logout" class="flex items-center justify-between">
                 <div>
                   <a
                     class="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"

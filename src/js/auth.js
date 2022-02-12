@@ -59,7 +59,7 @@ function login(token) {
   const admin = jwt_decode(token);
   localStorage.setItem("token", token);
   localStorage.setItem("username", admin.username);
-  location.hash = "#adminPage";
+  window.location.hash = "#adminPage";
 }
 
 // function logout() {

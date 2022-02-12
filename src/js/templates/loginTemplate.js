@@ -1,5 +1,8 @@
 function loginTemplate() {
-  return `<h1
+  return `<section
+      class="w-5/5 max-w-2xl px-6 py-4 mx-auto m-8 bg-indigo-400 rounded-md shadow-md dark:bg-gray-800"
+    >
+    <h1
       class="text-3xl font-semibold text-center text-gray-800 dark:text-white"
     >
       Admin Login
@@ -55,7 +58,9 @@ function loginTemplate() {
           value="Login"
         />
       </div>
-    </form>`;
+    </form>
+    </section>
+    `;
 }
 
 module.exports = loginTemplate;

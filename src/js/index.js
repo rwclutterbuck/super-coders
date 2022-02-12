@@ -121,11 +121,16 @@ switch (location) {
   case "/admin.html":
   case "/admin.html#login":
   case "/admin.html#adminPage":
-    if (window.location.hash != "#adminPage") {
+    if (!auth.currentUser()) {
       window.location.hash = "#login";
     }
+    if (!!auth.currentUser()) {
+      window.location.hash = "#adminPage";
+    }
 
+    // --------------Testing----------------------
     const path = window.location.hash;
+    console.log(!!auth.currentUser());
     console.log(auth.currentUser());
     console.log(path);
 
@@ -134,6 +139,9 @@ switch (location) {
       adminLogin.addEventListener("submit", auth.requestLogin);
     }
 
+    if (window.location.hash === "#adminPage" && !!auth.currentUser()) {
+      adminContent.updateContent();
+    }
     window.addEventListener("hashchange", adminContent.updateContent);
     break;
 }
