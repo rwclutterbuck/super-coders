@@ -1,0 +1,5 @@
+function adminTemplate() {
+  return `
+    
+  `;
+}

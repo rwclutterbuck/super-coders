@@ -4,6 +4,8 @@ require("./templates/footerTemplate");
 const handlers = require("./handlers");
 const { linkCards } = require("./helpers");
 const previewTemplate = require("./templates/previewTemplate");
+const auth = require("./auth.js");
+const adminContent = require("./adminContent");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -35,6 +37,7 @@ const location = window.location.pathname;
 // Call fcts depending on the browser page
 switch (location) {
   // not a great fix for page not initially loading
+
   case "/":
   case "/index.html":
     blogID = window.sessionStorage.getItem("blogID");
@@ -46,6 +49,7 @@ switch (location) {
     handlers.getAllBlogs();
     linkCards();
     break;
+
   case "/createblog":
   case "/createBlog.html":
     // Submit form and update page without refresh
@@ -54,7 +58,37 @@ switch (location) {
     // Create blog preview
     // const blogPreview = document.querySelector("#blog-preview");
     // blogPreview && (blogPreview.innerHTML = blogCard());
+    // Getting the create blog preview to work
+    const previewContainer = document.querySelector("#preview-container");
+    previewContainer.innerHTML += previewTemplate();
+
+    const title = document.querySelector("#create-title");
+    const blog = document.querySelector("#create-content");
+    // const gif = document.querySelector("#create-gif");
+
+    const allowedChars =
+      "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!\"£$%^&*()_-+={}[]:;@'~#,.?/|\\ ".split(
+        ""
+      );
+
+    title.addEventListener("keydown", (e) => {
+      const previewTitle = document.querySelector("#preview-title");
+      if (e.key === "Backspace") {
+        previewTitle.textContent = previewTitle.textContent.slice(0, -1);
+      } else if (allowedChars.includes(e.key)) {
+        previewTitle.textContent += e.key;
+      }
+    });
+    blog.addEventListener("keydown", (e) => {
+      const previewContent = document.querySelector("#preview-content");
+      if (e.key === "Backspace") {
+        previewContent.textContent = previewContent.textContent.slice(0, -1);
+      } else if (allowedChars.includes(e.key)) {
+        previewContent.textContent += e.key;
+      }
+    });
     break;
+
   case "/blog.html":
     let id = 1;
     // preserve blog id across pages
@@ -83,37 +117,26 @@ switch (location) {
     }, 1000);
 
     break;
+
+  case "/admin.html":
+  case "/admin.html#login":
+  case "/admin.html#adminPage":
+    if (window.location.hash != "#adminPage") {
+      window.location.hash = "#login";
+    }
+
+    const path = window.location.hash;
+    console.log(auth.currentUser());
+    console.log(path);
+
+    if (window.location.hash == "#login") {
+      const adminLogin = document.querySelector("#admin-login");
+      adminLogin.addEventListener("submit", auth.requestLogin);
+    }
+
+    window.addEventListener("hashchange", adminContent.updateContent);
+    break;
 }
-
-// Getting the create blog preview to work
-const previewContainer = document.querySelector("#preview-container");
-previewContainer.innerHTML += previewTemplate();
-
-const title = document.querySelector("#create-title");
-const blog = document.querySelector("#create-content");
-// const gif = document.querySelector("#create-gif");
-
-const allowedChars =
-  "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!\"£$%^&*()_-+={}[]:;@'~#,.?/|\\ ".split(
-    ""
-  );
-
-title.addEventListener("keydown", (e) => {
-  const previewTitle = document.querySelector("#preview-title");
-  if (e.key === "Backspace") {
-    previewTitle.textContent = previewTitle.textContent.slice(0, -1);
-  } else if (allowedChars.includes(e.key)) {
-    previewTitle.textContent += e.key;
-  }
-});
-blog.addEventListener("keydown", (e) => {
-  const previewContent = document.querySelector("#preview-content");
-  if (e.key === "Backspace") {
-    previewContent.textContent = previewContent.textContent.slice(0, -1);
-  } else if (allowedChars.includes(e.key)) {
-    previewContent.textContent += e.key;
-  }
-});
 
 // gif.addEventListener("keydown", (e) => {
 //   if (e.key === "ArrowRight") {

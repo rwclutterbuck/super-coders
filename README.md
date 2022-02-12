@@ -134,6 +134,8 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - Have a search results page
 - Get the profanity filter to match phrases aswell as banned words (e.g "warm milk")
 - Integrate profanity filter into the blog preview
+- Improve the timestamps on comments
+- Show how many remaining characters there are in text area
 
 ---
 

@@ -47,6 +47,12 @@ class navBar extends HTMLElement {
                     >Create Blog</a
                   >
 
+                  <a
+                    href="./admin.html"
+                    class="mt-2 transition-colors duration-200 transform lg:mt-0 lg:mx-4 hover:text-gray-900 dark:hover:text-gray-200"
+                    >Admin Login</a
+                  >
+
                   <div class="relative mt-4 lg:mt-0 lg:mx-4">
                     <span
                       class="absolute inset-y-0 left-0 flex items-center pl-3"
