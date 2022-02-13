@@ -151,6 +151,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
   - Make the blog preview scroll
   - Implement comment deletion
   - Implement blog deletion
+  - Have blog search for blog moderation
 - Make admin page responsive
 
 ## Minimum Viable Product

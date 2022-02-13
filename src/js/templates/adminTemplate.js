@@ -117,7 +117,7 @@ function adminPageTemplate() {
       <img
         id="gif"
         class="object-cover w-full h-full"
-        src="https://media0.giphy.com/media/3orieKKmYyvUdR3RkY/giphy.webp?cid=112e516bv9aio11kbntfjo563ma9o18v0kdt9yigc281ksl8&rid=giphy.webp&ct=g"
+        src="https://media4.giphy.com/media/pZ1xvJwopz6ko/giphy.webp"
         alt="Article"
       />
 
@@ -150,9 +150,9 @@ function adminPageTemplate() {
       </div>
     </div>
     <div id="comments" class="px-4 bg-gray-300 dark:bg-gray-700 dark:text-gray-100 sm:rounded-b">
-      <h3 class="pt-2 font-semibold text-xl">Comments</h3>
+      <h3 class="font-semibold text-xl">Comments</h3>
       <div id="comment-container"></div>
-      <div>
+      <div class="h-16">
       </div>
     </div>
   </section>
