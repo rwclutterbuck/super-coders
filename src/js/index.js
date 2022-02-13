@@ -4,6 +4,8 @@ require("./templates/footerTemplate");
 const handlers = require("./handlers");
 const { linkCards } = require("./helpers");
 const previewTemplate = require("./templates/previewTemplate");
+const auth = require("./auth.js");
+const adminContent = require("./adminContent");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -34,6 +36,7 @@ const location = window.location.pathname;
 // Call fcts depending on the browser page
 switch (location) {
   // not a great fix for page not initially loading
+
   case "/":
   case "/index.html":
     blogID = window.sessionStorage.getItem("blogID");
@@ -45,6 +48,7 @@ switch (location) {
     handlers.getAllBlogs();
     linkCards();
     break;
+
   case "/createblog":
   case "/createBlog.html":
     // Submit form and update page without refresh
@@ -53,7 +57,6 @@ switch (location) {
     // Create blog preview
     // const blogPreview = document.querySelector("#blog-preview");
     // blogPreview && (blogPreview.innerHTML = blogCard());
-
     // Getting the create blog preview to work
     const previewContainer = document.querySelector("#preview-container");
     previewContainer.innerHTML += previewTemplate();
@@ -83,8 +86,8 @@ switch (location) {
         previewContent.textContent += e.key;
       }
     });
-
     break;
+
   case "/blog.html":
     let id = 1;
     // preserve blog id across pages
@@ -97,6 +100,79 @@ switch (location) {
     handlers.getAllBlogs(id);
     handlers.getBlog(id);
     linkCards();
+    break;
+
+  case "/admin.html":
+  case "/admin.html#login":
+  case "/admin.html#adminPage":
+    if (!auth.currentUser()) {
+      window.location.hash = "#login";
+    }
+    if (!!auth.currentUser()) {
+      window.location.hash = "#adminPage";
+    }
+
+    // --------------Testing----------------------
+    const path = window.location.hash;
+    console.log(!!auth.currentUser());
+    console.log(auth.currentUser());
+    console.log(path);
+
+    if (window.location.hash == "#login") {
+      const adminLogin = document.querySelector("#admin-login");
+      adminLogin.addEventListener("submit", auth.requestLogin);
+    }
+
+    if (window.location.hash === "#adminPage" && !!auth.currentUser()) {
+      adminContent.updateContent();
+    }
+    window.addEventListener("hashchange", adminContent.updateContent);
+
+    // Admin logout
+    const logoutBtn = document.querySelector(".logout-btn");
+    logoutBtn &&
+      logoutBtn.addEventListener("click", () => {
+        localStorage.clear();
+      });
+
+    // Remove admin
+    const removalForm = document.querySelector("#admin-removal");
+    removalForm &&
+      removalForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        areYouSure();
+
+        const yesBtn = document.querySelector("#yes-btn");
+        yesBtn &&
+          yesBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Delete user
+          });
+
+        const noBtn = document.querySelector("#no-btn");
+        noBtn &&
+          noBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const removeBox = document.querySelector("#bad-admin-username");
+            removeBox.value = "";
+            const removeSect = document.querySelector("#remove-section");
+            removeSect.innerHTML = "";
+            removeSect.innerHTML += `<input
+          type="submit"
+          id="remove-btn"
+          class="px-4 py-2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          value="Remove"
+        />`;
+          });
+      });
+
+    const aYSTemplate = require("./templates/areYouSureTemplate");
+    function areYouSure() {
+      const removeSect = document.querySelector("#remove-section");
+      removeSect.innerHTML = "";
+      removeSect.innerHTML += aYSTemplate();
+    }
+
     break;
 }
 

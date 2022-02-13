@@ -51,7 +51,7 @@ describe("index.html", () => {
 
         describe("title input", () => {
           beforeEach(() => {
-            titleInput = form.querySelector("#title");
+            titleInput = form.querySelector("#create-title");
           });
 
           test("it exists", () => {
@@ -63,14 +63,14 @@ describe("index.html", () => {
           });
 
           test("it has a label", () => {
-            let label = form.querySelector('[for="title"]');
+            let label = form.querySelector('[for="create-title"]');
             expect(label).toBeTruthy();
           });
         });
 
         describe("main blog input", () => {
           beforeEach(() => {
-            blogInput = form.querySelector("#blog");
+            blogInput = form.querySelector("#create-content");
           });
 
           test("it exists", () => {
@@ -86,7 +86,7 @@ describe("index.html", () => {
           });
 
           test("it has a label", () => {
-            let label = form.querySelector('[for="blog"]');
+            let label = form.querySelector('[for="create-content"]');
             expect(label).toBeTruthy();
           });
         });

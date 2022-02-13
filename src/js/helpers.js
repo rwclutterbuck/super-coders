@@ -138,23 +138,62 @@ function toggleEmoji(emojiId) {
 }
 
 // Profanity filter --- need to modify to filter for phrases e.g "warm milk"
-const bannedWords = ["linux", "yoshi"];
-function profanityFilter(phrase) {
-  let word = "word,";
-  return phrase
-    .split(" ")
-    .map((word) =>
-      bannedWords.includes(word.slice(0, -1).toLowerCase()) &&
-      word.match(/[\W_]$/)
-        ? word
-            .slice(0, -1)
-            .replace(/(?<=^.{1})[\w]*(?=.{1}$)/g, "*".repeat(word.length - 3)) +
-          punctuationMatcher(word)
-        : bannedWords.includes(word.toLowerCase())
-        ? word.replace(/(?<=^.{1})[\w]*(?=.{1}$)/g, "*".repeat(word.length - 2))
-        : word
-    )
-    .join(" ");
+function profanityFilter(phrase, replacer = "*", type = "inner") {
+  const bannedWords = ["linux", "yoshi"];
+  const replacerOpts = ["*", "x", "_", "o", "#", "?", "$", "-"];
+  if (!replacerOpts.includes(replacer)) {
+    throw new Error(
+      `Invalid Argument: Available options for replacer are ${replacerOpts}`
+    );
+  }
+  if (type !== "inner" && type !== "outer" && type !== "vowel") {
+    throw new Error(
+      "Invalid Argument: Available options for type are 'inner', 'outer', and 'vowel'"
+    );
+  }
+  if (type == "inner") {
+    return phrase
+      .split(" ")
+      .map((word) =>
+        bannedWords.includes(word.slice(0, -1).toLowerCase()) &&
+        word.match(/[\W_]$/)
+          ? word
+              .slice(0, -1)
+              .replace(
+                /(?<=^.{1})[\w]*(?=.{1}$)/g,
+                replacer.repeat(word.length - 3)
+              ) + punctuationMatcher(word)
+          : bannedWords.includes(word.toLowerCase())
+          ? word.replace(
+              /(?<=^.{1})[\w]*(?=.{1}$)/g,
+              replacer.repeat(word.length - 2)
+            )
+          : word
+      )
+      .join(" ");
+  } else if (type == "outer") {
+    return phrase
+      .split(" ")
+      .map((word) =>
+        (bannedWords.includes(word.slice(0, -1).toLowerCase()) &&
+          word.match(/[\W_]$/)) ||
+        bannedWords.includes(word.toLowerCase())
+          ? word.replace(/\w/g, replacer)
+          : word
+      )
+      .join(" ");
+  } else {
+    return phrase
+      .split(" ")
+      .map((word) =>
+        (bannedWords.includes(word.slice(0, -1).toLowerCase()) &&
+          word.match(/[\W_]$/)) ||
+        bannedWords.includes(word.toLowerCase())
+          ? word.replace(/[aeiouAEIOU]/g, replacer)
+          : word
+      )
+      .join(" ");
+  }
 }
 
 function punctuationMatcher(word) {
