@@ -67,20 +67,5 @@ switch (location) {
     handlers.getAllBlogs(id);
     handlers.getBlog(id);
     linkCards();
-
-    // Make sure the page is built
-    // Submit comment
-
-    // ------------------ SWAP TIMEOUT -------------------------
-    setTimeout(() => {
-      const commentForm = document.querySelector("#create-comment");
-      commentForm &&
-        commentForm.addEventListener("submit", handlers.newComment);
-
-      const emojiClicked = document.querySelector("#emoji-container");
-      emojiClicked &&
-        emojiClicked.addEventListener("click", handlers.updateEmojis);
-    }, 100);
-
     break;
 }

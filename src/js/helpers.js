@@ -72,7 +72,6 @@ function appendComment(comment, key) {
 // Deal with comment separately - append to bottom of specific blog post in blog.html
 function appendComments(comments) {
   const commentContainer = document.getElementById("comment-container");
-  console.log(comments);
   for (key in comments) {
     appendComment(comments[key], key, commentContainer);
   }
@@ -81,7 +80,8 @@ function appendComments(comments) {
 // Render specific blog post in blog.html
 function appendBlogContent(blog) {
   const blogContainer = document.querySelector("#blog-container");
-  blogContainer.innerHTML = blogTemplate(blog);
+  blogContainer.innerHTML =
+    blogTemplate.blog() + blogTemplate.emojis() + blogTemplate.comments();
 
   const gif = document.getElementById("gif");
   gif.src = blog.gif;
@@ -105,6 +105,14 @@ function appendBlogContent(blog) {
   emojiId && highlightEmoji(emojiId);
 
   appendComments(blog.comment);
+
+  const handlers = require("./handlers");
+
+  const commentForm = document.querySelector("#create-comment");
+  commentForm && commentForm.addEventListener("submit", handlers.newComment);
+
+  const emojiClicked = document.querySelector("#emoji-container");
+  emojiClicked && emojiClicked.addEventListener("click", handlers.updateEmojis);
 }
 
 function highlightEmoji(emojiId) {
