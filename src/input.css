@@ -28,6 +28,11 @@ main {
   justify-content: center;
 }
 
-/* .hide-menu {
-  display: none;
-} */
+@media (max-width: 920px) {
+  #preview-container {
+    display: none;
+  }
+  #form-section {
+    width: 80%;
+  }
+}

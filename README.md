@@ -32,6 +32,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ### Local Usage
 
+- Run `npm start` to compile the source code
 - Go in to `index.html` and start a live server
 
 ### Deployment
@@ -59,14 +60,11 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - Github Projects - view our Kanban board in this repo
 - Figma ([View our template here](https://www.figma.com/file/irC9SOqgXFVlGknEMVmSn9/super-coders?node-id=2%3A3))
 
-#### HTML/CSS Tools
+#### HTML/CSS/JS Tools
 
 - Tailwind Framework
 - Browserify
-
-#### JavaScript Tools
-
--
+- Watchify
 
 ## Changelog
 
@@ -126,22 +124,25 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ## Bugs
 
-- fix bug on initial page load (89528b9)
-- security
+- Have to refresh `blog.html` before clicking emojis
+- In create blog preview: deletion using `Delete` in input box key doesn't translate to the preview
 
 ## Goals for the Future!
 
-- Add blog preview to desktop version of `createBlog.html`
--
--
+- Add a gif selection page rather than a random choice
+- Allow searching through all keys in our data rather than only returning searches based on title
+- Have a search results page
+- Get the profanity filter to match phrases aswell as banned words (e.g "warm milk")
 
-## minimum viable product
+---
+
+## Minimum Viable Product
 
 ### Prework
 
 - [x] write this README
 - [x] design using figma
-- [ ] fill kanban board
+- [x] fill kanban board
 
 ### functionality
 
@@ -154,7 +155,7 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 ### technical
 
-- [ ] 60% test coverage
+- [x] 60% test coverage
 - [x] deploys on netlify
 
 ### technologies
@@ -171,4 +172,4 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 #### Fun extras
 
-- [ ] fuse.js -fuzzy searching
+- [x] fuse.js -fuzzy searching

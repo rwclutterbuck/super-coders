@@ -3,6 +3,7 @@ require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const handlers = require("./handlers");
 const { linkCards } = require("./helpers");
+const previewTemplate = require("./templates/previewTemplate");
 
 const hamburger = document.querySelector('[aria-label="toggle menu"]');
 const menu = document.querySelector("#dropdown-menu");
@@ -49,7 +50,6 @@ switch (location) {
   case "/createBlog.html":
     // Submit form and update page without refresh
     const form = document.querySelector("#create-blog");
-    console.log(form);
     form && form.addEventListener("submit", handlers.postBlog);
     // Create blog preview
     // const blogPreview = document.querySelector("#blog-preview");
@@ -69,3 +69,42 @@ switch (location) {
     linkCards();
     break;
 }
+
+// Getting the create blog preview to work
+const previewContainer = document.querySelector("#preview-container");
+previewContainer.innerHTML += previewTemplate();
+
+const title = document.querySelector("#create-title");
+const blog = document.querySelector("#create-content");
+// const gif = document.querySelector("#create-gif");
+
+const allowedChars =
+  "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!\"£$%^&*()_-+={}[]:;@'~#,.?/|\\ ".split(
+    ""
+  );
+
+title.addEventListener("keydown", (e) => {
+  const previewTitle = document.querySelector("#preview-title");
+  if (e.key === "Backspace") {
+    previewTitle.textContent = previewTitle.textContent.slice(0, -1);
+  } else if (allowedChars.includes(e.key)) {
+    previewTitle.textContent += e.key;
+  }
+});
+blog.addEventListener("keydown", (e) => {
+  const previewContent = document.querySelector("#preview-content");
+  if (e.key === "Backspace") {
+    previewContent.textContent = previewContent.textContent.slice(0, -1);
+  } else if (allowedChars.includes(e.key)) {
+    previewContent.textContent += e.key;
+  }
+});
+
+// gif.addEventListener("keydown", (e) => {
+//   if (e.key === "ArrowRight") {
+//     const previewGif = document.querySelector("#preview-gif");
+//     const gifId = previewGif.value;
+//     const link = handlers.fetchGif(gifId);
+//     previewGif.src = link;
+//   }
+// });

@@ -21,8 +21,8 @@ const postBlog = async (e) => {
   ).json();
 
   const data = {
-    blogtitle: e.target.title.value,
-    blogcontent: e.target.blog.value,
+    blogtitle: helpers.profanityFilter(e.target.title.value),
+    blogcontent: helpers.profanityFilter(e.target.blog.value),
     gif: result.data["0"].images.original.webp,
   };
 
@@ -42,10 +42,22 @@ const postBlog = async (e) => {
     .catch(console.warn);
 };
 
+// async function fetchGif(gifID) {
+//   const gifLink = await fetch(
+//     `https://api.giphy.com/v1/gifs/search?api_key=rZze5Ana60111aVYD7ZlwgzZnD5Zzu0b&limit=1&q=${gifID}`
+//   )
+//     .then((r) => r.json())
+//     .then((promise) => {
+//       return promise.data["0"].images.original.webp;
+//     });
+//   console.log(gifLink);
+// }
+
 // Post to the server upon creation of new comment
 function newComment(e) {
   e.preventDefault();
-  const comment = e.target.comment.value;
+  const comment = helpers.profanityFilter(e.target.comment.value);
+  console.log(comment);
   const obj = {
     timestamp: "now",
     blogcomment: comment,
@@ -72,7 +84,6 @@ function newComment(e) {
     },
   };
 
-  console.log(options.body);
   const blogId = window.sessionStorage.getItem("blogID");
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options)
     .then((r) => r.json())
@@ -137,6 +148,8 @@ function decrementEmoji(blogId, emojiId, options) {
 }
 
 // Delete a blog
+
+/*
 function deleteBlog() {
   // let blogId;
 
@@ -147,7 +160,10 @@ function deleteBlog() {
   fetch(`https://supercodersapi.herokuapp.com/blog/${blogId}`, options).catch(
     console.warn
   );
+  
 }
+*/
+
 // search blog title and retrieve it
 function searchBlog(e) {
   console.log(e.target.value);
@@ -171,5 +187,5 @@ module.exports = {
   getBlog,
   searchBlog,
   updateEmojis,
-  deleteBlog,
+  // fetchGif,
 };
