@@ -146,6 +146,51 @@ switch (location) {
     break;
 }
 
+// Admin logout
+const logoutBtn = document.querySelector(".logout-btn");
+logoutBtn &&
+  logoutBtn.addEventListener("click", () => {
+    localStorage.clear();
+  });
+
+// Remove admin
+const removalForm = document.querySelector("#admin-removal");
+removalForm &&
+  removalForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    areYouSure();
+
+    const yesBtn = document.querySelector("#yes-btn");
+    yesBtn &&
+      yesBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        // Delete user
+      });
+
+    const noBtn = document.querySelector("#no-btn");
+    noBtn &&
+      noBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const removeBox = document.querySelector("#bad-admin-username");
+        removeBox.value = "";
+        const removeSect = document.querySelector("#remove-section");
+        removeSect.innerHTML = "";
+        removeSect.innerHTML += `<input
+          type="submit"
+          id="remove-btn"
+          class="px-4 py-2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          value="Remove"
+        />`;
+      });
+  });
+
+const aYSTemplate = require("./templates/areYouSureTemplate");
+function areYouSure() {
+  const removeSect = document.querySelector("#remove-section");
+  removeSect.innerHTML = "";
+  removeSect.innerHTML += aYSTemplate();
+}
+
 // gif.addEventListener("keydown", (e) => {
 //   if (e.key === "ArrowRight") {
 //     const previewGif = document.querySelector("#preview-gif");

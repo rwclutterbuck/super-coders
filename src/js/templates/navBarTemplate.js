@@ -7,7 +7,7 @@ class navBar extends HTMLElement {
             class="container px-6 py-4 mx-auto lg:flex lg:justify-between lg:items-center"
           >
             <div class="lg:flex lg:items-center">
-              <div id="use-for-logout" class="flex items-center justify-between">
+              <div class="flex items-center justify-between">
                 <div>
                   <a
                     class="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
@@ -36,6 +36,7 @@ class navBar extends HTMLElement {
                 <div
                   class="flex flex-col text-gray-600 capitalize dark:text-gray-300 lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center"
                 >
+
                   <a
                     href="./index.html"
                     class="mt-2 transition-colors duration-200 transform lg:mt-0 lg:mx-4 hover:text-gray-900 dark:hover:text-gray-200"
@@ -49,8 +50,9 @@ class navBar extends HTMLElement {
 
                   <a
                     href="./admin.html"
+                    id="admin-btn"
                     class="mt-2 transition-colors duration-200 transform lg:mt-0 lg:mx-4 hover:text-gray-900 dark:hover:text-gray-200"
-                    >Admin Login</a
+                    >Admin</a
                   >
 
                   <div class="relative mt-4 lg:mt-0 lg:mx-4">
@@ -136,6 +138,7 @@ class navBar extends HTMLElement {
                     </a>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

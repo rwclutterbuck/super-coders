@@ -126,6 +126,8 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 
 - Have to refresh `blog.html` before clicking emojis
 - In create blog preview: deletion using `Delete` in input box key doesn't translate to the preview
+- Have to refresh admin page after sign out in order to sign in
+- On admin removal form, can't escape "are you sure" if input box gets cleared first (unless you type something)
 
 ## Goals for the Future!
 
@@ -138,6 +140,18 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - Show how many remaining characters there are in text area
 
 ---
+
+## Noah's Tasks
+
+- Admin page
+  - Link admin creation to the database
+  - Link admin deletion to database
+    - Finish "are you sure" button
+    - Create `og` attribute to `Admin` class for me, Richard, etc
+  - Make the blog preview scroll
+  - Implement comment deletion
+  - Implement blog deletion
+- Make admin page responsive
 
 ## Minimum Viable Product
 

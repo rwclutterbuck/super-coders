@@ -37,13 +37,17 @@ function updateAdminPage(path) {
   }
 }
 
-const { adminTemplate } = require("./templates/adminTemplate");
+const adminTemplate = require("./templates/adminTemplate");
 const loginTemplate = require("./templates/loginTemplate");
 
 function renderAdminPage() {
-  // const navBar = document.querySelector("#use-for-logout");
+  const logoutBtn = document.querySelector("#admin-btn");
+  logoutBtn.innerText = "Logout";
+  logoutBtn.href = "./index.html";
+  logoutBtn.classList.add("logout-btn");
+
   const adminPage = document.querySelector("#admin-section");
-  adminPage.innerHTML += adminTemplate;
+  adminPage.innerHTML += adminTemplate();
 }
 
 function renderLoginPage() {
