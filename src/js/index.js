@@ -33,7 +33,6 @@ const location = window.location.pathname;
 //   let blog = window.localStorage.getItem("blogId");
 //   blogId = window.localStorage.getItem(`blogId-${blog}`);
 // }
-
 // Call fcts depending on the browser page
 switch (location) {
   // not a great fix for page not initially loading
@@ -101,21 +100,6 @@ switch (location) {
     handlers.getAllBlogs(id);
     handlers.getBlog(id);
     linkCards();
-
-    // Make sure the page is built
-    // Submit comment
-
-    // ------------------ SWAP TIMEOUT -------------------------
-    setTimeout(() => {
-      const commentForm = document.querySelector("#create-comment");
-      commentForm &&
-        commentForm.addEventListener("submit", handlers.newComment);
-
-      const emojiClicked = document.querySelector("#emoji-container");
-      emojiClicked &&
-        emojiClicked.addEventListener("click", handlers.updateEmojis);
-    }, 1000);
-
     break;
 
   case "/admin.html":
@@ -143,52 +127,53 @@ switch (location) {
       adminContent.updateContent();
     }
     window.addEventListener("hashchange", adminContent.updateContent);
-    break;
-}
 
-// Admin logout
-const logoutBtn = document.querySelector(".logout-btn");
-logoutBtn &&
-  logoutBtn.addEventListener("click", () => {
-    localStorage.clear();
-  });
-
-// Remove admin
-const removalForm = document.querySelector("#admin-removal");
-removalForm &&
-  removalForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    areYouSure();
-
-    const yesBtn = document.querySelector("#yes-btn");
-    yesBtn &&
-      yesBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        // Delete user
+    // Admin logout
+    const logoutBtn = document.querySelector(".logout-btn");
+    logoutBtn &&
+      logoutBtn.addEventListener("click", () => {
+        localStorage.clear();
       });
 
-    const noBtn = document.querySelector("#no-btn");
-    noBtn &&
-      noBtn.addEventListener("click", (e) => {
+    // Remove admin
+    const removalForm = document.querySelector("#admin-removal");
+    removalForm &&
+      removalForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const removeBox = document.querySelector("#bad-admin-username");
-        removeBox.value = "";
-        const removeSect = document.querySelector("#remove-section");
-        removeSect.innerHTML = "";
-        removeSect.innerHTML += `<input
+        areYouSure();
+
+        const yesBtn = document.querySelector("#yes-btn");
+        yesBtn &&
+          yesBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Delete user
+          });
+
+        const noBtn = document.querySelector("#no-btn");
+        noBtn &&
+          noBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const removeBox = document.querySelector("#bad-admin-username");
+            removeBox.value = "";
+            const removeSect = document.querySelector("#remove-section");
+            removeSect.innerHTML = "";
+            removeSect.innerHTML += `<input
           type="submit"
           id="remove-btn"
           class="px-4 py-2 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
           value="Remove"
         />`;
+          });
       });
-  });
 
-const aYSTemplate = require("./templates/areYouSureTemplate");
-function areYouSure() {
-  const removeSect = document.querySelector("#remove-section");
-  removeSect.innerHTML = "";
-  removeSect.innerHTML += aYSTemplate();
+    const aYSTemplate = require("./templates/areYouSureTemplate");
+    function areYouSure() {
+      const removeSect = document.querySelector("#remove-section");
+      removeSect.innerHTML = "";
+      removeSect.innerHTML += aYSTemplate();
+    }
+
+    break;
 }
 
 // gif.addEventListener("keydown", (e) => {

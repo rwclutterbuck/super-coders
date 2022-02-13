@@ -12,7 +12,7 @@ function blog() {
       <img
         id="gif"
         class="object-cover w-full h-full"
-        src="https://media0.giphy.com/media/3orieKKmYyvUdR3RkY/giphy.webp?cid=112e516bv9aio11kbntfjo563ma9o18v0kdt9yigc281ksl8&rid=giphy.webp&ct=g"
+        src=""
         alt="Article"
       />
 
@@ -33,7 +33,11 @@ function blog() {
         </div>
       </div>
     </div>
-    <div class="flex sm:-mb-10">
+    `;
+}
+
+function emojis() {
+  return `<div class="flex sm:-mb-10">
       <div class="w-0 sm:w-1/2 bg-gray-300 dark:bg-gray-700"></div>
       <div
         id="emoji-container"
@@ -44,7 +48,10 @@ function blog() {
         ${blogEmoji(emojiLinks[2], `3`)}
       </div>
     </div>
-    <div id="comments" class="px-4 bg-gray-300 dark:bg-gray-700 dark:text-gray-100 sm:rounded-b">
+    `;
+}
+function comments() {
+  return `<div id="comments" class="px-4 bg-gray-300 dark:bg-gray-700 dark:text-gray-100 sm:rounded-b">
       <h3 class="pt-2 font-semibold text-xl">Comments</h3>
       <div id="comment-container"></div>
     <form id="create-comment" class="flex mt-4">
@@ -69,4 +76,4 @@ function blog() {
   `;
 }
 
-module.exports = blog;
+module.exports = { blog, emojis, comments };

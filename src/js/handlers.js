@@ -11,7 +11,7 @@ function getAllBlogs() {
 // Post to the server upon creation of new blog
 const postBlog = async (e) => {
   e.preventDefault();
-  let gifID = e.target.gif.value;
+  let gifID = e.target["create-gif"].value;
 
   // Fetch gif according to requested id
   let result = await (
@@ -21,8 +21,8 @@ const postBlog = async (e) => {
   ).json();
 
   const data = {
-    blogtitle: helpers.profanityFilter(e.target.title.value),
-    blogcontent: helpers.profanityFilter(e.target.blog.value),
+    blogtitle: helpers.profanityFilter(e.target["create-title"].value),
+    blogcontent: helpers.profanityFilter(e.target["create-content"].value),
     gif: result.data["0"].images.original.webp,
   };
 
