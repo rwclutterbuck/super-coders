@@ -14,6 +14,8 @@ function changeSection() {
       </div>
 
     </form>`;
+
+  document.querySelector("aside").remove();
 }
 
 function linkCards() {
@@ -139,7 +141,6 @@ function toggleEmoji(emojiId) {
 const bannedWords = ["linux", "yoshi"];
 function profanityFilter(phrase) {
   let word = "word,";
-  console.log(word.match(/[\W_]$/));
   return phrase
     .split(" ")
     .map((word) =>

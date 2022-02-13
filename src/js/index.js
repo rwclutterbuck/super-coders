@@ -31,7 +31,6 @@ const location = window.location.pathname;
 //   let blog = window.localStorage.getItem("blogId");
 //   blogId = window.localStorage.getItem(`blogId-${blog}`);
 // }
-
 // Call fcts depending on the browser page
 switch (location) {
   // not a great fix for page not initially loading
@@ -54,6 +53,37 @@ switch (location) {
     // Create blog preview
     // const blogPreview = document.querySelector("#blog-preview");
     // blogPreview && (blogPreview.innerHTML = blogCard());
+
+    // Getting the create blog preview to work
+    const previewContainer = document.querySelector("#preview-container");
+    previewContainer.innerHTML += previewTemplate();
+
+    const title = document.querySelector("#create-title");
+    const blog = document.querySelector("#create-content");
+    // const gif = document.querySelector("#create-gif");
+
+    const allowedChars =
+      "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!\"£$%^&*()_-+={}[]:;@'~#,.?/|\\ ".split(
+        ""
+      );
+
+    title.addEventListener("keydown", (e) => {
+      const previewTitle = document.querySelector("#preview-title");
+      if (e.key === "Backspace") {
+        previewTitle.textContent = previewTitle.textContent.slice(0, -1);
+      } else if (allowedChars.includes(e.key)) {
+        previewTitle.textContent += e.key;
+      }
+    });
+    blog.addEventListener("keydown", (e) => {
+      const previewContent = document.querySelector("#preview-content");
+      if (e.key === "Backspace") {
+        previewContent.textContent = previewContent.textContent.slice(0, -1);
+      } else if (allowedChars.includes(e.key)) {
+        previewContent.textContent += e.key;
+      }
+    });
+
     break;
   case "/blog.html":
     let id = 1;
@@ -69,36 +99,6 @@ switch (location) {
     linkCards();
     break;
 }
-
-// Getting the create blog preview to work
-const previewContainer = document.querySelector("#preview-container");
-previewContainer.innerHTML += previewTemplate();
-
-const title = document.querySelector("#create-title");
-const blog = document.querySelector("#create-content");
-// const gif = document.querySelector("#create-gif");
-
-const allowedChars =
-  "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!\"£$%^&*()_-+={}[]:;@'~#,.?/|\\ ".split(
-    ""
-  );
-
-title.addEventListener("keydown", (e) => {
-  const previewTitle = document.querySelector("#preview-title");
-  if (e.key === "Backspace") {
-    previewTitle.textContent = previewTitle.textContent.slice(0, -1);
-  } else if (allowedChars.includes(e.key)) {
-    previewTitle.textContent += e.key;
-  }
-});
-blog.addEventListener("keydown", (e) => {
-  const previewContent = document.querySelector("#preview-content");
-  if (e.key === "Backspace") {
-    previewContent.textContent = previewContent.textContent.slice(0, -1);
-  } else if (allowedChars.includes(e.key)) {
-    previewContent.textContent += e.key;
-  }
-});
 
 // gif.addEventListener("keydown", (e) => {
 //   if (e.key === "ArrowRight") {
