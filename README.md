@@ -128,6 +128,8 @@ Even if you just want to tell the world about the fact you eat cold baked beans 
 - In create blog preview: deletion using `Delete` in input box key doesn't translate to the preview
 - Have to refresh admin page after sign out in order to sign in
 - On admin removal form, can't escape "are you sure" if input box gets cleared first (unless you type something)
+- Can have multiple admins with the same username
+- Admin usernames are case-sensitive
 
 ## Goals for the Future!
 
