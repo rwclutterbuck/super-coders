@@ -2,6 +2,7 @@
 require("./templates/navBarTemplate");
 require("./templates/footerTemplate");
 const handlers = require("./handlers");
+const adminHandlers = require("./adminHandlers");
 const { linkCards } = require("./helpers");
 const previewTemplate = require("./templates/previewTemplate");
 const auth = require("./auth.js");
@@ -135,6 +136,11 @@ switch (location) {
         localStorage.clear();
       });
 
+    // Create new admin
+    const createForm = document.querySelector("#admin-register");
+    createForm &&
+      createForm.addEventListener("submit", adminHandlers.createAdmin);
+
     // Remove admin
     const removalForm = document.querySelector("#admin-removal");
     removalForm &&
@@ -143,11 +149,7 @@ switch (location) {
         areYouSure();
 
         const yesBtn = document.querySelector("#yes-btn");
-        yesBtn &&
-          yesBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            // Delete user
-          });
+        yesBtn && yesBtn.addEventListener("click", adminHandlers.abolishAdmin);
 
         const noBtn = document.querySelector("#no-btn");
         noBtn &&
