@@ -18,8 +18,13 @@ async function createAdmin(e) {
     ).json();
     if (response.err) {
       alert(response.err);
+    } else {
+      // Update DOM to show success
+      const createName = document.querySelector("#new-admin-username");
+      const createPass = document.querySelector("#new-admin-password");
+      createName.value = "";
+      createPass.value = "";
     }
-    console.log(response);
     return response;
   } catch (err) {
     console.warn(err);
@@ -40,12 +45,11 @@ async function abolishAdmin(e) {
       }),
     };
     const response = await (
-      await fetch(`http://localhost:3000/admin/abolish/${badmin}}`, options)
+      await fetch(`http://localhost:3000/admin/abolish/${badmin}`, options)
     ).json();
     if (response.err) {
       alert(response.err);
     }
-    console.log(response);
     return response;
   } catch (err) {
     console.warn(err);
